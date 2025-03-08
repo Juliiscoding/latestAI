@@ -3,14 +3,37 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { StarField } from "@/components/star-field"
 import { SparklesCore } from "@/components/sparkles"
-import { BarChart3, Brain, Zap, Users, TrendingUp, Lock } from "lucide-react"
+import { 
+  BarChart3, 
+  Brain, 
+  Zap, 
+  ShoppingBag, 
+  Database, 
+  ShoppingCart, 
+  Image, 
+  FileText, 
+  CreditCard, 
+  Layers,
+  Lock,
+  Sparkles
+} from "lucide-react"
 import Link from "next/link"
 
-const features = [
+const retailAnalyticsFeatures = [
   {
-    title: "AI-Powered Insights",
-    description: "Leverage advanced machine learning algorithms to uncover hidden patterns and trends in your data.",
-    icon: Brain,
+    title: "ProHandel Integration",
+    description: "Connect directly to your ProHandel POS system with our secure AWS Lambda connector.",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Multi-Tenant Data Warehouse",
+    description: "Enterprise-grade Snowflake data warehouse with role-based access control and tenant isolation.",
+    icon: Database,
+  },
+  {
+    title: "Comprehensive Data Sync",
+    description: "Automatically sync articles, customers, orders, sales, and inventory data from ProHandel.",
+    icon: Layers,
   },
   {
     title: "Real-Time Analytics",
@@ -19,23 +42,46 @@ const features = [
   },
   {
     title: "Customizable Dashboards",
-    description: "Create personalized dashboards tailored to your specific business needs and KPIs.",
+    description: "Create personalized dashboards tailored to your specific retail business needs and KPIs.",
     icon: BarChart3,
   },
   {
-    title: "Collaborative Tools",
-    description: "Share insights and work together with your team in real-time.",
-    icon: Users,
-  },
-  {
-    title: "Predictive Analytics",
-    description: "Forecast future trends and make data-driven decisions with our predictive models.",
-    icon: TrendingUp,
-  },
-  {
     title: "Enterprise-Grade Security",
-    description: "Rest easy knowing your data is protected with state-of-the-art security measures.",
+    description: "Rest easy knowing your data is protected with state-of-the-art security measures and AWS Secrets Manager.",
     icon: Lock,
+  },
+]
+
+const shopifyAppFeatures = [
+  {
+    title: "AI Product Descriptions",
+    description: "Generate SEO-optimized product descriptions in multiple languages with our Mistral-powered AI.",
+    icon: FileText,
+  },
+  {
+    title: "AI Alt Text Generation",
+    description: "Create accessible and SEO-friendly alt text for product images automatically.",
+    icon: Image,
+  },
+  {
+    title: "Bulk Generation",
+    description: "Process multiple products at once based on categories or product types (Enterprise plan).",
+    icon: Sparkles,
+  },
+  {
+    title: "Shopify Integration",
+    description: "Seamlessly integrates with your Shopify Admin API for product and image management.",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Flexible Subscription Plans",
+    description: "Choose from Basic, Pro, or Enterprise plans to match your business needs and budget.",
+    icon: CreditCard,
+  },
+  {
+    title: "AI-Powered Insights",
+    description: "Leverage advanced machine learning algorithms to enhance your product content.",
+    icon: Brain,
   },
 ]
 
@@ -72,25 +118,55 @@ export default function FeaturesPage() {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, index) => (
-              <Card key={index} className="bg-white/10 border-white/20 text-white">
-                <CardHeader>
-                  <feature.icon className="h-10 w-10 mb-3 text-[#6ACBDF]" />
-                  <CardTitle>{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-white/60">{feature.description}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
+          {/* Retail Analytics Platform Section */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
+              <span className="bg-gradient-to-r from-[#6ACBDF] to-[#AA0E33] bg-clip-text text-transparent">
+                Retail Analytics Platform
+              </span>
+            </h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {retailAnalyticsFeatures.map((feature, index) => (
+                <Card key={index} className="bg-white/10 border-white/20 text-white">
+                  <CardHeader>
+                    <feature.icon className="h-10 w-10 mb-3 text-[#6ACBDF]" />
+                    <CardTitle>{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-white/60">{feature.description}</CardDescription>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Shopify App Section */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
+              <span className="bg-gradient-to-r from-[#6ACBDF] to-[#AA0E33] bg-clip-text text-transparent">
+                Shopify AI Content Generator
+              </span>
+            </h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {shopifyAppFeatures.map((feature, index) => (
+                <Card key={index} className="bg-white/10 border-white/20 text-white">
+                  <CardHeader>
+                    <feature.icon className="h-10 w-10 mb-3 text-[#6ACBDF]" />
+                    <CardTitle>{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-white/60">{feature.description}</CardDescription>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
 
           <div className="mt-20 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Ready to Get Started?</h2>
-            <Link href="/signup">
-              <Button size="lg" className="bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90">
-                Start Your Free Trial
+            <Link href="/pricing">
+              <Button size="lg" className="bg-gradient-to-r from-[#6ACBDF] to-[#AA0E33] text-white hover:opacity-90 transition-opacity">
+                View Pricing Plans
               </Button>
             </Link>
           </div>
