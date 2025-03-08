@@ -24,7 +24,7 @@ export function LampDemo() {
 
 export function LogoLamp() {
   return (
-    <div className="absolute top-14 left-0 transform rotate-180 scale-75 z-0 w-32 h-24 overflow-hidden">
+    <div className="absolute top-10 left-0 transform rotate-180 scale-100 z-0 w-48 h-24 overflow-hidden">
       <LogoLampContainer />
     </div>
   );
@@ -34,8 +34,8 @@ export const LogoLampContainer = () => {
   return (
     <div className="relative w-full h-full">
       <motion.div
-        initial={{ opacity: 0, width: "5rem" }}
-        animate={{ opacity: 1, width: "8rem" }}
+        initial={{ opacity: 0, width: "8rem" }}
+        animate={{ opacity: 1, width: "12rem" }}
         transition={{
           delay: 0.2,
           duration: 1.5,
@@ -44,14 +44,14 @@ export const LogoLampContainer = () => {
         style={{
           backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
         }}
-        className="absolute inset-auto right-1/2 h-20 overflow-visible w-[8rem] bg-gradient-conic from-cyan-500 via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top]"
+        className="absolute inset-auto right-1/2 h-20 overflow-visible w-[12rem] bg-gradient-conic from-cyan-500 via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top]"
       >
         <div className="absolute w-[100%] left-0 bg-slate-950 h-10 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
         <div className="absolute w-10 h-[100%] left-0 bg-slate-950 bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, width: "5rem" }}
-        animate={{ opacity: 1, width: "8rem" }}
+        initial={{ opacity: 0, width: "8rem" }}
+        animate={{ opacity: 1, width: "12rem" }}
         transition={{
           delay: 0.2,
           duration: 1.5,
@@ -60,33 +60,33 @@ export const LogoLampContainer = () => {
         style={{
           backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
         }}
-        className="absolute inset-auto left-1/2 h-20 w-[8rem] bg-gradient-conic from-transparent via-transparent to-cyan-500 text-white [--conic-position:from_290deg_at_center_top]"
+        className="absolute inset-auto left-1/2 h-20 w-[12rem] bg-gradient-conic from-transparent via-transparent to-cyan-500 text-white [--conic-position:from_290deg_at_center_top]"
       >
         <div className="absolute w-10 h-[100%] right-0 bg-slate-950 bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
         <div className="absolute w-[100%] right-0 bg-slate-950 h-10 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
       </motion.div>
       <div className="absolute top-1/2 h-12 w-full translate-y-3 scale-x-150 bg-slate-950 blur-md"></div>
       <div className="absolute top-1/2 z-50 h-12 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
-      <div className="absolute inset-auto z-50 h-10 w-[8rem] -translate-y-1/2 rounded-full bg-cyan-500 opacity-50 blur-xl"></div>
+      <div className="absolute inset-auto z-50 h-10 w-[14rem] -translate-y-1/2 rounded-full bg-cyan-500 opacity-50 blur-xl"></div>
       <motion.div
-        initial={{ width: "3rem", opacity: 0 }}
-        animate={{ width: "5rem", opacity: 1 }}
+        initial={{ width: "6rem", opacity: 0 }}
+        animate={{ width: "10rem", opacity: 1 }}
         transition={{
           delay: 0.3,
           duration: 1.5,
           ease: "easeInOut",
         }}
-        className="absolute inset-auto z-30 h-8 w-16 -translate-y-[1.5rem] rounded-full bg-cyan-400 blur-md"
+        className="absolute inset-auto z-30 h-10 w-24 -translate-y-[1.5rem] rounded-full bg-cyan-400 blur-md"
       ></motion.div>
       <motion.div
-        initial={{ width: "5rem", opacity: 0 }}
-        animate={{ width: "8rem", opacity: 1 }}
+        initial={{ width: "8rem", opacity: 0 }}
+        animate={{ width: "14rem", opacity: 1 }}
         transition={{
           delay: 0.3,
           duration: 1.5,
           ease: "easeInOut",
         }}
-        className="absolute inset-auto z-50 h-0.5 w-[8rem] -translate-y-[1.75rem] bg-cyan-400"
+        className="absolute inset-auto z-50 h-0.5 w-[14rem] -translate-y-[1.75rem] bg-cyan-400"
       ></motion.div>
       <div className="absolute inset-auto z-40 h-10 w-full -translate-y-[3rem] bg-slate-950"></div>
     </div>
