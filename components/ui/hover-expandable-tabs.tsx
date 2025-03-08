@@ -30,19 +30,19 @@ interface HoverExpandableTabsProps {
 
 const getButtonVariants = (screenWidth: number) => ({
   initial: {
-    gap: screenWidth < 640 ? "0.25rem" : screenWidth < 1024 ? "0.4rem" : "0.5rem",
-    paddingLeft: screenWidth < 640 ? "0.5rem" : screenWidth < 1024 ? "0.65rem" : "0.75rem",
-    paddingRight: screenWidth < 640 ? "0.5rem" : screenWidth < 1024 ? "0.65rem" : "0.75rem",
+    gap: screenWidth < 640 ? "0.15rem" : screenWidth < 1024 ? "0.4rem" : "0.5rem",
+    paddingLeft: screenWidth < 640 ? "0.25rem" : screenWidth < 1024 ? "0.65rem" : "0.75rem",
+    paddingRight: screenWidth < 640 ? "0.25rem" : screenWidth < 1024 ? "0.65rem" : "0.75rem",
   },
   animate: (isHovered: boolean) => ({
-    gap: screenWidth < 640 ? "0.25rem" : screenWidth < 1024 ? "0.4rem" : "0.5rem",
+    gap: screenWidth < 640 ? "0.15rem" : screenWidth < 1024 ? "0.4rem" : "0.5rem",
     paddingLeft: isHovered 
-      ? (screenWidth < 640 ? "0.6rem" : screenWidth < 1024 ? "0.75rem" : "0.85rem")
-      : (screenWidth < 640 ? "0.5rem" : screenWidth < 1024 ? "0.65rem" : "0.75rem"),
+      ? (screenWidth < 640 ? "0.35rem" : screenWidth < 1024 ? "0.75rem" : "0.85rem")
+      : (screenWidth < 640 ? "0.25rem" : screenWidth < 1024 ? "0.65rem" : "0.75rem"),
     paddingRight: isHovered 
-      ? (screenWidth < 640 ? "0.6rem" : screenWidth < 1024 ? "0.75rem" : "0.85rem")
-      : (screenWidth < 640 ? "0.5rem" : screenWidth < 1024 ? "0.65rem" : "0.75rem"),
-    scale: isHovered ? (screenWidth < 640 ? 1.03 : 1.05) : 1,
+      ? (screenWidth < 640 ? "0.35rem" : screenWidth < 1024 ? "0.75rem" : "0.85rem")
+      : (screenWidth < 640 ? "0.25rem" : screenWidth < 1024 ? "0.65rem" : "0.75rem"),
+    scale: isHovered ? (screenWidth < 640 ? 1.02 : 1.05) : 1,
     y: isHovered ? (screenWidth < 640 ? -1 : -2) : 0,
   }),
 });
@@ -98,9 +98,9 @@ export function HoverExpandableTabs({
     <div 
       className="bg-white/20" 
       style={{
-        margin: screenWidth < 640 ? '0 0.5rem' : screenWidth < 1024 ? '0 1rem' : '0 2rem',
-        height: screenWidth < 640 ? '20px' : screenWidth < 1024 ? '24px' : '28px',
-        width: screenWidth < 640 ? '1px' : screenWidth < 1024 ? '1.2px' : '1.5px',
+        margin: screenWidth < 640 ? '0 0.2rem' : screenWidth < 1024 ? '0 1rem' : '0 2rem',
+        height: screenWidth < 640 ? '16px' : screenWidth < 1024 ? '24px' : '28px',
+        width: screenWidth < 640 ? '0.8px' : screenWidth < 1024 ? '1.2px' : '1.5px',
       }}
       aria-hidden="true" 
     />
@@ -113,7 +113,9 @@ export function HoverExpandableTabs({
         className
       )}
       style={{
-        gap: screenWidth < 640 ? '0.5rem' : screenWidth < 1024 ? '0.75rem' : '1rem',
+        gap: screenWidth < 640 ? '0.25rem' : screenWidth < 1024 ? '0.75rem' : '1rem',
+        width: '100%',
+        justifyContent: 'space-evenly'
       }}
     >
       {tabs.map((tab, index) => {
@@ -137,9 +139,9 @@ export function HoverExpandableTabs({
                   : "text-white hover:bg-black/10"
               )}
               style={{
-                padding: screenWidth < 640 ? '0.5rem 0.75rem' : screenWidth < 1024 ? '0.75rem 1rem' : '0.75rem 1.25rem',
-                fontSize: screenWidth < 640 ? '0.75rem' : screenWidth < 1024 ? '0.875rem' : '1rem',
-                minWidth: screenWidth < 640 ? '40px' : screenWidth < 1024 ? '50px' : '60px',
+                padding: screenWidth < 640 ? '0.25rem 0.35rem' : screenWidth < 1024 ? '0.75rem 1rem' : '0.75rem 1.25rem',
+                fontSize: screenWidth < 640 ? '0.7rem' : screenWidth < 1024 ? '0.875rem' : '1rem',
+                minWidth: screenWidth < 640 ? '30px' : screenWidth < 1024 ? '50px' : '60px',
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -166,7 +168,7 @@ export function HoverExpandableTabs({
                 className="relative z-10"
               >
                 <Icon 
-                  size={screenWidth < 640 ? 18 : screenWidth < 1024 ? 20 : 24} 
+                  size={screenWidth < 640 ? 16 : screenWidth < 1024 ? 20 : 24} 
                   className={cn(
                     "transition-colors",
                     hoveredIndex === index ? "text-[#6ACBDF]" : "text-white group-hover:text-[#6ACBDF]/80"
@@ -186,9 +188,9 @@ export function HoverExpandableTabs({
                   hoveredIndex === index ? "text-[#6ACBDF]" : "text-white/90 group-hover:text-white"
                 )}
                 style={{
-                  marginLeft: screenWidth < 640 ? '0.5rem' : screenWidth < 1024 ? '0.75rem' : '1rem',
-                  fontSize: screenWidth < 640 ? '0.75rem' : screenWidth < 1024 ? '0.875rem' : '1rem',
-                  maxWidth: screenWidth < 640 ? '70px' : screenWidth < 1024 ? '90px' : '120px',
+                  marginLeft: screenWidth < 640 ? '0.25rem' : screenWidth < 1024 ? '0.75rem' : '1rem',
+                  fontSize: screenWidth < 640 ? '0.65rem' : screenWidth < 1024 ? '0.875rem' : '1rem',
+                  maxWidth: screenWidth < 640 ? '45px' : screenWidth < 1024 ? '90px' : '120px',
                 }}
               >
                 {tab.title}

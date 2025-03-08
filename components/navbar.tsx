@@ -44,19 +44,23 @@ export default function Navbar() {
 
   return (
     <div className="w-full border-b border-white/10 relative">
-      <nav className="container flex items-center justify-between px-4 sm:px-6 lg:px-8" 
+      <nav className="container flex items-center px-2 sm:px-4 lg:px-6" 
         style={{
           height: screenSize.width < 640 ? '60px' : 
                  screenSize.width < 1024 ? '70px' : '80px',
+          justifyContent: 'space-between',
+          maxWidth: '100%',
+          overflow: 'hidden'
         }}>
-        <Link href="/" className="flex items-center space-x-2 z-10">
+        <Link href="/" className="flex items-center z-10 flex-shrink-0">
           <img
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MercuriosAI_MainLogo_RGB_300dpi-ZRorxeuhkpRJKVtuxIiQl9y6tiqpLE.png"
             alt="Mercurios.ai Logo"
             style={{
-              height: screenSize.width < 640 ? '28px' : 
-                     screenSize.width < 768 ? '32px' : 
-                     screenSize.width < 1024 ? '36px' : '40px'
+              height: screenSize.width < 640 ? '26px' : 
+                     screenSize.width < 768 ? '30px' : 
+                     screenSize.width < 1024 ? '34px' : '38px',
+              marginRight: screenSize.width < 640 ? '4px' : '8px'
             }}
           />
         </Link>
@@ -74,26 +78,31 @@ export default function Navbar() {
 
         {/* Desktop menu with hover expandable tabs */}
         <div 
-          className={`hidden md:flex items-center justify-center space-x-2 lg:space-x-6 ${isCompact ? '' : 'absolute left-1/2 transform -translate-x-1/2'}`}
+          className="hidden md:flex items-center justify-center flex-grow"
           style={{
-            position: isCompact ? 'relative' : 'absolute',
-            marginLeft: isCompact ? '10px' : '0'
+            position: 'relative',
+            marginLeft: screenSize.width < 768 ? '4px' : '8px',
+            marginRight: screenSize.width < 768 ? '4px' : '8px',
           }}
         >
           <HoverExpandableTabs 
             tabs={tabs} 
-            className="bg-transparent shadow-none text-base lg:text-lg" 
+            className="bg-transparent shadow-none text-base lg:text-lg w-full justify-center" 
             activeColor="text-[#6ACBDF]"
           />
         </div>
 
         {/* Login/Signup buttons */}
-        <div className="hidden md:flex items-center space-x-2 lg:space-x-4 z-10">
+        <div className="hidden md:flex items-center z-10 flex-shrink-0"
+          style={{
+            gap: screenSize.width < 768 ? '4px' : screenSize.width < 1024 ? '8px' : '12px'
+          }}
+        >
           <Link href="/login">
             <MovingBorderButton 
               borderRadius="0.5rem" 
               className="bg-black/50 text-white hover:text-[#6ACBDF]"
-              containerClassName={`${screenSize.width < 1024 ? 'h-9 w-20 text-xs' : screenSize.width < 1280 ? 'h-10 w-24 text-sm' : 'h-12 w-28 text-base'}`}
+              containerClassName={`${screenSize.width < 768 ? 'h-8 w-16 text-xs' : screenSize.width < 1024 ? 'h-9 w-20 text-xs' : screenSize.width < 1280 ? 'h-10 w-24 text-sm' : 'h-12 w-28 text-base'}`}
               borderClassName="bg-[radial-gradient(var(--cyan-500)_40%,transparent_60%)]"
             >
               Log In
@@ -103,7 +112,7 @@ export default function Navbar() {
             <MovingBorderButton 
               borderRadius="0.5rem" 
               className="bg-[#6ACBDF]/80 text-black font-medium hover:bg-[#6ACBDF]" 
-              containerClassName={`${screenSize.width < 1024 ? 'h-9 w-28 text-xs' : screenSize.width < 1280 ? 'h-10 w-32 text-sm' : 'h-12 w-36 text-base'}`}
+              containerClassName={`${screenSize.width < 768 ? 'h-8 w-24 text-xs' : screenSize.width < 1024 ? 'h-9 w-28 text-xs' : screenSize.width < 1280 ? 'h-10 w-32 text-sm' : 'h-12 w-36 text-base'}`}
               borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
             >
               Get Started
