@@ -1,8 +1,7 @@
 import Navbar from "@/components/navbar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { StarField } from "@/components/star-field"
-import { SparklesCore } from "@/components/sparkles"
+import { SplashCursor } from "@/components/ui/splash-cursor"
 import { Check, X } from "lucide-react"
 import Link from "next/link"
 
@@ -83,17 +82,16 @@ const pricingPlans = [
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-black antialiased relative overflow-hidden">
-      {/* Background Effects */}
-      <StarField />
-      <div className="absolute inset-0 z-[1] opacity-50">
-        <SparklesCore
-          id="tsparticlespricing"
-          background="transparent"
-          minSize={0.2}
-          maxSize={0.6}
-          particleDensity={100}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
+      {/* Splash cursor background effect */}
+      <div className="absolute inset-0 z-0">
+        <SplashCursor 
+          BACK_COLOR={{ r: 0, g: 0, b: 0 }}
+          SPLAT_RADIUS={0.35}
+          SPLAT_FORCE={6000}
+          DENSITY_DISSIPATION={2.5}
+          CURL={30}
+          TRANSPARENT={true}
+          COLOR_UPDATE_SPEED={12}
         />
       </div>
 
@@ -142,7 +140,7 @@ export default function PricingPage() {
                 </CardContent>
                 <CardFooter>
                   <Link href="/signup" className="w-full">
-                    <Button size="lg" className="w-full bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90">
+                    <Button size="lg" className="w-full bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90 transition-all duration-300 hover:shadow-[0_0_15px_rgba(106,203,223,0.7)] hover:scale-[1.02]">
                       {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
                     </Button>
                   </Link>
@@ -157,7 +155,7 @@ export default function PricingPage() {
               Our team of experts is here to help you find the perfect solution for your business needs.
             </p>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10">
+              <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10 transition-all duration-300 hover:border-[#6ACBDF] hover:text-[#6ACBDF] hover:shadow-[0_0_15px_rgba(106,203,223,0.4)] hover:scale-105">
                 Schedule a Consultation
               </Button>
             </Link>

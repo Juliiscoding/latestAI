@@ -6,9 +6,9 @@ import type React from "react"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Mercurios.ai Dashboard",
-  description: "Analytics dashboard for Mercurios.ai",
-  generator: "v0.dev",
+  title: "Mercurios.ai",
+  description: "AI-powered solutions for retail and e-commerce",
+  generator: "Next.js",
 }
 
 export default function RootLayout({
@@ -17,18 +17,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <head />
+      <body className={`${inter.className} antialiased min-h-screen transition-colors duration-300`}>
         <Providers>{children}</Providers>
       </body>
     </html>
   )
 }
-
-import "./globals.css"
-
-import "./globals.css"
-
-
-
-import './globals.css'

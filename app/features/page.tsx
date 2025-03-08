@@ -1,8 +1,7 @@
 import Navbar from "@/components/navbar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { StarField } from "@/components/star-field"
-import { SparklesCore } from "@/components/sparkles"
+import { SplashCursor } from "@/components/ui/splash-cursor"
 import { 
   BarChart3, 
   Brain, 
@@ -88,17 +87,15 @@ const shopifyAppFeatures = [
 export default function FeaturesPage() {
   return (
     <div className="min-h-screen bg-black antialiased relative overflow-hidden">
-      {/* Background Effects */}
-      <StarField />
-      <div className="absolute inset-0 z-[1] opacity-50">
-        <SparklesCore
-          id="tsparticlesfeatures"
-          background="transparent"
-          minSize={0.2}
-          maxSize={0.6}
-          particleDensity={100}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
+      {/* Splash cursor background effect */}
+      <div className="absolute inset-0 z-0">
+        <SplashCursor 
+          BACK_COLOR={{ r: 0, g: 0, b: 0 }}
+          SPLAT_RADIUS={0.3}
+          SPLAT_FORCE={8000}
+          DENSITY_DISSIPATION={3}
+          CURL={20}
+          TRANSPARENT={true}
         />
       </div>
 
@@ -165,7 +162,7 @@ export default function FeaturesPage() {
           <div className="mt-20 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Ready to Get Started?</h2>
             <Link href="/pricing">
-              <Button size="lg" className="bg-gradient-to-r from-[#6ACBDF] to-[#AA0E33] text-white hover:opacity-90 transition-opacity">
+              <Button size="lg" className="bg-gradient-to-r from-[#6ACBDF] to-[#AA0E33] text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(170,14,51,0.7)] hover:scale-105">
                 View Pricing Plans
               </Button>
             </Link>
