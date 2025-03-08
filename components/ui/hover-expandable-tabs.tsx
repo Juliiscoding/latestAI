@@ -29,24 +29,41 @@ interface HoverExpandableTabsProps {
 
 const buttonVariants = {
   initial: {
-    gap: 0,
-    paddingLeft: ".5rem",
-    paddingRight: ".5rem",
+    gap: "0.5rem",
+    paddingLeft: "0.75rem",
+    paddingRight: "0.75rem",
   },
   animate: (isHovered: boolean) => ({
-    gap: isHovered ? ".5rem" : 0,
-    paddingLeft: isHovered ? "1rem" : ".5rem",
-    paddingRight: isHovered ? "1rem" : ".5rem",
+    gap: "0.5rem",
+    paddingLeft: isHovered ? "1rem" : "0.75rem",
+    paddingRight: isHovered ? "1.25rem" : "0.75rem",
+    scale: isHovered ? 1.05 : 1,
+    y: isHovered ? -2 : 0,
+  }),
+};
+
+const iconVariants = {
+  initial: { scale: 1 },
+  animate: (isHovered: boolean) => ({
+    scale: isHovered ? 1.2 : 1,
+    rotate: isHovered ? 5 : 0,
   }),
 };
 
 const spanVariants = {
-  initial: { width: 0, opacity: 0 },
-  animate: { width: "auto", opacity: 1 },
-  exit: { width: 0, opacity: 0 },
+  initial: { opacity: 0.8, scale: 0.95 },
+  animate: { opacity: 1, scale: 1 },
+  exit: { opacity: 0.8, scale: 0.95 },
 };
 
-const transition = { type: "spring", bounce: 0, duration: 0.4 };
+const glowVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
+const transition = { type: "spring", stiffness: 300, damping: 20, duration: 0.3 };
+const fastTransition = { type: "spring", stiffness: 500, damping: 15, duration: 0.2 };
 
 export function HoverExpandableTabs({
   tabs,
@@ -81,29 +98,55 @@ export function HoverExpandableTabs({
               custom={hoveredIndex === index}
               transition={transition}
               className={cn(
-                "relative flex items-center rounded-xl px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer",
+                "relative flex items-center rounded-xl px-4 py-3 text-sm font-medium cursor-pointer overflow-hidden group",
                 hoveredIndex === index
-                  ? cn("bg-black/20", activeColor)
+                  ? cn("bg-gradient-to-r from-[#6ACBDF]/20 to-[#6ACBDF]/5", activeColor)
                   : "text-white hover:bg-black/10"
               )}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <Icon size={20} />
-              <AnimatePresence initial={false}>
-                {hoveredIndex === index && (
-                  <motion.span
-                    variants={spanVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={transition}
-                    className="overflow-hidden ml-2"
-                  >
-                    {tab.title}
-                  </motion.span>
+              {/* Background glow effect */}
+              {hoveredIndex === index && (
+                <motion.div 
+                  className="absolute inset-0 bg-[#6ACBDF]/10 blur-xl rounded-full"
+                  variants={glowVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={fastTransition}
+                />
+              )}
+              
+              {/* Icon with animation */}
+              <motion.div
+                variants={iconVariants}
+                initial={false}
+                animate="animate"
+                custom={hoveredIndex === index}
+                transition={fastTransition}
+                className="relative z-10"
+              >
+                <Icon size={24} className={cn(
+                  "transition-colors",
+                  hoveredIndex === index ? "text-[#6ACBDF]" : "text-white group-hover:text-[#6ACBDF]/80"
+                )} />
+              </motion.div>
+              
+              {/* Always show the title with animation */}
+              <motion.span
+                variants={spanVariants}
+                initial={false}
+                animate="animate"
+                custom={hoveredIndex === index}
+                transition={transition}
+                className={cn(
+                  "ml-2 relative z-10 transition-colors",
+                  hoveredIndex === index ? "text-[#6ACBDF]" : "text-white/90 group-hover:text-white"
                 )}
-              </AnimatePresence>
+              >
+                {tab.title}
+              </motion.span>
             </motion.div>
           </Link>
         );
