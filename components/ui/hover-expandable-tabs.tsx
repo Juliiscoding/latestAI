@@ -29,24 +29,24 @@ interface HoverExpandableTabsProps {
 
 const buttonVariants = {
   initial: {
-    gap: "0.25rem",
-    paddingLeft: "0.5rem",
-    paddingRight: "0.5rem",
+    gap: "0.5rem",
+    paddingLeft: "0.75rem",
+    paddingRight: "0.75rem",
   },
   animate: (isHovered: boolean) => ({
-    gap: "0.25rem",
-    paddingLeft: isHovered ? "0.6rem" : "0.5rem",
-    paddingRight: isHovered ? "0.6rem" : "0.5rem",
-    scale: isHovered ? 1.02 : 1,
-    y: isHovered ? -1 : 0,
+    gap: "0.5rem",
+    paddingLeft: isHovered ? "0.85rem" : "0.75rem",
+    paddingRight: isHovered ? "0.85rem" : "0.75rem",
+    scale: isHovered ? 1.05 : 1,
+    y: isHovered ? -2 : 0,
   }),
 };
 
 const iconVariants = {
   initial: { scale: 1 },
   animate: (isHovered: boolean) => ({
-    scale: isHovered ? 1.1 : 1,
-    rotate: isHovered ? 3 : 0,
+    scale: isHovered ? 1.15 : 1,
+    rotate: isHovered ? 5 : 0,
   }),
 };
 
@@ -73,13 +73,13 @@ export function HoverExpandableTabs({
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
 
   const Separator = () => (
-    <div className="mx-1 h-[24px] w-[1.2px] bg-border" aria-hidden="true" />
+    <div className="mx-2 h-[28px] w-[1.5px] bg-white/20" aria-hidden="true" />
   );
 
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 rounded-2xl border-none bg-transparent p-1",
+        "flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 rounded-2xl border-none bg-transparent p-1",
         className
       )}
     >
@@ -98,7 +98,7 @@ export function HoverExpandableTabs({
               custom={hoveredIndex === index}
               transition={transition}
               className={cn(
-                "relative flex items-center rounded-xl px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium cursor-pointer overflow-hidden group min-w-[40px] sm:min-w-[45px]",
+                "relative flex items-center rounded-xl px-3 sm:px-4 py-2.5 text-sm md:text-base font-medium cursor-pointer overflow-hidden group min-w-[50px] sm:min-w-[60px]",
                 hoveredIndex === index
                   ? cn("bg-gradient-to-r from-[#6ACBDF]/20 to-[#6ACBDF]/5", activeColor)
                   : "text-white hover:bg-black/10"
@@ -127,7 +127,7 @@ export function HoverExpandableTabs({
                 transition={fastTransition}
                 className="relative z-10"
               >
-                <Icon size={20} className={cn(
+                <Icon size={24} className={cn(
                   "transition-colors",
                   hoveredIndex === index ? "text-[#6ACBDF]" : "text-white group-hover:text-[#6ACBDF]/80"
                 )} />
@@ -141,7 +141,7 @@ export function HoverExpandableTabs({
                 custom={hoveredIndex === index}
                 transition={transition}
                 className={cn(
-                  "ml-1 relative z-10 transition-colors text-xs whitespace-nowrap max-w-[80px] sm:max-w-[100px] truncate",
+                  "ml-2 relative z-10 transition-colors text-sm md:text-base whitespace-nowrap max-w-[90px] sm:max-w-[120px] truncate",
                   hoveredIndex === index ? "text-[#6ACBDF]" : "text-white/90 group-hover:text-white"
                 )}
               >

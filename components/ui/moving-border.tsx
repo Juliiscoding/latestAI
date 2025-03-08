@@ -11,12 +11,12 @@ import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export function Button({
-  borderRadius = "1.75rem",
+  borderRadius = "0.5rem",
   children,
   as: Component = "button",
   containerClassName,
   borderClassName,
-  duration,
+  duration = 2500,
   className,
   ...otherProps
 }: {
@@ -30,11 +30,10 @@ export function Button({
   [key: string]: any;
 }) {
   const [isHovered, setIsHovered] = useState(false);
-  const animationSpeed = duration || 1500; // Default to a slightly faster animation
   return (
     <Component
       className={cn(
-        "bg-transparent relative text-xl  h-16 w-40 p-[1px] overflow-hidden ",
+        "bg-transparent relative text-xl h-12 w-40 p-[1px] overflow-hidden",
         containerClassName
       )}
       style={{
@@ -48,20 +47,21 @@ export function Button({
         className="absolute inset-0"
         style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
       >
-        <MovingBorder duration={animationSpeed} rx="30%" ry="30%" isAnimating={isHovered}>
-          <div
-            className={cn(
-              "h-24 w-24 opacity-0 transition-opacity duration-300",
-              isHovered ? "opacity-100" : "opacity-0",
-              borderClassName || "bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
-            )}
-          />
-        </MovingBorder>
+        {isHovered && (
+          <MovingBorder duration={duration} rx="30%" ry="30%">
+            <div
+              className={cn(
+                "h-16 w-16 opacity-[0.9] transition-all duration-300",
+                borderClassName || "bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
+              )}
+            />
+          </MovingBorder>
+        )}
       </div>
 
       <div
         className={cn(
-          "relative bg-slate-900/[0.8] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased",
+          "relative bg-transparent flex items-center justify-center w-full h-full text-sm font-medium transition-all duration-300",
           className
         )}
         style={{
@@ -76,25 +76,21 @@ export function Button({
 
 export const MovingBorder = ({
   children,
-  duration = 2000,
+  duration = 2500,
   rx,
   ry,
-  isAnimating = false,
   ...otherProps
 }: {
   children: React.ReactNode;
   duration?: number;
   rx?: string;
   ry?: string;
-  isAnimating?: boolean;
   [key: string]: any;
 }) => {
   const pathRef = useRef<any>();
   const progress = useMotionValue<number>(0);
 
   useAnimationFrame((time) => {
-    if (!isAnimating) return;
-    
     const length = pathRef.current?.getTotalLength();
     if (length) {
       const pxPerMillisecond = length / duration;

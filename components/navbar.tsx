@@ -21,32 +21,43 @@ export default function Navbar() {
   ]
 
   return (
-    <div className="w-full border-b border-white/10">
-      <nav className="container flex h-14 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
+    <div className="w-full border-b border-white/10 relative">
+      <nav className="container flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center space-x-2 z-10">
           <img
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MercuriosAI_MainLogo_RGB_300dpi-ZRorxeuhkpRJKVtuxIiQl9y6tiqpLE.png"
             alt="Mercurios.ai Logo"
-            className="h-8"
+            className="h-8 sm:h-10 md:h-12"
           />
         </Link>
 
-        {/* Mobile menu button - moved to right side with theme toggle */}
+        {/* Mobile menu toggle button */}
+        <div className="md:hidden z-10">
+          <button 
+            className="text-white p-2" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
 
         {/* Desktop menu with hover expandable tabs */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 space-x-2 lg:space-x-6">
           <HoverExpandableTabs 
             tabs={tabs} 
-            className="bg-transparent shadow-none" 
+            className="bg-transparent shadow-none text-base lg:text-lg" 
             activeColor="text-[#6ACBDF]"
           />
         </div>
-        <div className="hidden md:flex items-center space-x-4">
+
+        {/* Login/Signup buttons */}
+        <div className="hidden md:flex items-center space-x-3 lg:space-x-5 z-10">
           <Link href="/login">
             <MovingBorderButton 
               borderRadius="0.5rem" 
-              className="bg-black/50 text-white text-sm h-10 w-24 hover:text-[#6ACBDF]"
-              containerClassName="h-10 w-24"
+              className="bg-black/50 text-white text-sm md:text-base h-10 md:h-12 w-24 md:w-28 hover:text-[#6ACBDF]"
+              containerClassName="h-10 md:h-12 w-24 md:w-28"
               borderClassName="bg-[radial-gradient(var(--cyan-500)_40%,transparent_60%)]"
             >
               Log In
@@ -55,8 +66,8 @@ export default function Navbar() {
           <Link href="/signup">
             <MovingBorderButton 
               borderRadius="0.5rem" 
-              className="bg-[#6ACBDF]/80 text-black text-sm font-medium h-10 w-32 hover:bg-[#6ACBDF]" 
-              containerClassName="h-10 w-32"
+              className="bg-[#6ACBDF]/80 text-black text-sm md:text-base font-medium h-10 md:h-12 w-32 md:w-36 hover:bg-[#6ACBDF]" 
+              containerClassName="h-10 md:h-12 w-32 md:w-36"
               borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
             >
               Get Started
@@ -65,56 +76,42 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu toggle button */}
-      <div className="md:hidden flex items-center space-x-2">
-        <button className="text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/95 absolute top-14 left-0 right-0 z-50">
-          <div className="flex flex-col items-center space-y-4 py-4">
-            <Link
-              href="/features"
-              className={`text-sm text-white transition-all duration-300 hover:text-[#6ACBDF] hover:scale-110 ${isActive("/features") ? "font-bold" : ""}`}
-            >
-              FEATURES
-            </Link>
-            <Link
-              href="/how-it-works"
-              className={`text-sm text-white transition-all duration-300 hover:text-[#6ACBDF] hover:scale-110 ${isActive("/how-it-works") ? "font-bold" : ""}`}
-            >
-              HOW IT WORKS
-            </Link>
-            <Link
-              href="/examples"
-              className={`text-sm text-white transition-all duration-300 hover:text-[#6ACBDF] hover:scale-110 ${isActive("/examples") ? "font-bold" : ""}`}
-            >
-              EXAMPLES
-            </Link>
-            <Link
-              href="/pricing"
-              className={`text-sm text-white transition-all duration-300 hover:text-[#6ACBDF] hover:scale-110 ${isActive("/pricing") ? "font-bold" : ""}`}
-            >
-              PRICING
-            </Link>
-            <Link href="/login">
+        <div className="md:hidden bg-black/95 fixed top-20 left-0 right-0 bottom-0 z-50 overflow-y-auto">
+          <div className="flex flex-col items-center space-y-6 py-8 px-4">
+            {tabs.map((tab, index) => {
+              const Icon = tab.icon;
+              return (
+                <Link
+                  key={tab.title}
+                  href={tab.href}
+                  className={`flex items-center space-x-3 text-lg text-white transition-all duration-300 hover:text-[#6ACBDF] ${isActive(tab.href) ? "text-[#6ACBDF] font-bold" : ""}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Icon size={24} />
+                  <span>{tab.title}</span>
+                </Link>
+              );
+            })}
+            
+            <div className="w-full h-px bg-white/10 my-2"></div>
+            
+            <Link href="/login" className="w-full max-w-xs" onClick={() => setIsMenuOpen(false)}>
               <MovingBorderButton 
                 borderRadius="0.5rem" 
-                className="bg-black/50 text-white text-sm h-10 w-24 hover:text-[#6ACBDF]"
-                containerClassName="h-10 w-24"
+                className="bg-black/50 text-white text-base h-12 w-full hover:text-[#6ACBDF]"
+                containerClassName="h-12 w-full"
                 borderClassName="bg-[radial-gradient(var(--cyan-500)_40%,transparent_60%)]"
               >
                 Log In
               </MovingBorderButton>
             </Link>
-            <Link href="/signup">
+            <Link href="/signup" className="w-full max-w-xs" onClick={() => setIsMenuOpen(false)}>
               <MovingBorderButton 
                 borderRadius="0.5rem" 
-                className="bg-[#6ACBDF]/80 text-black text-sm font-medium h-10 w-32 hover:bg-[#6ACBDF]" 
-                containerClassName="h-10 w-32"
+                className="bg-[#6ACBDF]/80 text-black text-base font-medium h-12 w-full hover:bg-[#6ACBDF]" 
+                containerClassName="h-12 w-full"
                 borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
               >
                 Get Started
