@@ -4,6 +4,7 @@ import React from "react";
 import Navbar from "@/components/navbar";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 import { ArrowRight, ShoppingCart, BarChart, Search, Image } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -81,9 +82,14 @@ export default function ExamplesPage() {
               </CardContent>
               <CardFooter>
                 <Link href="/signup">
-                  <Button className="bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90">
-                    Try Pro Plan <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <MovingBorderButton 
+                    borderRadius="0.5rem" 
+                    className="bg-[#6ACBDF]/80 text-black font-medium hover:bg-[#6ACBDF]" 
+                    containerClassName="h-10 w-40"
+                    borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
+                  >
+                    Try Pro Plan <ArrowRight className="ml-1 h-4 w-4" />
+                  </MovingBorderButton>
                 </Link>
               </CardFooter>
             </Card>
@@ -117,9 +123,14 @@ export default function ExamplesPage() {
               </CardContent>
               <CardFooter>
                 <Link href="/signup">
-                  <Button className="bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90">
-                    Try Enterprise Plan <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <MovingBorderButton 
+                    borderRadius="0.5rem" 
+                    className="bg-[#6ACBDF]/80 text-black font-medium hover:bg-[#6ACBDF]" 
+                    containerClassName="h-10 w-52"
+                    borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
+                  >
+                    Try Enterprise Plan <ArrowRight className="ml-1 h-4 w-4" />
+                  </MovingBorderButton>
                 </Link>
               </CardFooter>
             </Card>
@@ -153,9 +164,14 @@ export default function ExamplesPage() {
               </CardContent>
               <CardFooter>
                 <Link href="/signup">
-                  <Button className="bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90">
-                    Try Basic Plan <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <MovingBorderButton 
+                    borderRadius="0.5rem" 
+                    className="bg-[#6ACBDF]/80 text-black font-medium hover:bg-[#6ACBDF]" 
+                    containerClassName="h-10 w-40"
+                    borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
+                  >
+                    Try Basic Plan <ArrowRight className="ml-1 h-4 w-4" />
+                  </MovingBorderButton>
                 </Link>
               </CardFooter>
             </Card>
@@ -201,14 +217,24 @@ export default function ExamplesPage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/signup">
-              <Button size="lg" className="bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90 font-medium">
-                Start Free Trial <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <MovingBorderButton 
+                borderRadius="0.5rem" 
+                className="bg-[#6ACBDF]/80 text-black font-medium hover:bg-[#6ACBDF]" 
+                containerClassName="h-12 w-48"
+                borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
+              >
+                Start Free Trial <ArrowRight className="ml-1 h-4 w-4" />
+              </MovingBorderButton>
             </Link>
             <Link href="/how-it-works">
-              <Button size="lg" variant="outline" className="border-[#6ACBDF] text-[#6ACBDF] hover:bg-[#6ACBDF]/10">
+              <MovingBorderButton 
+                borderRadius="0.5rem" 
+                className="bg-black/50 text-white hover:text-[#6ACBDF]" 
+                containerClassName="h-12 w-48"
+                borderClassName="bg-[radial-gradient(var(--cyan-500)_40%,transparent_60%)]"
+              >
                 Learn How It Works
-              </Button>
+              </MovingBorderButton>
             </Link>
           </div>
         </motion.div>
