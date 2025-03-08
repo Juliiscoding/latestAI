@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -29,6 +29,8 @@ export function Button({
   className?: string;
   [key: string]: any;
 }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const animationSpeed = duration || 1500; // Default to a slightly faster animation
   return (
     <Component
       className={cn(
@@ -38,17 +40,20 @@ export function Button({
       style={{
         borderRadius: borderRadius,
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       {...otherProps}
     >
       <div
         className="absolute inset-0"
         style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
       >
-        <MovingBorder duration={duration} rx="30%" ry="30%">
+        <MovingBorder duration={animationSpeed} rx="30%" ry="30%" isAnimating={isHovered}>
           <div
             className={cn(
-              "h-20 w-20 opacity-[0.8] bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]",
-              borderClassName
+              "h-24 w-24 opacity-0 transition-opacity duration-300",
+              isHovered ? "opacity-100" : "opacity-0",
+              borderClassName || "bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]"
             )}
           />
         </MovingBorder>
@@ -74,18 +79,22 @@ export const MovingBorder = ({
   duration = 2000,
   rx,
   ry,
+  isAnimating = false,
   ...otherProps
 }: {
   children: React.ReactNode;
   duration?: number;
   rx?: string;
   ry?: string;
+  isAnimating?: boolean;
   [key: string]: any;
 }) => {
   const pathRef = useRef<any>();
   const progress = useMotionValue<number>(0);
 
   useAnimationFrame((time) => {
+    if (!isAnimating) return;
+    
     const length = pathRef.current?.getTotalLength();
     if (length) {
       const pxPerMillisecond = length / duration;
