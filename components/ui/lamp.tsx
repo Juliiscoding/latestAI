@@ -24,7 +24,7 @@ export function LampDemo() {
 
 export function LogoLamp() {
   return (
-    <div className="absolute top-10 left-0 transform rotate-180 scale-100 z-0 w-48 h-24 overflow-hidden">
+    <div className="absolute top-0 left-0 transform rotate-180 scale-100 z-0 w-48 h-24 overflow-hidden">
       <LogoLampContainer />
     </div>
   );
