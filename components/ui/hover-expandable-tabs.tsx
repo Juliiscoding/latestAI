@@ -29,24 +29,24 @@ interface HoverExpandableTabsProps {
 
 const buttonVariants = {
   initial: {
-    gap: "0.5rem",
-    paddingLeft: "0.75rem",
-    paddingRight: "0.75rem",
+    gap: "0.25rem",
+    paddingLeft: "0.5rem",
+    paddingRight: "0.5rem",
   },
   animate: (isHovered: boolean) => ({
-    gap: "0.5rem",
-    paddingLeft: isHovered ? "1rem" : "0.75rem",
-    paddingRight: isHovered ? "1.25rem" : "0.75rem",
-    scale: isHovered ? 1.05 : 1,
-    y: isHovered ? -2 : 0,
+    gap: "0.25rem",
+    paddingLeft: isHovered ? "0.6rem" : "0.5rem",
+    paddingRight: isHovered ? "0.6rem" : "0.5rem",
+    scale: isHovered ? 1.02 : 1,
+    y: isHovered ? -1 : 0,
   }),
 };
 
 const iconVariants = {
   initial: { scale: 1 },
   animate: (isHovered: boolean) => ({
-    scale: isHovered ? 1.2 : 1,
-    rotate: isHovered ? 5 : 0,
+    scale: isHovered ? 1.1 : 1,
+    rotate: isHovered ? 3 : 0,
   }),
 };
 
@@ -79,7 +79,7 @@ export function HoverExpandableTabs({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-2 rounded-2xl border-none bg-transparent p-1",
+        "flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 rounded-2xl border-none bg-transparent p-1",
         className
       )}
     >
@@ -98,7 +98,7 @@ export function HoverExpandableTabs({
               custom={hoveredIndex === index}
               transition={transition}
               className={cn(
-                "relative flex items-center rounded-xl px-4 py-3 text-sm font-medium cursor-pointer overflow-hidden group",
+                "relative flex items-center rounded-xl px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium cursor-pointer overflow-hidden group min-w-[40px] sm:min-w-[45px]",
                 hoveredIndex === index
                   ? cn("bg-gradient-to-r from-[#6ACBDF]/20 to-[#6ACBDF]/5", activeColor)
                   : "text-white hover:bg-black/10"
@@ -127,13 +127,13 @@ export function HoverExpandableTabs({
                 transition={fastTransition}
                 className="relative z-10"
               >
-                <Icon size={24} className={cn(
+                <Icon size={20} className={cn(
                   "transition-colors",
                   hoveredIndex === index ? "text-[#6ACBDF]" : "text-white group-hover:text-[#6ACBDF]/80"
                 )} />
               </motion.div>
               
-              {/* Always show the title with animation */}
+              {/* Title with responsive display */}
               <motion.span
                 variants={spanVariants}
                 initial={false}
@@ -141,7 +141,7 @@ export function HoverExpandableTabs({
                 custom={hoveredIndex === index}
                 transition={transition}
                 className={cn(
-                  "ml-2 relative z-10 transition-colors",
+                  "ml-1 relative z-10 transition-colors text-xs whitespace-nowrap max-w-[80px] sm:max-w-[100px] truncate",
                   hoveredIndex === index ? "text-[#6ACBDF]" : "text-white/90 group-hover:text-white"
                 )}
               >
