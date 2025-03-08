@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { usePathname } from "next/navigation"
-import { LogoLamp } from "@/components/ui/lamp"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -15,16 +14,13 @@ export default function Navbar() {
   return (
     <div className="w-full border-b border-white/10">
       <nav className="container flex h-14 items-center justify-between">
-        <div className="relative">
-          <Link href="/" className="flex items-center space-x-2 relative z-10">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MercuriosAI_MainLogo_RGB_300dpi-ZRorxeuhkpRJKVtuxIiQl9y6tiqpLE.png"
-              alt="Mercurios.ai Logo"
-              className="h-8"
-            />
-          </Link>
-          <LogoLamp />
-        </div>
+        <Link href="/" className="flex items-center space-x-2">
+          <img
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MercuriosAI_MainLogo_RGB_300dpi-ZRorxeuhkpRJKVtuxIiQl9y6tiqpLE.png"
+            alt="Mercurios.ai Logo"
+            className="h-8"
+          />
+        </Link>
 
         {/* Mobile menu button - moved to right side with theme toggle */}
 
