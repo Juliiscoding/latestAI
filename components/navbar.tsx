@@ -1,15 +1,29 @@
 "use client"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button as DefaultButton } from "@/components/ui/button"
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Wrench, Lightbulb, BookOpen, DollarSign, LogIn } from "lucide-react"
 import { usePathname } from "next/navigation"
+import { ExpandableTabs } from "@/components/ui/expandable-tabs"
+import { Button as MovingBorderButton } from "@/components/ui/moving-border"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
+  const [activeTab, setActiveTab] = useState<number | null>(null)
 
   const isActive = (path: string) => pathname === path
+  
+  const tabs = [
+    { title: "FEATURES", icon: Wrench },
+    { title: "HOW IT WORKS", icon: Lightbulb },
+    { title: "EXAMPLES", icon: BookOpen },
+    { title: "PRICING", icon: DollarSign },
+  ]
+  
+  const handleTabChange = (index: number | null) => {
+    setActiveTab(index)
+  }
 
   return (
     <div className="w-full border-b border-white/10">
@@ -24,45 +38,65 @@ export default function Navbar() {
 
         {/* Mobile menu button - moved to right side with theme toggle */}
 
-        {/* Desktop menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          <Link
-            href="/features"
-            className={`text-sm text-white relative px-2 py-1 transition-all duration-300 ${isActive("/features") ? "font-bold" : ""}`}
-          >
-            <span className="relative z-10 group-hover:text-black">FEATURES</span>
-            <span className="absolute inset-0 bg-[#6ACBDF] transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 hover:scale-x-100 opacity-0 hover:opacity-100 rounded-md"></span>
-          </Link>
-          <Link
-            href="/how-it-works"
-            className={`text-sm text-white relative px-2 py-1 transition-all duration-300 ${isActive("/how-it-works") ? "font-bold" : ""}`}
-          >
-            <span className="relative z-10 group-hover:text-black">HOW IT WORKS</span>
-            <span className="absolute inset-0 bg-[#6ACBDF] transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 hover:scale-x-100 opacity-0 hover:opacity-100 rounded-md"></span>
-          </Link>
-          <Link
-            href="/examples"
-            className={`text-sm text-white relative px-2 py-1 transition-all duration-300 ${isActive("/examples") ? "font-bold" : ""}`}
-          >
-            <span className="relative z-10 group-hover:text-black">EXAMPLES</span>
-            <span className="absolute inset-0 bg-[#6ACBDF] transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 hover:scale-x-100 opacity-0 hover:opacity-100 rounded-md"></span>
-          </Link>
-          <Link
-            href="/pricing"
-            className={`text-sm text-white relative px-2 py-1 transition-all duration-300 ${isActive("/pricing") ? "font-bold" : ""}`}
-          >
-            <span className="relative z-10 group-hover:text-black">PRICING</span>
-            <span className="absolute inset-0 bg-[#6ACBDF] transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 hover:scale-x-100 opacity-0 hover:opacity-100 rounded-md"></span>
-          </Link>
+        {/* Desktop menu with expandable tabs */}
+        <div className="hidden md:flex items-center">
+          <ExpandableTabs 
+            tabs={tabs} 
+            className="bg-transparent border-none shadow-none" 
+            activeColor="text-[#6ACBDF]"
+            onChange={handleTabChange}
+          />
+          <div className="ml-2 flex space-x-2">
+            {activeTab === 0 && (
+              <Link href="/features">
+                <DefaultButton variant="link" className="text-white hover:text-[#6ACBDF]">
+                  View Features
+                </DefaultButton>
+              </Link>
+            )}
+            {activeTab === 1 && (
+              <Link href="/how-it-works">
+                <DefaultButton variant="link" className="text-white hover:text-[#6ACBDF]">
+                  Learn More
+                </DefaultButton>
+              </Link>
+            )}
+            {activeTab === 2 && (
+              <Link href="/examples">
+                <DefaultButton variant="link" className="text-white hover:text-[#6ACBDF]">
+                  See Examples
+                </DefaultButton>
+              </Link>
+            )}
+            {activeTab === 3 && (
+              <Link href="/pricing">
+                <DefaultButton variant="link" className="text-white hover:text-[#6ACBDF]">
+                  View Plans
+                </DefaultButton>
+              </Link>
+            )}
+          </div>
         </div>
         <div className="hidden md:flex items-center space-x-4">
           <Link href="/login">
-            <Button variant="ghost" className="text-white hover:text-black hover:bg-[#6ACBDF] transition-all duration-300 hover:shadow-[0_0_15px_rgba(106,203,223,0.7)] hover:scale-105">
+            <MovingBorderButton 
+              borderRadius="0.5rem" 
+              className="bg-black/50 text-white text-sm h-10 w-24 hover:text-[#6ACBDF]"
+              containerClassName="h-10 w-24"
+              borderClassName="bg-[radial-gradient(var(--cyan-500)_40%,transparent_60%)]"
+            >
               Log In
-            </Button>
+            </MovingBorderButton>
           </Link>
           <Link href="/signup">
-            <Button className="bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90 transition-all duration-300 hover:shadow-[0_0_15px_rgba(106,203,223,0.7)] hover:scale-105">Get Started</Button>
+            <MovingBorderButton 
+              borderRadius="0.5rem" 
+              className="bg-[#6ACBDF]/80 text-black text-sm font-medium h-10 w-32 hover:bg-[#6ACBDF]" 
+              containerClassName="h-10 w-32"
+              borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
+            >
+              Get Started
+            </MovingBorderButton>
           </Link>
         </div>
       </nav>
@@ -103,12 +137,24 @@ export default function Navbar() {
               PRICING
             </Link>
             <Link href="/login">
-              <Button variant="ghost" className="text-white hover:text-black hover:bg-[#6ACBDF] transition-all duration-300 hover:shadow-[0_0_15px_rgba(106,203,223,0.7)] hover:scale-105">
+              <MovingBorderButton 
+                borderRadius="0.5rem" 
+                className="bg-black/50 text-white text-sm h-10 w-24 hover:text-[#6ACBDF]"
+                containerClassName="h-10 w-24"
+                borderClassName="bg-[radial-gradient(var(--cyan-500)_40%,transparent_60%)]"
+              >
                 Log In
-              </Button>
+              </MovingBorderButton>
             </Link>
             <Link href="/signup">
-              <Button className="bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90 transition-all duration-300 hover:shadow-[0_0_15px_rgba(106,203,223,0.7)] hover:scale-105">Get Started</Button>
+              <MovingBorderButton 
+                borderRadius="0.5rem" 
+                className="bg-[#6ACBDF]/80 text-black text-sm font-medium h-10 w-32 hover:bg-[#6ACBDF]" 
+                containerClassName="h-10 w-32"
+                borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
+              >
+                Get Started
+              </MovingBorderButton>
             </Link>
           </div>
         </div>
