@@ -4,26 +4,21 @@ import { Button as DefaultButton } from "@/components/ui/button"
 import { useState } from "react"
 import { Menu, X, Wrench, Lightbulb, BookOpen, DollarSign, LogIn } from "lucide-react"
 import { usePathname } from "next/navigation"
-import { ExpandableTabs } from "@/components/ui/expandable-tabs"
+import { HoverExpandableTabs } from "@/components/ui/hover-expandable-tabs"
 import { Button as MovingBorderButton } from "@/components/ui/moving-border"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
-  const [activeTab, setActiveTab] = useState<number | null>(null)
 
   const isActive = (path: string) => pathname === path
   
   const tabs = [
-    { title: "FEATURES", icon: Wrench },
-    { title: "HOW IT WORKS", icon: Lightbulb },
-    { title: "EXAMPLES", icon: BookOpen },
-    { title: "PRICING", icon: DollarSign },
+    { title: "FEATURES", icon: Wrench, href: "/features" },
+    { title: "HOW IT WORKS", icon: Lightbulb, href: "/how-it-works" },
+    { title: "EXAMPLES", icon: BookOpen, href: "/examples" },
+    { title: "PRICING", icon: DollarSign, href: "/pricing" },
   ]
-  
-  const handleTabChange = (index: number | null) => {
-    setActiveTab(index)
-  }
 
   return (
     <div className="w-full border-b border-white/10">
@@ -38,44 +33,13 @@ export default function Navbar() {
 
         {/* Mobile menu button - moved to right side with theme toggle */}
 
-        {/* Desktop menu with expandable tabs */}
+        {/* Desktop menu with hover expandable tabs */}
         <div className="hidden md:flex items-center">
-          <ExpandableTabs 
+          <HoverExpandableTabs 
             tabs={tabs} 
-            className="bg-transparent border-none shadow-none" 
+            className="bg-transparent shadow-none" 
             activeColor="text-[#6ACBDF]"
-            onChange={handleTabChange}
           />
-          <div className="ml-2 flex space-x-2">
-            {activeTab === 0 && (
-              <Link href="/features">
-                <DefaultButton variant="link" className="text-white hover:text-[#6ACBDF]">
-                  View Features
-                </DefaultButton>
-              </Link>
-            )}
-            {activeTab === 1 && (
-              <Link href="/how-it-works">
-                <DefaultButton variant="link" className="text-white hover:text-[#6ACBDF]">
-                  Learn More
-                </DefaultButton>
-              </Link>
-            )}
-            {activeTab === 2 && (
-              <Link href="/examples">
-                <DefaultButton variant="link" className="text-white hover:text-[#6ACBDF]">
-                  See Examples
-                </DefaultButton>
-              </Link>
-            )}
-            {activeTab === 3 && (
-              <Link href="/pricing">
-                <DefaultButton variant="link" className="text-white hover:text-[#6ACBDF]">
-                  View Plans
-                </DefaultButton>
-              </Link>
-            )}
-          </div>
         </div>
         <div className="hidden md:flex items-center space-x-4">
           <Link href="/login">
