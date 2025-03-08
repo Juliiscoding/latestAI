@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { Button as DefaultButton } from "@/components/ui/button"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Menu, X, Wrench, Lightbulb, BookOpen, DollarSign, LogIn } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { HoverExpandableTabs } from "@/components/ui/hover-expandable-tabs"
@@ -9,7 +9,29 @@ import { Button as MovingBorderButton } from "@/components/ui/moving-border"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [screenSize, setScreenSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 1200,
+    height: typeof window !== 'undefined' ? window.innerHeight : 800
+  })
+  const [isCompact, setIsCompact] = useState(false)
   const pathname = usePathname()
+  
+  // Update screen size when window resizes
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      })
+      setIsCompact(window.innerWidth < 1024)
+    }
+    
+    // Set initial value
+    handleResize()
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const isActive = (path: string) => pathname === path
   
@@ -22,12 +44,20 @@ export default function Navbar() {
 
   return (
     <div className="w-full border-b border-white/10 relative">
-      <nav className="container flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav className="container flex items-center justify-between px-4 sm:px-6 lg:px-8" 
+        style={{
+          height: screenSize.width < 640 ? '60px' : 
+                 screenSize.width < 1024 ? '70px' : '80px',
+        }}>
         <Link href="/" className="flex items-center space-x-2 z-10">
           <img
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MercuriosAI_MainLogo_RGB_300dpi-ZRorxeuhkpRJKVtuxIiQl9y6tiqpLE.png"
             alt="Mercurios.ai Logo"
-            className="h-8 sm:h-10 md:h-12"
+            style={{
+              height: screenSize.width < 640 ? '28px' : 
+                     screenSize.width < 768 ? '32px' : 
+                     screenSize.width < 1024 ? '36px' : '40px'
+            }}
           />
         </Link>
 
@@ -43,7 +73,13 @@ export default function Navbar() {
         </div>
 
         {/* Desktop menu with hover expandable tabs */}
-        <div className="hidden md:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 space-x-2 lg:space-x-6">
+        <div 
+          className={`hidden md:flex items-center justify-center space-x-2 lg:space-x-6 ${isCompact ? '' : 'absolute left-1/2 transform -translate-x-1/2'}`}
+          style={{
+            position: isCompact ? 'relative' : 'absolute',
+            marginLeft: isCompact ? '10px' : '0'
+          }}
+        >
           <HoverExpandableTabs 
             tabs={tabs} 
             className="bg-transparent shadow-none text-base lg:text-lg" 
@@ -52,12 +88,12 @@ export default function Navbar() {
         </div>
 
         {/* Login/Signup buttons */}
-        <div className="hidden md:flex items-center space-x-3 lg:space-x-5 z-10">
+        <div className="hidden md:flex items-center space-x-2 lg:space-x-4 z-10">
           <Link href="/login">
             <MovingBorderButton 
               borderRadius="0.5rem" 
-              className="bg-black/50 text-white text-sm md:text-base h-10 md:h-12 w-24 md:w-28 hover:text-[#6ACBDF]"
-              containerClassName="h-10 md:h-12 w-24 md:w-28"
+              className="bg-black/50 text-white hover:text-[#6ACBDF]"
+              containerClassName={`${screenSize.width < 1024 ? 'h-9 w-20 text-xs' : screenSize.width < 1280 ? 'h-10 w-24 text-sm' : 'h-12 w-28 text-base'}`}
               borderClassName="bg-[radial-gradient(var(--cyan-500)_40%,transparent_60%)]"
             >
               Log In
@@ -66,8 +102,8 @@ export default function Navbar() {
           <Link href="/signup">
             <MovingBorderButton 
               borderRadius="0.5rem" 
-              className="bg-[#6ACBDF]/80 text-black text-sm md:text-base font-medium h-10 md:h-12 w-32 md:w-36 hover:bg-[#6ACBDF]" 
-              containerClassName="h-10 md:h-12 w-32 md:w-36"
+              className="bg-[#6ACBDF]/80 text-black font-medium hover:bg-[#6ACBDF]" 
+              containerClassName={`${screenSize.width < 1024 ? 'h-9 w-28 text-xs' : screenSize.width < 1280 ? 'h-10 w-32 text-sm' : 'h-12 w-36 text-base'}`}
               borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
             >
               Get Started
@@ -78,7 +114,8 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/95 fixed top-20 left-0 right-0 bottom-0 z-50 overflow-y-auto">
+        <div className="md:hidden bg-black/95 fixed left-0 right-0 bottom-0 z-50 overflow-y-auto"
+          style={{ top: screenSize.width < 640 ? '60px' : '70px' }}>
           <div className="flex flex-col items-center space-y-6 py-8 px-4">
             {tabs.map((tab, index) => {
               const Icon = tab.icon;
