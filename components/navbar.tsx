@@ -49,8 +49,9 @@ export default function Navbar() {
           height: screenSize.width < 640 ? '60px' : 
                  screenSize.width < 1024 ? '70px' : '80px',
           justifyContent: 'space-between',
-          maxWidth: '100%',
-          overflow: 'hidden'
+          maxWidth: screenSize.width < 1280 ? '100%' : '1200px',
+          overflow: 'hidden',
+          margin: '0 auto'
         }}>
         <Link href="/" className="flex items-center z-10 flex-shrink-0">
           <img
@@ -78,16 +79,17 @@ export default function Navbar() {
 
         {/* Desktop menu with hover expandable tabs */}
         <div 
-          className="hidden md:flex items-center justify-center flex-grow"
+          className="hidden md:flex items-center flex-grow"
           style={{
             position: 'relative',
-            marginLeft: screenSize.width < 768 ? '4px' : '8px',
-            marginRight: screenSize.width < 768 ? '4px' : '8px',
+            marginLeft: screenSize.width < 768 ? '4px' : screenSize.width < 1024 ? '8px' : '12px',
+            marginRight: screenSize.width < 768 ? '4px' : screenSize.width < 1024 ? '8px' : '12px',
+            maxWidth: screenSize.width < 768 ? '60%' : screenSize.width < 1024 ? '65%' : '70%',
           }}
         >
           <HoverExpandableTabs 
             tabs={tabs} 
-            className="bg-transparent shadow-none text-base lg:text-lg w-full justify-center" 
+            className="bg-transparent shadow-none text-base lg:text-lg w-full" 
             activeColor="text-[#6ACBDF]"
           />
         </div>
