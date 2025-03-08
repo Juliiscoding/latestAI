@@ -37,19 +37,19 @@ export default function Navbar() {
   
   const tabs = [
     { title: "FEATURES", icon: Wrench, href: "/features" },
-    { title: "HOW IT WORKS", icon: Lightbulb, href: "/how-it-works" },
+    { title: "HOW IT W...", icon: Lightbulb, href: "/how-it-works" },
     { title: "EXAMPLES", icon: BookOpen, href: "/examples" },
     { title: "PRICING", icon: DollarSign, href: "/pricing" },
   ]
 
   return (
     <div className="w-full border-b border-white/10 relative">
-      <nav className="container flex items-center px-2 sm:px-4 lg:px-6" 
+      <nav className="container flex items-center px-1 sm:px-2 lg:px-4" 
         style={{
           height: screenSize.width < 640 ? '60px' : 
                  screenSize.width < 1024 ? '70px' : '80px',
           justifyContent: 'space-between',
-          maxWidth: screenSize.width < 1280 ? '100%' : '1200px',
+          maxWidth: '100%',
           overflow: 'hidden',
           margin: '0 auto'
         }}>
@@ -79,12 +79,13 @@ export default function Navbar() {
 
         {/* Desktop menu with hover expandable tabs */}
         <div 
-          className="hidden md:flex items-center flex-grow"
+          className="hidden md:flex items-center justify-center"
           style={{
             position: 'relative',
-            marginLeft: screenSize.width < 768 ? '4px' : screenSize.width < 1024 ? '8px' : '12px',
-            marginRight: screenSize.width < 768 ? '4px' : screenSize.width < 1024 ? '8px' : '12px',
-            maxWidth: screenSize.width < 768 ? '60%' : screenSize.width < 1024 ? '65%' : '70%',
+            marginLeft: screenSize.width < 768 ? '2px' : screenSize.width < 1024 ? '4px' : '6px',
+            marginRight: screenSize.width < 768 ? '2px' : screenSize.width < 1024 ? '4px' : '6px',
+            flex: '1 1 auto',
+            minWidth: '0',
           }}
         >
           <HoverExpandableTabs 
@@ -97,14 +98,15 @@ export default function Navbar() {
         {/* Login/Signup buttons */}
         <div className="hidden md:flex items-center z-10 flex-shrink-0"
           style={{
-            gap: screenSize.width < 768 ? '4px' : screenSize.width < 1024 ? '8px' : '12px'
+            gap: screenSize.width < 768 ? '4px' : screenSize.width < 1024 ? '6px' : '8px',
+            marginLeft: screenSize.width < 768 ? '2px' : screenSize.width < 1024 ? '4px' : '6px',
           }}
         >
           <Link href="/login">
             <MovingBorderButton 
               borderRadius="0.5rem" 
               className="bg-black/50 text-white hover:text-[#6ACBDF]"
-              containerClassName={`${screenSize.width < 768 ? 'h-8 w-16 text-xs' : screenSize.width < 1024 ? 'h-9 w-20 text-xs' : screenSize.width < 1280 ? 'h-10 w-24 text-sm' : 'h-12 w-28 text-base'}`}
+              containerClassName={`${screenSize.width < 768 ? 'h-8 w-14 text-xs' : screenSize.width < 1024 ? 'h-9 w-16 text-xs' : screenSize.width < 1280 ? 'h-10 w-20 text-sm' : 'h-12 w-24 text-base'}`}
               borderClassName="bg-[radial-gradient(var(--cyan-500)_40%,transparent_60%)]"
             >
               Log In
@@ -114,7 +116,7 @@ export default function Navbar() {
             <MovingBorderButton 
               borderRadius="0.5rem" 
               className="bg-[#6ACBDF]/80 text-black font-medium hover:bg-[#6ACBDF]" 
-              containerClassName={`${screenSize.width < 768 ? 'h-8 w-24 text-xs' : screenSize.width < 1024 ? 'h-9 w-28 text-xs' : screenSize.width < 1280 ? 'h-10 w-32 text-sm' : 'h-12 w-36 text-base'}`}
+              containerClassName={`${screenSize.width < 768 ? 'h-8 w-20 text-xs' : screenSize.width < 1024 ? 'h-9 w-24 text-xs' : screenSize.width < 1280 ? 'h-10 w-28 text-sm' : 'h-12 w-32 text-base'}`}
               borderClassName="bg-[radial-gradient(var(--cyan-300)_40%,transparent_60%)]"
             >
               Get Started

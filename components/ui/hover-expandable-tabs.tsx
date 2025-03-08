@@ -98,9 +98,9 @@ export function HoverExpandableTabs({
     <div 
       className="bg-white/20" 
       style={{
-        margin: screenWidth < 640 ? '0 0.15rem' : screenWidth < 768 ? '0 0.25rem' : screenWidth < 1024 ? '0 0.5rem' : '0 0.75rem',
-        height: screenWidth < 640 ? '16px' : screenWidth < 1024 ? '24px' : '28px',
-        width: screenWidth < 640 ? '0.8px' : screenWidth < 1024 ? '1.2px' : '1.5px',
+        margin: screenWidth < 640 ? '0 0.1rem' : screenWidth < 768 ? '0 0.15rem' : screenWidth < 1024 ? '0 0.25rem' : '0 0.35rem',
+        height: screenWidth < 640 ? '16px' : screenWidth < 1024 ? '20px' : '24px',
+        width: screenWidth < 640 ? '0.8px' : screenWidth < 1024 ? '1px' : '1.2px',
       }}
       aria-hidden="true" 
     />
@@ -109,15 +109,16 @@ export function HoverExpandableTabs({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center rounded-2xl border-none bg-transparent p-1",
+        "flex items-center rounded-2xl border-none bg-transparent p-1",
         className
       )}
       style={{
-        gap: screenWidth < 640 ? '0.25rem' : screenWidth < 768 ? '0.5rem' : screenWidth < 1024 ? '0.75rem' : '0.85rem',
+        gap: screenWidth < 640 ? '0.15rem' : screenWidth < 768 ? '0.25rem' : screenWidth < 1024 ? '0.5rem' : '0.65rem',
         width: '100%',
-        justifyContent: screenWidth >= 1280 ? 'center' : 'space-between',
+        justifyContent: 'space-between',
         maxWidth: '100%',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        flexWrap: 'nowrap'
       }}
     >
       {tabs.map((tab, index) => {
@@ -141,12 +142,12 @@ export function HoverExpandableTabs({
                   : "text-white hover:bg-black/10"
               )}
               style={{
-                padding: screenWidth < 640 ? '0.25rem 0.35rem' : 
-                         screenWidth < 768 ? '0.35rem 0.5rem' : 
-                         screenWidth < 1024 ? '0.5rem 0.75rem' : 
-                         screenWidth < 1280 ? '0.6rem 0.9rem' : '0.7rem 1rem',
-                fontSize: screenWidth < 640 ? '0.7rem' : screenWidth < 1024 ? '0.875rem' : '1rem',
-                minWidth: screenWidth < 640 ? '30px' : screenWidth < 768 ? '40px' : screenWidth < 1024 ? '50px' : '60px',
+                padding: screenWidth < 640 ? '0.15rem 0.25rem' : 
+                         screenWidth < 768 ? '0.2rem 0.3rem' : 
+                         screenWidth < 1024 ? '0.3rem 0.4rem' : 
+                         screenWidth < 1280 ? '0.4rem 0.5rem' : '0.5rem 0.6rem',
+                fontSize: screenWidth < 640 ? '0.65rem' : screenWidth < 768 ? '0.7rem' : screenWidth < 1024 ? '0.8rem' : '0.9rem',
+                minWidth: 'auto',
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -193,16 +194,16 @@ export function HoverExpandableTabs({
                   hoveredIndex === index ? "text-[#6ACBDF]" : "text-white/90 group-hover:text-white"
                 )}
                 style={{
-                  marginLeft: screenWidth < 640 ? '0.25rem' : 
-                             screenWidth < 768 ? '0.35rem' : 
-                             screenWidth < 1024 ? '0.5rem' : '0.75rem',
-                  fontSize: screenWidth < 640 ? '0.65rem' : 
-                            screenWidth < 768 ? '0.75rem' : 
-                            screenWidth < 1024 ? '0.875rem' : '1rem',
-                  maxWidth: screenWidth < 640 ? '45px' : 
-                           screenWidth < 768 ? '60px' : 
-                           screenWidth < 1024 ? '80px' : 
-                           screenWidth < 1280 ? '100px' : '120px',
+                  marginLeft: screenWidth < 640 ? '0.15rem' : 
+                             screenWidth < 768 ? '0.2rem' : 
+                             screenWidth < 1024 ? '0.25rem' : '0.3rem',
+                  fontSize: screenWidth < 640 ? '0.6rem' : 
+                            screenWidth < 768 ? '0.65rem' : 
+                            screenWidth < 1024 ? '0.7rem' : '0.8rem',
+                  maxWidth: screenWidth < 640 ? '35px' : 
+                           screenWidth < 768 ? '45px' : 
+                           screenWidth < 1024 ? '65px' : 
+                           screenWidth < 1280 ? '75px' : '85px',
                 }}
               >
                 {tab.title}
