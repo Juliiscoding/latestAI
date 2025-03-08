@@ -37,7 +37,7 @@ export default function Navbar() {
   
   const tabs = [
     { title: "FEATURES", icon: Wrench, href: "/features" },
-    { title: "HOW IT W...", icon: Lightbulb, href: "/how-it-works" },
+    { title: "HOW IT WORKS", icon: Lightbulb, href: "/how-it-works" },
     { title: "EXAMPLES", icon: BookOpen, href: "/examples" },
     { title: "PRICING", icon: DollarSign, href: "/pricing" },
   ]
@@ -86,6 +86,8 @@ export default function Navbar() {
             marginRight: screenSize.width < 768 ? '2px' : screenSize.width < 1024 ? '4px' : '6px',
             flex: '1 1 auto',
             minWidth: '0',
+            maxWidth: screenSize.width < 1024 ? '400px' : screenSize.width < 1280 ? '500px' : '600px',
+            margin: '0 auto',
           }}
         >
           <HoverExpandableTabs 

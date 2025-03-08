@@ -98,7 +98,7 @@ export function HoverExpandableTabs({
     <div 
       className="bg-white/20" 
       style={{
-        margin: screenWidth < 640 ? '0 0.1rem' : screenWidth < 768 ? '0 0.15rem' : screenWidth < 1024 ? '0 0.25rem' : '0 0.35rem',
+        margin: screenWidth < 640 ? '0 0.1rem' : screenWidth < 768 ? '0 0.15rem' : screenWidth < 1024 ? '0 0.2rem' : '0 0.25rem',
         height: screenWidth < 640 ? '16px' : screenWidth < 1024 ? '20px' : '24px',
         width: screenWidth < 640 ? '0.8px' : screenWidth < 1024 ? '1px' : '1.2px',
       }}
@@ -113,9 +113,9 @@ export function HoverExpandableTabs({
         className
       )}
       style={{
-        gap: screenWidth < 640 ? '0.15rem' : screenWidth < 768 ? '0.25rem' : screenWidth < 1024 ? '0.5rem' : '0.65rem',
+        gap: screenWidth < 640 ? '0.15rem' : screenWidth < 768 ? '0.25rem' : screenWidth < 1024 ? '0.35rem' : '0.4rem',
         width: '100%',
-        justifyContent: 'space-between',
+        justifyContent: screenWidth >= 1280 ? 'center' : 'space-evenly',
         maxWidth: '100%',
         overflow: 'hidden',
         flexWrap: 'nowrap'
@@ -148,6 +148,7 @@ export function HoverExpandableTabs({
                          screenWidth < 1280 ? '0.4rem 0.5rem' : '0.5rem 0.6rem',
                 fontSize: screenWidth < 640 ? '0.65rem' : screenWidth < 768 ? '0.7rem' : screenWidth < 1024 ? '0.8rem' : '0.9rem',
                 minWidth: 'auto',
+                margin: '0 auto',
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -201,9 +202,9 @@ export function HoverExpandableTabs({
                             screenWidth < 768 ? '0.65rem' : 
                             screenWidth < 1024 ? '0.7rem' : '0.8rem',
                   maxWidth: screenWidth < 640 ? '35px' : 
-                           screenWidth < 768 ? '45px' : 
-                           screenWidth < 1024 ? '65px' : 
-                           screenWidth < 1280 ? '75px' : '85px',
+                           screenWidth < 768 ? '50px' : 
+                           screenWidth < 1024 ? '80px' : 
+                           screenWidth < 1280 ? '100px' : '120px',
                 }}
               >
                 {tab.title}
