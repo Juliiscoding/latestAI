@@ -66,6 +66,21 @@ const navSections: NavSection[] = [
     ],
   },
   {
+    id: "hyperion",
+    icon: BarChart,
+    emoji: "🔆",
+    label: "HYPERION",
+    items: [
+      { label: "Home", href: "/hyperion" },
+      { label: "Product Data", href: "/hyperion/product-data" },
+      { label: "Marketing Media", href: "/hyperion/marketing-media" },
+      { label: "Brands", href: "/hyperion/brands" },
+      { label: "Order History", href: "/hyperion/order-history" },
+      { label: "Insights", href: "/hyperion/insights" },
+      { label: "Manufacturer Portal", href: "/hyperion/manufacturer" },
+    ],
+  },
+  {
     id: "saturn",
     icon: Brain,
     emoji: "🪐",
