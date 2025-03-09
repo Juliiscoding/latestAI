@@ -38,8 +38,8 @@ export default function Dashboard() {
         </div>
         <NavUser
           user={{
-            name: "shadcn",
-            email: "m@example.com",
+            name: "Julius",
+            email: "julius@mercurios.ai",
             avatar:
               "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-12%20at%2014.37.00-eWxWp4zDU9wfmJUclaheErKjfbxFXO.png",
           }}

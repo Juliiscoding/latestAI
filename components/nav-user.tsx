@@ -1,5 +1,7 @@
 "use client"
 import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from "lucide-react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
@@ -22,6 +24,27 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
+  const router = useRouter()
+  
+  const handleLogout = async () => {
+    try {
+      // Call the logout API endpoint to clear the auth cookie server-side
+      await fetch('/api/logout', {
+        method: 'GET',
+        credentials: 'include'
+      })
+      
+      // Also clear client-side cookie for immediate effect
+      document.cookie = "auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;"
+      
+      // Redirect to homepage
+      window.location.href = "/"
+    } catch (error) {
+      console.error('Logout error:', error)
+      // Fallback: still try to redirect even if API call fails
+      window.location.href = "/"
+    }
+  }
 
   return (
     <DropdownMenu>
@@ -64,20 +87,29 @@ export function NavUser({
           Upgrade to Pro
         </DropdownMenuItem>
         <DropdownMenuSeparator className="-mx-2 my-2 bg-border" />
-        <DropdownMenuItem className="gap-2 text-foreground focus:text-accent-foreground focus:bg-accent">
-          <BadgeCheck className="h-4 w-4" />
-          Account
-        </DropdownMenuItem>
-        <DropdownMenuItem className="gap-2 text-foreground focus:text-accent-foreground focus:bg-accent">
-          <CreditCard className="h-4 w-4" />
-          Billing
-        </DropdownMenuItem>
-        <DropdownMenuItem className="gap-2 text-foreground focus:text-accent-foreground focus:bg-accent">
-          <Bell className="h-4 w-4" />
-          Notifications
-        </DropdownMenuItem>
+        <Link href="/account" passHref>
+          <DropdownMenuItem className="gap-2 text-foreground focus:text-accent-foreground focus:bg-accent cursor-pointer">
+            <BadgeCheck className="h-4 w-4" />
+            Account
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/billing" passHref>
+          <DropdownMenuItem className="gap-2 text-foreground focus:text-accent-foreground focus:bg-accent cursor-pointer">
+            <CreditCard className="h-4 w-4" />
+            Billing
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/notifications" passHref>
+          <DropdownMenuItem className="gap-2 text-foreground focus:text-accent-foreground focus:bg-accent cursor-pointer">
+            <Bell className="h-4 w-4" />
+            Notifications
+          </DropdownMenuItem>
+        </Link>
         <DropdownMenuSeparator className="-mx-2 my-2 bg-border" />
-        <DropdownMenuItem className="gap-2 text-foreground focus:text-accent-foreground focus:bg-accent">
+        <DropdownMenuItem 
+          className="gap-2 text-foreground focus:text-accent-foreground focus:bg-accent cursor-pointer"
+          onClick={handleLogout}
+        >
           <LogOut className="h-4 w-4" />
           Log out
         </DropdownMenuItem>
