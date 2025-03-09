@@ -14,7 +14,7 @@ export default function Dashboard() {
       <div className="flex h-screen w-full overflow-hidden">
         <DashboardSidebar />
         <SidebarInset className="flex-1 overflow-auto w-full">
-          <div className="w-full max-w-[1600px] mx-auto p-4 sm:p-6">
+          <div className="w-full h-full p-4 sm:p-6 overflow-x-hidden">
             <header className="mb-6 flex items-center">
               <SidebarTrigger className="mr-4" />
               <h1 className="text-3xl font-bold">Analytics Dashboard</h1>
