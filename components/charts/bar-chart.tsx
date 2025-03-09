@@ -19,6 +19,7 @@ const chartData = [
 const chartConfig = {
   views: {
     label: "Sales Channels",
+    color: "#000000", // Adding default color to fix TypeScript error
   },
   desktop: {
     label: "Online",
@@ -48,18 +49,18 @@ export function BarChart() {
           <CardTitle className="text-gray-800">Sales Channels</CardTitle>
           <CardDescription className="text-gray-600">Online vs In-Store Sales</CardDescription>
         </div>
-        <div className="flex">
+        <div className="grid grid-cols-2 w-full max-w-[280px] sm:max-w-[320px]">
           {["desktop", "mobile"].map((key) => {
             const chart = key as keyof typeof chartConfig
             return (
               <button
                 key={chart}
                 data-active={activeChart === chart}
-                className="relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l data-[active=true]:bg-mercurios-lightGray sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
+                className="relative z-30 flex flex-col justify-center gap-1 border-t px-3 py-4 text-left even:border-l data-[active=true]:bg-mercurios-lightGray sm:border-l sm:border-t-0 sm:px-4 md:px-6 sm:py-6"
                 onClick={() => setActiveChart(chart)}
               >
-                <span className="text-xs text-mercurios-darkBlue">{chartConfig[chart].label}</span>
-                <span className="text-lg font-bold leading-none sm:text-3xl text-mercurios-darkBlue">
+                <span className="text-xs text-mercurios-darkBlue whitespace-nowrap">{chartConfig[chart].label}</span>
+                <span className="text-lg font-bold leading-none sm:text-xl md:text-2xl lg:text-3xl text-mercurios-darkBlue whitespace-nowrap overflow-hidden text-ellipsis">
                   €{total[key as keyof typeof total].toLocaleString()}
                 </span>
               </button>
