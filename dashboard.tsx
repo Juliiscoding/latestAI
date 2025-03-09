@@ -10,13 +10,13 @@ import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/s
 
 export default function Dashboard() {
   return (
-    <SidebarProvider>
-      <div className="flex h-screen">
+    <SidebarProvider defaultOpen={false}>
+      <div className="flex h-screen w-full overflow-hidden">
         <DashboardSidebar />
-        <SidebarInset className="flex-1 overflow-auto">
-          <div className="container mx-auto p-6">
+        <SidebarInset className="flex-1 overflow-auto w-full">
+          <div className="w-full max-w-[1600px] mx-auto p-4 sm:p-6">
             <header className="mb-6 flex items-center">
-              <SidebarTrigger className="mr-4 lg:hidden" />
+              <SidebarTrigger className="mr-4" />
               <h1 className="text-3xl font-bold">Analytics Dashboard</h1>
             </header>
             <Tabs defaultValue="user-stats" className="space-y-4">
