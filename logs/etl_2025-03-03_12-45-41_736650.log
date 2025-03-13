@@ -1,0 +1,9 @@
+2025-03-03 12:45:41.745 | INFO     | etl.utils.auth:authenticate:42 - Authenticating with ProHandel API...
+2025-03-03 12:45:41.892 | ERROR    | etl.utils.auth:authenticate:64 - Authentication failed: 404 Client Error: Not Found for url: https://linde.prohandel.de/api/v2/auth/token
+2025-03-03 12:45:41.892 | ERROR    | etl.utils.auth:authenticate:66 - Response status: 404
+2025-03-03 12:45:43.897 | INFO     | etl.utils.auth:authenticate:42 - Authenticating with ProHandel API...
+2025-03-03 12:45:43.994 | ERROR    | etl.utils.auth:authenticate:64 - Authentication failed: 404 Client Error: Not Found for url: https://linde.prohandel.de/api/v2/auth/token
+2025-03-03 12:45:43.994 | ERROR    | etl.utils.auth:authenticate:66 - Response status: 404
+2025-03-03 12:45:45.996 | INFO     | etl.utils.auth:authenticate:42 - Authenticating with ProHandel API...
+2025-03-03 12:45:46.113 | ERROR    | etl.utils.auth:authenticate:64 - Authentication failed: 404 Client Error: Not Found for url: https://linde.prohandel.de/api/v2/auth/token
+2025-03-03 12:45:46.113 | ERROR    | etl.utils.auth:authenticate:66 - Response status: 404

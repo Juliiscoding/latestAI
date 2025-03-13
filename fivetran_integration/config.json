@@ -1,0 +1,64 @@
+{
+  "database": {
+    "connection_string": "postgresql://username:password@localhost:5432/database",
+    "schema": "prohandel"
+  },
+  "fivetran": {
+    "api_key": "eWMMoSTR8ijWdw2u",
+    "api_secret": "hcH43fVni4oIPcmTFQZqmvbeZ0zmG9sp",
+    "connector_id": "YOUR_FIVETRAN_CONNECTOR_ID"
+  },
+  "data_quality": {
+    "output_dir": "fivetran_data_quality_reports",
+    "sampling": {
+      "enabled": true,
+      "min_data_size_for_sampling": 5000,
+      "default_sample_size": 2000,
+      "strategy": "outlier_biased",
+      "outlier_fraction": 0.3,
+      "outlier_method": "zscore",
+      "outlier_threshold": 3.0
+    },
+    "monitors": {
+      "completeness": {
+        "min_completeness_ratio": 0.98,
+        "severity": "warning"
+      },
+      "outlier": {
+        "method": "zscore",
+        "threshold": 3.0,
+        "max_outlier_ratio": 0.05,
+        "severity": "warning"
+      },
+      "consistency": {
+        "max_violation_ratio": 0.05,
+        "severity": "error"
+      },
+      "format": {
+        "max_violation_ratio": 0.03,
+        "severity": "error"
+      },
+      "freshness": {
+        "severity": "warning"
+      }
+    }
+  },
+  "notification": {
+    "enabled": true,
+    "email": {
+      "enabled": true,
+      "recipients": ["data-team@mercurios.ai"],
+      "subject_prefix": "[Mercurios Data Quality]"
+    },
+    "slack": {
+      "enabled": false,
+      "webhook_url": "YOUR_SLACK_WEBHOOK_URL",
+      "channel": "#data-quality"
+    }
+  },
+  "scheduling": {
+    "frequency": "daily",
+    "time": "01:00",
+    "timezone": "Europe/Berlin"
+  }
+}

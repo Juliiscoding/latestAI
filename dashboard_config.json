@@ -1,0 +1,106 @@
+{
+  "dashboards": [
+    {
+      "name": "Inventory Overview",
+      "description": "Overview of current inventory status and metrics",
+      "charts": [
+        {
+          "title": "Inventory by Stock Status",
+          "type": "pie",
+          "query": "SELECT stock_status, COUNT(*) as count FROM marts_inventory.inventory_status GROUP BY stock_status",
+          "dimensions": ["stock_status"],
+          "measures": ["count"]
+        },
+        {
+          "title": "Items Needing Reorder",
+          "type": "table",
+          "query": "SELECT article_number, article_name, quantity, min_stock_level, days_of_supply, recommended_reorder_quantity FROM marts_inventory.inventory_status WHERE needs_reorder = true ORDER BY days_of_supply ASC",
+          "dimensions": ["article_number", "article_name"],
+          "measures": ["quantity", "min_stock_level", "days_of_supply", "recommended_reorder_quantity"]
+        },
+        {
+          "title": "Inventory Value by Category",
+          "type": "bar",
+          "query": "SELECT price_tier, SUM(inventory_value) as total_value FROM marts_inventory.inventory_status GROUP BY price_tier ORDER BY total_value DESC",
+          "dimensions": ["price_tier"],
+          "measures": ["total_value"]
+        },
+        {
+          "title": "Slow Moving Inventory",
+          "type": "table",
+          "query": "SELECT article_number, article_name, quantity, annual_turnover_rate, days_of_supply, inventory_value FROM marts_inventory.inventory_status WHERE slow_moving = true ORDER BY inventory_value DESC",
+          "dimensions": ["article_number", "article_name"],
+          "measures": ["quantity", "annual_turnover_rate", "days_of_supply", "inventory_value"]
+        }
+      ]
+    },
+    {
+      "name": "Sales Performance",
+      "description": "Analysis of sales performance over time",
+      "charts": [
+        {
+          "title": "Sales Trend",
+          "type": "line",
+          "query": "SELECT period_date, total_amount FROM marts_sales.sales_performance WHERE time_period = 'daily' ORDER BY period_date",
+          "dimensions": ["period_date"],
+          "measures": ["total_amount"]
+        },
+        {
+          "title": "Sales by Day of Week",
+          "type": "bar",
+          "query": "SELECT EXTRACT(DOW FROM sale_date) as day_of_week, SUM(amount) as total_amount FROM staging.stg_prohandel__sales GROUP BY day_of_week ORDER BY day_of_week",
+          "dimensions": ["day_of_week"],
+          "measures": ["total_amount"]
+        },
+        {
+          "title": "Top Selling Products",
+          "type": "table",
+          "query": "SELECT a.article_number, a.article_name, SUM(s.quantity) as total_quantity, SUM(s.amount) as total_amount FROM staging.stg_prohandel__sales s JOIN staging.stg_prohandel__articles a ON s.article_number = a.article_number GROUP BY a.article_number, a.article_name ORDER BY total_amount DESC LIMIT 10",
+          "dimensions": ["article_number", "article_name"],
+          "measures": ["total_quantity", "total_amount"]
+        },
+        {
+          "title": "Margin Analysis",
+          "type": "bar",
+          "query": "SELECT time_period, period_date, total_amount, total_margin, (total_margin / total_amount * 100) as margin_percentage FROM marts_sales.sales_performance WHERE time_period = 'monthly' ORDER BY period_date",
+          "dimensions": ["period_date"],
+          "measures": ["total_amount", "total_margin", "margin_percentage"]
+        }
+      ]
+    },
+    {
+      "name": "Demand Forecast",
+      "description": "Demand forecasting and inventory planning",
+      "charts": [
+        {
+          "title": "Stockout Risk",
+          "type": "pie",
+          "query": "SELECT stockout_risk, COUNT(*) as count FROM marts_inventory.demand_forecast GROUP BY stockout_risk",
+          "dimensions": ["stockout_risk"],
+          "measures": ["count"]
+        },
+        {
+          "title": "Forecasted Demand (Monthly)",
+          "type": "bar",
+          "query": "SELECT article_name, monthly_forecast FROM marts_inventory.demand_forecast ORDER BY monthly_forecast DESC LIMIT 20",
+          "dimensions": ["article_name"],
+          "measures": ["monthly_forecast"]
+        },
+        {
+          "title": "Days of Supply Distribution",
+          "type": "histogram",
+          "query": "SELECT CASE WHEN forecast_days_of_supply <= 7 THEN '0-7' WHEN forecast_days_of_supply <= 14 THEN '8-14' WHEN forecast_days_of_supply <= 30 THEN '15-30' WHEN forecast_days_of_supply <= 60 THEN '31-60' WHEN forecast_days_of_supply <= 90 THEN '61-90' ELSE '90+' END as days_range, COUNT(*) as count FROM marts_inventory.demand_forecast WHERE forecast_days_of_supply IS NOT NULL GROUP BY days_range",
+          "dimensions": ["days_range"],
+          "measures": ["count"]
+        },
+        {
+          "title": "Recommended Orders",
+          "type": "table",
+          "query": "SELECT article_number, article_name, current_quantity, reorder_point, recommended_order_qty, stockout_risk FROM marts_inventory.demand_forecast WHERE current_quantity < reorder_point ORDER BY stockout_risk, recommended_order_qty DESC",
+          "dimensions": ["article_number", "article_name", "stockout_risk"],
+          "measures": ["current_quantity", "reorder_point", "recommended_order_qty"]
+        }
+      ]
+    }
+  ]
+}

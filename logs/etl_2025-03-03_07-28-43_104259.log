@@ -1,0 +1,11 @@
+2025-03-03 07:28:43.433 | INFO     | prediction.models.base_model:__init__:35 - Initialized ARIMA prediction model
+2025-03-03 07:28:43.439 | INFO     | prediction.models.time_series:train:110 - Using auto-ARIMA to find optimal parameters
+2025-03-03 07:28:51.282 | INFO     | prediction.models.time_series:train:130 - Auto-ARIMA selected parameters: p=2, d=1, q=2
+2025-03-03 07:28:51.282 | INFO     | prediction.models.time_series:train:132 - Seasonal parameters: P=1, D=0, Q=1, s=7
+2025-03-03 07:28:51.582 | INFO     | prediction.models.base_model:__init__:35 - Initialized ExponentialSmoothing prediction model
+2025-03-03 07:28:51.642 | INFO     | prediction.models.time_series:train:395 - Exponential Smoothing model trained with parameters: trend=add, seasonal=add, periods=7, damped=True
+2025-03-03 07:28:51.645 | WARNING  | prediction.models.time_series:predict:443 - Could not generate prediction intervals
+2025-03-03 07:28:51.793 | INFO     | prediction.models.base_model:__init__:35 - Initialized LeadTimePrediction prediction model
+2025-03-03 07:28:51.919 | INFO     | prediction.models.lead_time:train:157 - Lead time prediction model trained with 320 samples
+2025-03-03 07:28:51.926 | INFO     | prediction.models.lead_time:train:171 - Model evaluation metrics: MAE=1.88, RMSE=2.37, R²=0.67
+2025-03-03 07:28:51.926 | ERROR    | prediction.models.lead_time:train:188 - Error training lead time prediction model: name 'numerical_features' is not defined

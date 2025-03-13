@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Order Schema",
+  "description": "Schema for validating order data from ProHandel API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the order"
+    },
+    "number": {
+      "type": ["number", "string", "null"],
+      "description": "Order number"
+    },
+    "branchNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Branch number where the order was placed"
+    },
+    "supplierNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Supplier number for the order"
+    },
+    "currencyNumber": {
+      "type": ["string", "null"],
+      "description": "Currency number of the order"
+    },
+    "countryNumber": {
+      "type": ["string", "null"],
+      "description": "Country number of the order"
+    },
+    "staffNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Staff number who processed the order"
+    },
+    "date": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date of the order"
+    },
+    "deliveryDate": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Delivery date of the order"
+    },
+    "status": {
+      "type": ["number", "string", "null"],
+      "description": "Status of the order"
+    },
+    "amount": {
+      "type": ["number", "null"],
+      "description": "Total amount of the order"
+    },
+    "paymentOptionNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Payment option number used"
+    },
+    "shipmentOptionNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Shipment option number used"
+    },
+    "info1": {
+      "type": ["string", "null"],
+      "description": "Additional information 1"
+    },
+    "info2": {
+      "type": ["string", "null"],
+      "description": "Additional information 2"
+    },
+    "lastChange": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Last change timestamp of the order"
+    },
+    "isDeleted": {
+      "type": ["boolean", "null"],
+      "description": "Whether the order is deleted"
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": true
+}

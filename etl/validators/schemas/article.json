@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Article Schema",
+  "description": "Schema for validating article data from ProHandel API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the article"
+    },
+    "number": {
+      "type": ["number", "string", "null"],
+      "description": "Article number"
+    },
+    "name1": {
+      "type": ["string", "null"],
+      "description": "Primary name of the article"
+    },
+    "name2": {
+      "type": ["string", "null"],
+      "description": "Secondary name of the article"
+    },
+    "name3": {
+      "type": ["string", "null"],
+      "description": "Tertiary name of the article"
+    },
+    "searchTerm": {
+      "type": ["string", "null"],
+      "description": "Search term for the article"
+    },
+    "categoryNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Category number of the article"
+    },
+    "supplierNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Supplier number of the article"
+    },
+    "supplierArticleNumber": {
+      "type": ["string", "null"],
+      "description": "Supplier's article number"
+    },
+    "isActive": {
+      "type": ["boolean", "null"],
+      "description": "Whether the article is active"
+    },
+    "purchasePrice": {
+      "type": ["number", "null"],
+      "description": "Purchase price of the article"
+    },
+    "salePrice": {
+      "type": ["number", "null"],
+      "description": "Sale price of the article"
+    },
+    "labelPrice": {
+      "type": ["number", "null"],
+      "description": "Label price of the article"
+    },
+    "taxNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Tax number of the article"
+    },
+    "currencyNumber": {
+      "type": ["string", "null"],
+      "description": "Currency number of the article"
+    },
+    "countryNumber": {
+      "type": ["string", "null"],
+      "description": "Country number of the article"
+    },
+    "ean": {
+      "type": ["number", "string", "null"],
+      "description": "EAN code of the article"
+    },
+    "lastChange": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Last change timestamp of the article"
+    },
+    "isDeleted": {
+      "type": ["boolean", "null"],
+      "description": "Whether the article is deleted"
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": true
+}

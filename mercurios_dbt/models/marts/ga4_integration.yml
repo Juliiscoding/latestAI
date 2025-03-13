@@ -1,0 +1,227 @@
+version: 2
+
+models:
+  - name: fct_product_insights
+    config:
+      enabled: true
+      materialized: table
+      post-hook:
+        - "grant select on {{ this }} to role MERCURIOS_FIVETRAN_USER"
+    description: Comprehensive product performance metrics combining offline ProHandel data with online GA4 data
+    columns:
+      - name: article_id
+        description: Unique identifier for the article in ProHandel
+      - name: article_name
+        description: Name of the article
+      - name: article_number
+        description: Article number/SKU used for matching with GA4 item_id
+      - name: brand
+        description: Brand of the article
+      - name: category
+        description: Primary category of the article
+      - name: subcategory
+        description: Subcategory of the article
+      - name: price_tier
+        description: Price tier classification (Budget, Standard, Premium, Luxury)
+      - name: total_inventory
+        description: Current total inventory across all warehouses
+      - name: avg_inventory
+        description: Average inventory level
+      - name: warehouse_count
+        description: Number of warehouses stocking this article
+      - name: total_quantity_sold
+        description: Total quantity sold offline through ProHandel
+      - name: total_sales_amount
+        description: Total sales amount offline through ProHandel
+      - name: order_count
+        description: Number of orders containing this article
+      - name: customer_count
+        description: Number of unique customers who purchased this article
+      - name: online_revenue
+        description: Revenue generated online from GA4
+      - name: online_transactions
+        description: Number of online transactions from GA4
+      - name: online_quantity_sold
+        description: Quantity sold online from GA4
+      - name: page_views
+        description: Number of page views for this product from GA4
+      - name: online_users
+        description: Number of users viewing this product online from GA4
+      - name: engagement_rate
+        description: Online engagement rate from GA4
+      - name: online_conversion_rate
+        description: Online conversion rate from GA4
+      - name: combined_revenue
+        description: Combined revenue from both online and offline channels
+      - name: combined_quantity
+        description: Combined quantity sold from both online and offline channels
+      - name: combined_value_category
+        description: Value category based on combined revenue (High Value, Medium Value, Low Value, Very Low Value)
+      - name: combined_volume_category
+        description: Volume category based on combined quantity (High Volume, Medium Volume, Low Volume, Very Low Volume)
+      - name: channel_preference
+        description: Channel preference based on sales distribution (Strongly Offline, Moderately Offline, Balanced, Moderately Online, Strongly Online)
+      - name: inventory_turnover_ratio
+        description: Ratio of sales to inventory, indicating how quickly inventory is sold
+      - name: days_per_unit_sold
+        description: Average number of days it takes to sell one unit
+      - name: months_of_inventory
+        description: Estimated months of inventory based on current stock and sales rate
+      - name: inventory_status
+        description: Current inventory status (Out of Stock, Low Stock, Healthy Stock, Overstocked)
+      - name: online_performance
+        description: Online performance classification (High Bounce Rate, Low Conversion, High Conversion, Average Conversion)
+      - name: sales_channel_distribution
+        description: Distribution of sales across channels (Offline Only, Online Only, Primarily Offline, Primarily Online, Omnichannel)
+      - name: action_recommendation
+        description: Recommended action based on product performance (Restock Needed, Consider Discount, Improve Online Conversion, etc.)
+      - name: seasonality_indicator
+        description: Indicator of whether the product shows seasonal patterns
+
+  - name: fct_customer_insights
+    config:
+      enabled: true
+      materialized: table
+      post-hook:
+        - "grant select on {{ this }} to role MERCURIOS_FIVETRAN_USER"
+    description: Comprehensive customer behavior metrics combining offline ProHandel data with online GA4 data
+    columns:
+      - name: customer_id
+        description: Unique identifier for the customer in ProHandel
+      - name: customer_name
+        description: Name of the customer
+      - name: email
+        description: Email address of the customer
+      - name: city
+        description: City of the customer
+      - name: region
+        description: Region/state of the customer
+      - name: country
+        description: Country of the customer
+      - name: customer_type
+        description: Type of customer (Individual, Business, etc.)
+      - name: customer_since
+        description: Date when the customer was first registered
+      - name: customer_age
+        description: Age of the customer relationship in days
+      - name: order_count
+        description: Number of orders placed by the customer
+      - name: first_order_date
+        description: Date of the customer's first order
+      - name: last_order_date
+        description: Date of the customer's most recent order
+      - name: total_order_amount
+        description: Total amount spent by the customer
+      - name: avg_order_value
+        description: Average value of the customer's orders
+      - name: unique_articles_purchased
+        description: Number of unique articles purchased by the customer
+      - name: total_quantity_purchased
+        description: Total quantity of items purchased by the customer
+      - name: days_between_orders
+        description: Average number of days between orders
+      - name: customer_status
+        description: Current status of the customer (Active, At Risk, Lapsed, Inactive)
+      - name: regional_online_users
+        description: Number of online users in the customer's region from GA4
+      - name: regional_online_revenue
+        description: Online revenue generated in the customer's region from GA4
+      - name: predominant_acquisition_channel
+        description: Predominant channel through which customers in this region are acquired
+      - name: offline_value_segment
+        description: Value segment based on offline purchases (High Value, Medium Value, Low Value, Very Low Value)
+      - name: purchase_frequency_segment
+        description: Frequency segment based on number of purchases (High Frequency, Medium Frequency, Low Frequency, One-time)
+      - name: rfm_score
+        description: Combined RFM (Recency, Frequency, Monetary) score
+      - name: rfm_segment
+        description: Customer segment based on RFM score (Champions, Loyal Customers, Potential Loyalists, etc.)
+      - name: customer_tenure_days
+        description: Number of days the customer has been registered
+      - name: customer_strategy
+        description: Recommended customer strategy (Retain, Nurture, Reactivate, Win Back, Monitor)
+      - name: purchase_variety
+        description: Classification of purchase variety (Diverse Buyer, Moderate Variety, Limited Variety, Single Product)
+      - name: basket_size_segment
+        description: Classification of typical basket size (High Basket, Medium Basket, Low Basket, Micro Basket)
+      - name: regional_conversion_rate
+        description: Conversion rate in the customer's region from GA4
+      - name: marketing_channel_opportunity
+        description: Recommended marketing channel based on regional acquisition patterns
+      - name: omnichannel_potential
+        description: Assessment of the customer's potential for omnichannel engagement
+      - name: predicted_lifetime_value
+        description: Predicted lifetime value of the customer based on current behavior
+
+  - name: fct_inventory_forecast_enhanced
+    config:
+      enabled: true
+      materialized: table
+      post-hook:
+        - "grant select on {{ this }} to role MERCURIOS_FIVETRAN_USER"
+    description: Enhanced inventory forecast leveraging both ProHandel sales data and GA4 online behavior data
+    columns:
+      - name: article_id
+        description: Unique identifier for the article in ProHandel
+      - name: article_name
+        description: Name of the article
+      - name: article_number
+        description: Article number/SKU used for matching with GA4 item_id
+      - name: brand
+        description: Brand of the article
+      - name: category
+        description: Primary category of the article
+      - name: subcategory
+        description: Subcategory of the article
+      - name: total_inventory
+        description: Current total inventory across all warehouses
+      - name: inventory_status
+        description: Current inventory status (Out of Stock, Low Stock, Healthy Stock, Overstocked)
+      - name: months_of_inventory
+        description: Estimated months of inventory based on current stock and sales rate
+      - name: avg_daily_sales
+        description: Average daily sales quantity based on historical data
+      - name: median_daily_sales
+        description: Median daily sales quantity based on historical data
+      - name: p90_daily_sales
+        description: 90th percentile of daily sales quantity based on historical data
+      - name: stddev_daily_sales
+        description: Standard deviation of daily sales quantity based on historical data
+      - name: days_with_sales
+        description: Number of days with recorded sales
+      - name: page_views
+        description: Number of page views for this product from GA4
+      - name: online_users
+        description: Number of users viewing this product online from GA4
+      - name: engagement_rate
+        description: Online engagement rate from GA4
+      - name: online_conversion_rate
+        description: Online conversion rate from GA4
+      - name: offline_quantity_sold
+        description: Quantity sold offline through ProHandel
+      - name: online_quantity_sold
+        description: Quantity sold online from GA4
+      - name: total_quantity_sold
+        description: Combined quantity sold from both online and offline channels
+      - name: channel_preference
+        description: Channel preference based on sales distribution
+      - name: sales_channel_distribution
+        description: Distribution of sales across channels
+      - name: adjusted_daily_sales_forecast
+        description: Daily sales forecast adjusted based on online interest
+      - name: safety_stock
+        description: Recommended safety stock level based on sales variability
+      - name: reorder_point
+        description: Recommended reorder point based on lead time and sales
+      - name: economic_order_quantity
+        description: Recommended order quantity based on economic order quantity formula
+      - name: forecast_30_days
+        description: Sales forecast for the next 30 days
+      - name: forecast_60_days
+        description: Sales forecast for the next 60 days
+      - name: forecast_90_days
+        description: Sales forecast for the next 90 days
+      - name: inventory_action
+        description: Recommended inventory action (Restock Immediately, Restock Soon, Maintain, Overstocked, Monitor)
+      - name: forecast_confidence
+        description: Confidence level in the forecast (High, Medium, Low, Very Low)

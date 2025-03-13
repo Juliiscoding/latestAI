@@ -1,0 +1,107 @@
+{
+  "monitors": {
+    "Outlier Monitor": {
+      "metrics": {
+        "column_outliers": {
+          "supplier_id": {
+            "outlier_count": 0,
+            "total_count": 500,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          },
+          "product_id": {
+            "outlier_count": 0,
+            "total_count": 500,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          },
+          "quantity": {
+            "outlier_count": 0,
+            "total_count": 474,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          },
+          "order_value": {
+            "outlier_count": 0,
+            "total_count": 500,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          },
+          "lead_time_days": {
+            "outlier_count": 8,
+            "total_count": 477,
+            "outlier_ratio": 0.016771488469601678,
+            "outlier_indices": [
+              39,
+              117,
+              208,
+              272,
+              374,
+              440,
+              478,
+              485
+            ]
+          }
+        },
+        "overall_outlier_ratio": 0.0033542976939203357,
+        "method": "zscore",
+        "threshold": 3.0
+      },
+      "alerts": [],
+      "timestamp": "2025-03-03T07:28:55.984769"
+    },
+    "Consistency Monitor": {
+      "metrics": {
+        "duplicates": {},
+        "related_columns": {},
+        "constraints": {
+          "delivery_after_order_violations": {
+            "constraint_type": "comparison",
+            "column1": "delivery_date",
+            "column2": "order_date",
+            "operator": ">",
+            "violation_count": 8,
+            "total_count": 500,
+            "violation_ratio": 0.016,
+            "violation_indices": [
+              18,
+              109,
+              273,
+              419,
+              478,
+              492,
+              493,
+              497
+            ]
+          }
+        }
+      },
+      "alerts": [
+        {
+          "timestamp": "2025-03-03T07:28:55.985083",
+          "monitor": "Consistency Monitor",
+          "metric": "delivery_after_order_violation_ratio",
+          "value": 0.016,
+          "threshold": 0.0,
+          "comparison": "gt",
+          "message": "delivery_after_order_violation_ratio = 0.016 > 0.0",
+          "severity": "error"
+        }
+      ],
+      "timestamp": "2025-03-03T07:28:55.985127"
+    }
+  },
+  "all_alerts": [
+    {
+      "timestamp": "2025-03-03T07:28:55.985083",
+      "monitor": "Consistency Monitor",
+      "metric": "delivery_after_order_violation_ratio",
+      "value": 0.016,
+      "threshold": 0.0,
+      "comparison": "gt",
+      "message": "delivery_after_order_violation_ratio = 0.016 > 0.0",
+      "severity": "error"
+    }
+  ],
+  "timestamp": "2025-03-03T07:28:55.985157"
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "articleNumber": {
+      "type": "string"
+    },
+    "branchNumber": {
+      "type": "string"
+    },
+    "size": {
+      "type": "string"
+    },
+    "sizeGroup": {
+      "type": "string"
+    },
+    "ean": {
+      "type": "string"
+    },
+    "purchasePrice": {
+      "type": "string"
+    },
+    "firstPurchaseDate": {
+      "type": "string"
+    },
+    "lastPurchaseDate": {
+      "type": "string"
+    },
+    "fifo": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "volumeUnit": {
+      "type": "string"
+    },
+    "isNOS": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "salePrice": {
+      "type": "string"
+    },
+    "firstSaleDate": {
+      "type": "string"
+    },
+    "lastSaleDate": {
+      "type": "string"
+    },
+    "labelPrice": {
+      "type": "string"
+    },
+    "currencyNumber": {
+      "type": "string"
+    },
+    "priceUnitNumber": {
+      "type": "string"
+    },
+    "lastChange": {
+      "type": "string"
+    },
+    "isDeleted": {
+      "type": "string"
+    },
+    "stockQuantity": {
+      "type": "string"
+    },
+    "selectionQuantity": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "articleNumber",
+    "branchNumber",
+    "size",
+    "sizeGroup",
+    "ean",
+    "purchasePrice",
+    "firstPurchaseDate",
+    "lastPurchaseDate",
+    "fifo",
+    "id",
+    "volumeUnit",
+    "isNOS",
+    "number",
+    "salePrice",
+    "firstSaleDate",
+    "lastSaleDate",
+    "labelPrice",
+    "currencyNumber",
+    "priceUnitNumber",
+    "lastChange",
+    "isDeleted",
+    "stockQuantity",
+    "selectionQuantity"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Order Schema",
+  "description": "Schema for validating order data from the ProHandel API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the order"
+    },
+    "number": {
+      "type": "integer",
+      "description": "Order number"
+    },
+    "source": {
+      "type": ["integer", "null"],
+      "description": "Order source"
+    },
+    "created": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Order creation date"
+    },
+    "supplierNumber": {
+      "type": ["integer", "null"],
+      "description": "Supplier number"
+    },
+    "supplierOrderId": {
+      "type": ["string", "null"],
+      "description": "Supplier order ID"
+    },
+    "merchantNumber": {
+      "type": ["integer", "null"],
+      "description": "Merchant number"
+    },
+    "info": {
+      "type": ["string", "null"],
+      "description": "Order information"
+    },
+    "overallDiscount": {
+      "type": ["number", "null"],
+      "description": "Overall discount"
+    },
+    "status": {
+      "type": ["integer", "null"],
+      "description": "Order status"
+    },
+    "type": {
+      "type": ["integer", "null"],
+      "description": "Order type"
+    },
+    "lastChange": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date of last change"
+    },
+    "isDeleted": {
+      "type": "boolean",
+      "description": "Whether the order is deleted"
+    },
+    "positions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the order position"
+          },
+          "orderNumber": {
+            "type": "integer",
+            "description": "Order number"
+          },
+          "articleNumber": {
+            "type": "number",
+            "description": "Article number"
+          },
+          "branchNumber": {
+            "type": ["integer", "null"],
+            "description": "Branch number"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Quantity"
+          },
+          "price": {
+            "type": "number",
+            "description": "Price"
+          },
+          "discount": {
+            "type": ["number", "null"],
+            "description": "Discount"
+          },
+          "expectedArrival": {
+            "type": ["string", "null"],
+            "format": "date-time",
+            "description": "Expected arrival date"
+          }
+        },
+        "required": ["id", "articleNumber", "quantity"]
+      },
+      "description": "Order positions"
+    }
+  },
+  "required": ["id", "number"],
+  "additionalProperties": true
+}

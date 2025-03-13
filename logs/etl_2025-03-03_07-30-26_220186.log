@@ -1,0 +1,48 @@
+2025-03-03 07:30:26.596 | INFO     | prediction.models.base_model:__init__:35 - Initialized ARIMA prediction model
+2025-03-03 07:30:26.599 | INFO     | prediction.models.time_series:train:110 - Using auto-ARIMA to find optimal parameters
+2025-03-03 07:30:33.615 | INFO     | prediction.models.time_series:train:130 - Auto-ARIMA selected parameters: p=2, d=1, q=2
+2025-03-03 07:30:33.615 | INFO     | prediction.models.time_series:train:132 - Seasonal parameters: P=1, D=0, Q=1, s=7
+2025-03-03 07:30:33.805 | INFO     | prediction.models.base_model:__init__:35 - Initialized ExponentialSmoothing prediction model
+2025-03-03 07:30:33.855 | INFO     | prediction.models.time_series:train:395 - Exponential Smoothing model trained with parameters: trend=add, seasonal=add, periods=7, damped=True
+2025-03-03 07:30:33.858 | WARNING  | prediction.models.time_series:predict:443 - Could not generate prediction intervals
+2025-03-03 07:30:33.977 | INFO     | prediction.models.base_model:__init__:35 - Initialized LeadTimePrediction prediction model
+2025-03-03 07:30:34.046 | INFO     | prediction.models.lead_time:train:180 - Lead time prediction model trained with 320 samples
+2025-03-03 07:30:34.053 | INFO     | prediction.models.lead_time:train:194 - Model evaluation metrics: MAE=2.01, RMSE=2.54, R²=0.62
+2025-03-03 07:30:34.053 | WARNING  | prediction.models.lead_time:train:211 - Could not calculate feature importance: This OneHotEncoder instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2025-03-03 07:30:34.178 | INFO     | prediction.models.base_model:__init__:35 - Initialized ReorderPointCalculator prediction model
+2025-03-03 07:30:34.181 | INFO     | prediction.models.inventory_optimization:train:91 - Calculated Z-score for service level 0.95: 1.644853626951472
+2025-03-03 07:30:34.186 | INFO     | prediction.models.base_model:__init__:35 - Initialized SafetyStockOptimizer prediction model
+2025-03-03 07:30:34.189 | INFO     | prediction.models.inventory_optimization:train:285 - Calculated Z-score for service level 0.95: 1.644853626951472
+2025-03-03 07:30:34.298 | INFO     | prediction.engine:__init__:60 - Initialized prediction engine
+2025-03-03 07:30:34.298 | INFO     | prediction.models.base_model:__init__:35 - Initialized ARIMA prediction model
+2025-03-03 07:30:34.304 | INFO     | prediction.models.time_series:load:292 - ARIMA model loaded from models/demand_forecast.pkl
+2025-03-03 07:30:34.304 | INFO     | prediction.engine:initialize_models:142 - Loaded existing model: demand_forecast
+2025-03-03 07:30:34.304 | INFO     | prediction.models.base_model:__init__:35 - Initialized LeadTimePrediction prediction model
+2025-03-03 07:30:34.304 | INFO     | prediction.models.base_model:__init__:35 - Initialized ReorderPointCalculator prediction model
+2025-03-03 07:30:34.304 | INFO     | prediction.models.base_model:__init__:35 - Initialized SafetyStockOptimizer prediction model
+2025-03-03 07:30:34.304 | INFO     | prediction.engine:initialize_models:146 - Initialized 4 prediction models
+2025-03-03 07:30:34.304 | INFO     | prediction.engine:train_model:179 - Training model: demand_forecast
+2025-03-03 07:30:34.306 | INFO     | prediction.models.time_series:train:110 - Using auto-ARIMA to find optimal parameters
+2025-03-03 07:30:45.260 | INFO     | prediction.models.time_series:train:130 - Auto-ARIMA selected parameters: p=2, d=1, q=2
+2025-03-03 07:30:45.261 | INFO     | prediction.models.time_series:train:132 - Seasonal parameters: P=1, D=0, Q=2, s=7
+2025-03-03 07:30:45.286 | INFO     | prediction.models.time_series:save:263 - ARIMA model saved to models/demand_forecast.pkl
+2025-03-03 07:30:45.286 | INFO     | prediction.engine:train_model:184 - Model demand_forecast trained and saved
+2025-03-03 07:30:45.286 | INFO     | prediction.engine:train_model:179 - Training model: lead_time
+2025-03-03 07:30:45.360 | INFO     | prediction.models.lead_time:train:180 - Lead time prediction model trained with 400 samples
+2025-03-03 07:30:45.365 | INFO     | prediction.models.lead_time:train:194 - Model evaluation metrics: MAE=1.88, RMSE=2.34, R²=0.75
+2025-03-03 07:30:45.365 | WARNING  | prediction.models.lead_time:train:211 - Could not calculate feature importance: This OneHotEncoder instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2025-03-03 07:30:45.370 | INFO     | prediction.models.lead_time:save:303 - Lead time prediction model saved to models/lead_time.pkl
+2025-03-03 07:30:45.371 | INFO     | prediction.engine:train_model:184 - Model lead_time trained and saved
+2025-03-03 07:30:45.371 | INFO     | prediction.engine:train_model:179 - Training model: reorder_point
+2025-03-03 07:30:45.373 | INFO     | prediction.models.inventory_optimization:train:91 - Calculated Z-score for service level 0.95: 1.644853626951472
+2025-03-03 07:30:45.373 | INFO     | prediction.models.inventory_optimization:save:178 - Reorder Point Calculator saved to models/reorder_point.pkl
+2025-03-03 07:30:45.373 | INFO     | prediction.engine:train_model:184 - Model reorder_point trained and saved
+2025-03-03 07:30:45.373 | INFO     | prediction.engine:train_model:179 - Training model: safety_stock
+2025-03-03 07:30:45.375 | INFO     | prediction.models.inventory_optimization:train:285 - Calculated Z-score for service level 0.95: 1.644853626951472
+2025-03-03 07:30:45.375 | INFO     | prediction.models.inventory_optimization:save:397 - Safety Stock Optimizer saved to models/safety_stock.pkl
+2025-03-03 07:30:45.375 | INFO     | prediction.engine:train_model:184 - Model safety_stock trained and saved
+2025-03-03 07:30:45.375 | INFO     | prediction.engine:predict:224 - Generating predictions with model: demand_forecast
+2025-03-03 07:30:45.379 | INFO     | prediction.engine:predict:224 - Generating predictions with model: lead_time
+2025-03-03 07:30:45.388 | INFO     | prediction.engine:predict:224 - Generating predictions with model: reorder_point
+2025-03-03 07:30:45.390 | INFO     | prediction.engine:predict:224 - Generating predictions with model: safety_stock
+2025-03-03 07:30:45.393 | INFO     | prediction.engine:close:563 - Closed prediction engine

@@ -1,0 +1,262 @@
+{
+  "timestamp": "2025-03-03T08:05:22.789519",
+  "data_shape": {
+    "rows": 1000,
+    "columns": 11
+  },
+  "column_types": {
+    "number": "object",
+    "name": "object",
+    "description": "object",
+    "purchasePrice": "float64",
+    "salePrice": "float64",
+    "isActive": "bool",
+    "manufacturerNumber": "int64",
+    "supplierArticleNumber": "object",
+    "firstPurchaseDate": "datetime64[ns]",
+    "lastPurchaseDate": "datetime64[ns]",
+    "lastChange": "datetime64[ns]"
+  },
+  "monitor_results": {
+    "outlier": {
+      "column_outliers": {
+        "purchasePrice": {
+          "outlier_count": 0,
+          "total_count": 200,
+          "outlier_ratio": 0.0,
+          "outlier_indices": []
+        },
+        "salePrice": {
+          "outlier_count": 0,
+          "total_count": 200,
+          "outlier_ratio": 0.0,
+          "outlier_indices": []
+        },
+        "manufacturerNumber": {
+          "outlier_count": 0,
+          "total_count": 200,
+          "outlier_ratio": 0.0,
+          "outlier_indices": []
+        }
+      },
+      "overall_outlier_ratio": 0.0,
+      "method": "zscore",
+      "threshold": 3.0
+    },
+    "consistency": {
+      "duplicates": {},
+      "related_columns": {},
+      "constraints": {}
+    },
+    "format": {
+      "metrics": {
+        "format_violations": {
+          "number_article_number_format": {
+            "column": "number",
+            "rule": "article_number_format",
+            "pattern": "^\\d+$",
+            "violation_count": 6,
+            "total_count": 200,
+            "violation_ratio": 0.03
+          },
+          "supplierArticleNumber_supplier_article_number_format": {
+            "column": "supplierArticleNumber",
+            "rule": "supplier_article_number_format",
+            "pattern": "^S-\\d+$",
+            "violation_count": 2,
+            "total_count": 200,
+            "violation_ratio": 0.01
+          }
+        },
+        "violation_counts": {
+          "number_article_number_format": 6,
+          "supplierArticleNumber_supplier_article_number_format": 2
+        },
+        "violation_ratios": {
+          "number_article_number_format": 0.03,
+          "supplierArticleNumber_supplier_article_number_format": 0.01
+        },
+        "overall": {
+          "total_violations": 8,
+          "total_values": 400,
+          "overall_violation_ratio": 0.02
+        }
+      },
+      "alerts": []
+    },
+    "freshness": {
+      "metrics": {
+        "freshness_checks": {
+          "recent_update": {
+            "column": "lastChange",
+            "max_age": 30,
+            "max_age_unit": "days",
+            "reference_time": "2025-03-03T08:05:22.759891",
+            "cutoff_time": "2025-02-01T08:05:22.759891",
+            "stale_count": 95,
+            "total_count": 200,
+            "stale_ratio": 0.475,
+            "min_age_days": 0.9999998573263889,
+            "max_age_days": 321.9999997840741,
+            "mean_age_days": 35.27999985631482,
+            "median_age_days": 28.999999859351853
+          },
+          "very_old_data": {
+            "column": "lastChange",
+            "max_age": 180,
+            "max_age_unit": "days",
+            "reference_time": "2025-03-03T08:05:22.759891",
+            "cutoff_time": "2024-09-04T08:05:22.759891",
+            "stale_count": 5,
+            "total_count": 200,
+            "stale_ratio": 0.025,
+            "min_age_days": 0.9999998573263889,
+            "max_age_days": 321.9999997840741,
+            "mean_age_days": 35.27999985631482,
+            "median_age_days": 28.999999859351853
+          }
+        },
+        "stale_counts": {
+          "recent_update": 95,
+          "very_old_data": 5
+        },
+        "stale_ratios": {
+          "recent_update": 0.475,
+          "very_old_data": 0.025
+        },
+        "overall": {
+          "total_stale": 100,
+          "total_records": 400,
+          "overall_stale_ratio": 0.25,
+          "reference_time": "2025-03-03T08:05:22.759891"
+        }
+      },
+      "alerts": [
+        {
+          "severity": "warning",
+          "message": "Data freshness check failed for rule 'recent_update': 95 out of 200 records (47.50%) are older than 30 days",
+          "monitor": "freshness",
+          "rule": "recent_update",
+          "column": "lastChange",
+          "max_age": 30,
+          "max_age_unit": "days",
+          "stale_count": 95,
+          "stale_ratio": 0.475,
+          "threshold": 0.2,
+          "reference_time": "2025-03-03T08:05:22.759891",
+          "timestamp": "2025-03-03T08:05:22.799525"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "format": {
+      "format_violations": {
+        "number_article_number_format": {
+          "column": "number",
+          "rule": "article_number_format",
+          "pattern": "^\\d+$",
+          "violation_count": 6,
+          "total_count": 200,
+          "violation_ratio": 0.03
+        },
+        "supplierArticleNumber_supplier_article_number_format": {
+          "column": "supplierArticleNumber",
+          "rule": "supplier_article_number_format",
+          "pattern": "^S-\\d+$",
+          "violation_count": 2,
+          "total_count": 200,
+          "violation_ratio": 0.01
+        }
+      },
+      "violation_counts": {
+        "number_article_number_format": 6,
+        "supplierArticleNumber_supplier_article_number_format": 2
+      },
+      "violation_ratios": {
+        "number_article_number_format": 0.03,
+        "supplierArticleNumber_supplier_article_number_format": 0.01
+      },
+      "overall": {
+        "total_violations": 8,
+        "total_values": 400,
+        "overall_violation_ratio": 0.02
+      }
+    },
+    "freshness": {
+      "freshness_checks": {
+        "recent_update": {
+          "column": "lastChange",
+          "max_age": 30,
+          "max_age_unit": "days",
+          "reference_time": "2025-03-03T08:05:22.759891",
+          "cutoff_time": "2025-02-01T08:05:22.759891",
+          "stale_count": 95,
+          "total_count": 200,
+          "stale_ratio": 0.475,
+          "min_age_days": 0.9999998573263889,
+          "max_age_days": 321.9999997840741,
+          "mean_age_days": 35.27999985631482,
+          "median_age_days": 28.999999859351853
+        },
+        "very_old_data": {
+          "column": "lastChange",
+          "max_age": 180,
+          "max_age_unit": "days",
+          "reference_time": "2025-03-03T08:05:22.759891",
+          "cutoff_time": "2024-09-04T08:05:22.759891",
+          "stale_count": 5,
+          "total_count": 200,
+          "stale_ratio": 0.025,
+          "min_age_days": 0.9999998573263889,
+          "max_age_days": 321.9999997840741,
+          "mean_age_days": 35.27999985631482,
+          "median_age_days": 28.999999859351853
+        }
+      },
+      "stale_counts": {
+        "recent_update": 95,
+        "very_old_data": 5
+      },
+      "stale_ratios": {
+        "recent_update": 0.475,
+        "very_old_data": 0.025
+      },
+      "overall": {
+        "total_stale": 100,
+        "total_records": 400,
+        "overall_stale_ratio": 0.25,
+        "reference_time": "2025-03-03T08:05:22.759891"
+      }
+    }
+  },
+  "all_alerts": [
+    {
+      "severity": "warning",
+      "message": "Data freshness check failed for rule 'recent_update': 95 out of 200 records (47.50%) are older than 30 days",
+      "monitor": "freshness",
+      "rule": "recent_update",
+      "column": "lastChange",
+      "max_age": 30,
+      "max_age_unit": "days",
+      "stale_count": 95,
+      "stale_ratio": 0.475,
+      "threshold": 0.2,
+      "reference_time": "2025-03-03T08:05:22.759891",
+      "timestamp": "2025-03-03T08:05:22.799525"
+    },
+    {
+      "severity": "info",
+      "message": "Data quality results are based on a sample of 200 rows out of 1000 total rows (20.00%). Sampling method: outlier_biased.",
+      "monitor": "sampling",
+      "timestamp": "2025-03-03T08:05:22.800123"
+    }
+  ],
+  "sampling": {
+    "sampled": true,
+    "original_size": 1000,
+    "sample_size": 200,
+    "sampling_ratio": 0.2,
+    "method": "outlier_biased"
+  }
+}

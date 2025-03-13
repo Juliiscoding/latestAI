@@ -1,0 +1,164 @@
+{
+  "monitors": {
+    "Completeness Monitor": {
+      "metrics": {
+        "column_completeness": {
+          "product_id": {
+            "non_null_count": 500,
+            "total_count": 500,
+            "completeness_ratio": 1.0
+          },
+          "supplier_id": {
+            "non_null_count": 500,
+            "total_count": 500,
+            "completeness_ratio": 1.0
+          },
+          "quantity": {
+            "non_null_count": 500,
+            "total_count": 500,
+            "completeness_ratio": 1.0
+          },
+          "unit_price": {
+            "non_null_count": 500,
+            "total_count": 500,
+            "completeness_ratio": 1.0
+          },
+          "order_value": {
+            "non_null_count": 500,
+            "total_count": 500,
+            "completeness_ratio": 1.0
+          },
+          "region": {
+            "non_null_count": 500,
+            "total_count": 500,
+            "completeness_ratio": 1.0
+          }
+        },
+        "overall_completeness": 1.0
+      },
+      "alerts": [],
+      "timestamp": "2025-03-03T07:27:44.108980"
+    },
+    "Outlier Monitor": {
+      "metrics": {
+        "column_outliers": {
+          "quantity": {
+            "outlier_count": 0,
+            "total_count": 500,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          },
+          "unit_price": {
+            "outlier_count": 0,
+            "total_count": 500,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          },
+          "order_value": {
+            "outlier_count": 0,
+            "total_count": 500,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          },
+          "lead_time_days": {
+            "outlier_count": 0,
+            "total_count": 500,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          }
+        },
+        "overall_outlier_ratio": 0.0,
+        "method": "zscore",
+        "threshold": 3.0
+      },
+      "alerts": [],
+      "timestamp": "2025-03-03T07:27:44.110233"
+    },
+    "Consistency Monitor": {
+      "metrics": {
+        "duplicates": {
+          "duplicate_records": {
+            "columns": [
+              "product_id",
+              "supplier_id",
+              "order_date",
+              "quantity"
+            ],
+            "duplicate_count": 0,
+            "total_count": 500,
+            "duplicate_ratio": 0.0,
+            "duplicate_indices": []
+          },
+          "order_id_uniqueness": {
+            "duplicate_count": 0,
+            "total_count": 500,
+            "duplicate_ratio": 0.0,
+            "duplicate_values": []
+          }
+        },
+        "related_columns": {
+          "product_id_supplier_id_consistency": {
+            "inconsistent_count": 5,
+            "total_count": 5,
+            "inconsistent_ratio": 1.0,
+            "inconsistent_values": [
+              1001,
+              1002,
+              1003,
+              1004,
+              1005
+            ]
+          }
+        },
+        "constraints": {
+          "delivery_after_order_violations": {
+            "constraint_type": "comparison",
+            "column1": "delivery_date",
+            "column2": "order_date",
+            "operator": ">",
+            "violation_count": 0,
+            "total_count": 500,
+            "violation_ratio": 0.0,
+            "violation_indices": []
+          },
+          "order_value_check_violations": {
+            "constraint_type": "comparison",
+            "column1": "order_value",
+            "column2": "quantity",
+            "operator": ">=",
+            "violation_count": 0,
+            "total_count": 500,
+            "violation_ratio": 0.0,
+            "violation_indices": []
+          }
+        }
+      },
+      "alerts": [
+        {
+          "timestamp": "2025-03-03T07:27:44.111159",
+          "monitor": "Consistency Monitor",
+          "metric": "product_id_supplier_id_inconsistent_ratio",
+          "value": 1.0,
+          "threshold": 0.0,
+          "comparison": "gt",
+          "message": "product_id_supplier_id_inconsistent_ratio = 1.0 > 0.0",
+          "severity": "warning"
+        }
+      ],
+      "timestamp": "2025-03-03T07:27:44.111394"
+    }
+  },
+  "all_alerts": [
+    {
+      "timestamp": "2025-03-03T07:27:44.111159",
+      "monitor": "Consistency Monitor",
+      "metric": "product_id_supplier_id_inconsistent_ratio",
+      "value": 1.0,
+      "threshold": 0.0,
+      "comparison": "gt",
+      "message": "product_id_supplier_id_inconsistent_ratio = 1.0 > 0.0",
+      "severity": "warning"
+    }
+  ],
+  "timestamp": "2025-03-03T07:27:44.111428"
+}

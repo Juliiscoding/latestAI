@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: fivetran
+Version: 0.7.0
+Summary: 
+Author: Michael Cooper
+Author-email: macoop2363@gmail.com
+Requires-Python: >=3.9.13,<4.0.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10

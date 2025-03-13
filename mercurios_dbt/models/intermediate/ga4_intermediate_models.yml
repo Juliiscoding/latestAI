@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: int_product_performance_combined
+    config:
+      enabled: true
+      materialized: view
+      post-hook:
+        - "grant select on {{ this }} to role MERCURIOS_FIVETRAN_USER"
+    description: >
+      Intermediate model combining ProHandel article data with Google Analytics 4 product data.
+      This model joins product data across systems to provide a unified view of product performance.
+
+  - name: int_customer_behavior_combined
+    config:
+      enabled: true
+      materialized: view
+      post-hook:
+        - "grant select on {{ this }} to role MERCURIOS_FIVETRAN_USER"
+    description: >
+      Intermediate model combining ProHandel customer data with Google Analytics 4 user data.
+      This model joins customer data across systems to provide a unified view of customer behavior.

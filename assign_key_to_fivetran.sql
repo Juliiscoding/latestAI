@@ -1,0 +1,14 @@
+-- SQL script to assign the public key to FIVETRAN_USER
+USE ROLE SECURITYADMIN;
+
+-- Alter the FIVETRAN_USER to use key pair authentication
+ALTER USER FIVETRAN_USER SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA95Lha0ZUVWCL/6xTu+ef
+iiuqu1ztfpmwWQNcgWYM+3r0jATKpw0jcaOxahqklr0rYS73aXj18IgBHAOy/aoB
+Sn5I3UKvX/XgfjlP3zTaxVfDJyueW6rKMyGCL2uDg/yT7CXwfjOvWfEdUNjIXn97
+QfAkA6WXg+EEF/7Qd7tynSrgiCHYtfo5iAVcvypzhjF/O8Q1vYOHjJhOQ/dpCYlg
+hExJFU8dmMMBqxXusmc189hNtVN0hjL9eevxpwzFzy5AnG5WN8jvtwy7UfAEbFKd
+VDSI7aVbYWMalZb33SBCHGOplFlCDoWigwpCbLUyr0QkG3qjtMdcq4LoSvj3LILg
+MwIDAQAB';
+
+-- Verify the key was set
+DESCRIBE USER FIVETRAN_USER;

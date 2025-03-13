@@ -1,0 +1,108 @@
+version: 2
+
+sources:
+  - name: prohandel
+    database: "{{ var('snowflake_database') }}"
+    schema: RAW
+    description: "ProHandel API data loaded through Fivetran AWS Lambda connector"
+    
+    tables:
+      - name: articles
+        description: "Product catalog information"
+        columns:
+          - name: article_id
+            description: "Unique identifier for the article"
+            tests:
+              - unique
+              - not_null
+          - name: tenant_id
+            description: "Identifier for the tenant"
+            tests:
+              - not_null
+          - name: name
+            description: "Article name"
+          - name: price
+            description: "Retail price of the article"
+          - name: updated_at
+            description: "Last update timestamp"
+
+      - name: customers
+        description: "Customer information"
+        columns:
+          - name: customer_id
+            description: "Unique identifier for the customer"
+            tests:
+              - unique
+              - not_null
+          - name: tenant_id
+            description: "Identifier for the tenant"
+            tests:
+              - not_null
+          - name: first_name
+            description: "Customer first name"
+          - name: last_name
+            description: "Customer last name"
+          - name: email
+            description: "Customer email address"
+          - name: updated_at
+            description: "Last update timestamp"
+
+      - name: inventory
+        description: "Current inventory levels"
+        columns:
+          - name: article_id
+            description: "Reference to the article"
+            tests:
+              - not_null
+          - name: tenant_id
+            description: "Identifier for the tenant"
+            tests:
+              - not_null
+          - name: warehouse_id
+            description: "Identifier for the warehouse"
+          - name: quantity
+            description: "Current stock quantity"
+          - name: updated_at
+            description: "Last update timestamp"
+
+      - name: orders
+        description: "Customer orders"
+        columns:
+          - name: order_id
+            description: "Unique identifier for the order"
+            tests:
+              - unique
+              - not_null
+          - name: tenant_id
+            description: "Identifier for the tenant"
+            tests:
+              - not_null
+          - name: customer_id
+            description: "Reference to the customer"
+          - name: status
+            description: "Order status"
+          - name: total_amount
+            description: "Total order amount"
+          - name: updated_at
+            description: "Last update timestamp"
+
+      - name: sales
+        description: "Sales transactions"
+        columns:
+          - name: sale_id
+            description: "Unique identifier for the sale"
+            tests:
+              - unique
+              - not_null
+          - name: tenant_id
+            description: "Identifier for the tenant"
+            tests:
+              - not_null
+          - name: article_id
+            description: "Reference to the article"
+          - name: quantity
+            description: "Quantity sold"
+          - name: price
+            description: "Unit price"
+          - name: updated_at
+            description: "Last update timestamp"

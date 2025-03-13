@@ -1,0 +1,10 @@
+{
+  "request": {
+    "operation": "schema",
+    "secrets": {
+      "api_key": "YOUR_API_KEY",
+      "api_secret": "YOUR_API_SECRET",
+      "api_url": "https://linde.prohandel.de/api/v2"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "branchNumber": {
+      "type": "string"
+    },
+    "countryNumber": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "string"
+    },
+    "salutation": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "imageName": {
+      "type": "string"
+    },
+    "bankNumber": {
+      "type": "string"
+    },
+    "personalEmail": {
+      "type": "string"
+    },
+    "companyEmail": {
+      "type": "string"
+    },
+    "fax": {
+      "type": "string"
+    },
+    "dateOfBirth": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "info": {
+      "type": "string"
+    },
+    "bankAccount": {
+      "type": "string"
+    },
+    "searchTerm": {
+      "type": "string"
+    },
+    "mobilePhone": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "personalSalutation": {
+      "type": "string"
+    },
+    "zipCode": {
+      "type": "string"
+    },
+    "street": {
+      "type": "string"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "entryDate": {
+      "type": "string"
+    },
+    "exitDate": {
+      "type": "string"
+    },
+    "lastChange": {
+      "type": "string"
+    },
+    "isDeleted": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "branchNumber",
+    "countryNumber",
+    "isActive",
+    "salutation",
+    "gender",
+    "jobTitle",
+    "imageName",
+    "bankNumber",
+    "personalEmail",
+    "companyEmail",
+    "fax",
+    "dateOfBirth",
+    "id",
+    "info",
+    "bankAccount",
+    "searchTerm",
+    "mobilePhone",
+    "lastName",
+    "number",
+    "city",
+    "personalSalutation",
+    "zipCode",
+    "street",
+    "telephone",
+    "firstName",
+    "entryDate",
+    "exitDate",
+    "lastChange",
+    "isDeleted"
+  ]
+}

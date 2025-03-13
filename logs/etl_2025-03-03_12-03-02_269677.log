@@ -1,0 +1,18 @@
+2025-03-03 12:03:02.487 | WARNING  | etl.validators.schema_validator:_load_schemas:32 - Schemas directory /Users/juliusrechenbach/API ProHandelTest/etl/validators/schemas does not exist
+2025-03-03 12:03:02.809 | INFO     | lambda_function:lambda_handler:41 - Received event: {"request": {"operation": "schema"}}
+2025-03-03 12:03:02.809 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 1, pagesize 1)
+2025-03-03 12:03:02.809 | INFO     | etl.utils.auth:authenticate:42 - Authenticating with ProHandel API...
+2025-03-03 12:03:03.018 | INFO     | etl.utils.auth:authenticate:60 - Authentication successful
+2025-03-03 12:03:03.120 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 1, pagesize 1)
+2025-03-03 12:03:03.294 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 1, pagesize 1)
+2025-03-03 12:03:05.127 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching orderposition data (page 1, pagesize 1)
+2025-03-03 12:03:05.611 | ERROR    | etl.connectors.prohandel_connector:_make_request:78 - All URL patterns failed for endpoint orderposition
+2025-03-03 12:03:06.812 | ERROR    | etl.connectors.prohandel_connector:_make_request:78 - All URL patterns failed for endpoint orderposition
+2025-03-03 12:03:09.288 | ERROR    | etl.connectors.prohandel_connector:_make_request:78 - All URL patterns failed for endpoint orderposition
+2025-03-03 12:03:09.288 | ERROR    | etl.connectors.prohandel_connector:get_entity_list:121 - Error fetching orderposition data: 404 Client Error: Not Found for url: https://linde.prohandel.de/api/v2/orderposition?page=1&pagesize=1
+2025-03-03 12:03:09.288 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 1, pagesize 1)
+2025-03-03 12:03:12.060 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 1, pagesize 1)
+2025-03-03 12:03:12.310 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 1, pagesize 1)
+2025-03-03 12:03:12.432 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching category data (page 1, pagesize 1)
+2025-03-03 12:03:12.647 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 1, pagesize 1)
+2025-03-03 12:03:12.776 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 1, pagesize 1)

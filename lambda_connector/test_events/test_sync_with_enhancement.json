@@ -1,0 +1,13 @@
+{
+  "request": {
+    "operation": "sync",
+    "state": {
+      "last_sync": "2023-01-01T00:00:00"
+    },
+    "secrets": {
+      "api_key": "YOUR_API_KEY",
+      "api_secret": "YOUR_API_SECRET",
+      "api_url": "https://linde.prohandel.de/api/v2"
+    }
+  }
+}

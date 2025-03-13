@@ -1,0 +1,40 @@
+2025-03-03 12:51:40,716 - __main__ - INFO - Testing endpoint for article: /articles
+2025-03-03 12:51:45,284 - __main__ - ERROR - Error testing endpoint for article: RetryError[<Future at 0x105b80d50 state=finished raised HTTPError>]
+Traceback (most recent call last):
+  File "/Users/juliusrechenbach/API ProHandelTest/fivetran_connector/venv/lib/python3.11/site-packages/tenacity/__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/etl/utils/auth.py", line 45, in authenticate
+    response.raise_for_status()
+  File "/Users/juliusrechenbach/API ProHandelTest/fivetran_connector/venv/lib/python3.11/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://linde.prohandel.de/api/v2/auth/token
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/juliusrechenbach/API ProHandelTest/test_endpoints.py", line 185, in test_endpoint
+    data = connector.get_data(endpoint, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/etl/utils/api_connector.py", line 83, in get_data
+    response_data = self._make_request_with_retry(url, query_params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/etl/utils/api_connector.py", line 156, in _make_request_with_retry
+    headers = self.get_headers()
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/etl/utils/api_connector.py", line 51, in get_headers
+    token = self.token_manager.authenticate()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/fivetran_connector/venv/lib/python3.11/site-packages/tenacity/__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/fivetran_connector/venv/lib/python3.11/site-packages/tenacity/__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/fivetran_connector/venv/lib/python3.11/site-packages/tenacity/__init__.py", line 376, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/fivetran_connector/venv/lib/python3.11/site-packages/tenacity/__init__.py", line 419, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x105b80d50 state=finished raised HTTPError>]
+2025-03-03 12:51:45,288 - __main__ - INFO - Detailed test results saved to endpoint_test_results_20250303_125140.json

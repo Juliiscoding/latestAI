@@ -1,0 +1,135 @@
+[
+  {
+    "article_number": 110917422.0,
+    "current_stock": 66,
+    "lead_time_demand": 221.0,
+    "safety_stock": 99.0,
+    "reorder_point": 320.0,
+    "economic_order_quantity": 308,
+    "reorder_needed": true,
+    "days_to_stockout": 1,
+    "predicted_monthly_demand": 950.0,
+    "future_demand": [
+      {
+        "date": "2025-02-28",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-01",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-02",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-03",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-04",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-05",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-06",
+        "predicted_demand": 32.0
+      },
+      {
+        "date": "2025-03-07",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-08",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-09",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-10",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-11",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-12",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-13",
+        "predicted_demand": 32.0
+      },
+      {
+        "date": "2025-03-14",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-15",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-16",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-17",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-18",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-19",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-20",
+        "predicted_demand": 32.0
+      },
+      {
+        "date": "2025-03-21",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-22",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-23",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-24",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-25",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-26",
+        "predicted_demand": 30.0
+      },
+      {
+        "date": "2025-03-27",
+        "predicted_demand": 32.0
+      },
+      {
+        "date": "2025-03-28",
+        "predicted_demand": 33.0
+      },
+      {
+        "date": "2025-03-29",
+        "predicted_demand": 33.0
+      }
+    ]
+  }
+]

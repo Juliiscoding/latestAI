@@ -1,0 +1,1906 @@
+[0m16:15:40.890529 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104d4c490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106661c90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106662390>]}
+
+
+============================== 16:15:40.894159 | 615f62fb-0a74-4c6a-a842-4d2192fdcf55 ==============================
+[0m16:15:40.894159 [info ] [MainThread]: Running with dbt=1.9.2
+[0m16:15:40.894541 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/logs', 'version_check': 'True', 'profiles_dir': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt debug', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m16:15:40.905293 [info ] [MainThread]: dbt version: 1.9.2
+[0m16:15:40.905631 [info ] [MainThread]: python version: 3.11.1
+[0m16:15:40.905826 [info ] [MainThread]: python path: /Users/juliusrechenbach/API ProHandelTest/.venv/bin/python
+[0m16:15:40.905986 [info ] [MainThread]: os info: macOS-15.3.1-arm64-arm-64bit
+[0m16:15:41.649759 [info ] [MainThread]: Using profiles dir at /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt
+[0m16:15:41.650500 [info ] [MainThread]: Using profiles.yml file at /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/profiles.yml
+[0m16:15:41.650770 [info ] [MainThread]: Using dbt_project.yml file at /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/dbt_project.yml
+[0m16:15:41.652097 [info ] [MainThread]: adapter type: snowflake
+[0m16:15:41.652299 [info ] [MainThread]: adapter version: 1.9.1
+[0m16:15:41.718408 [info ] [MainThread]: Configuration:
+[0m16:15:41.719161 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m16:15:41.719711 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m16:15:41.720338 [info ] [MainThread]: Required dependencies:
+[0m16:15:41.720706 [debug] [MainThread]: Executing "git --help"
+[0m16:15:41.795767 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m16:15:41.796496 [debug] [MainThread]: STDERR: "b''"
+[0m16:15:41.796738 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m16:15:41.797259 [info ] [MainThread]: Connection:
+[0m16:15:41.798259 [info ] [MainThread]:   account: VRXDFZX-ZZ95717
+[0m16:15:41.798859 [info ] [MainThread]:   user: JULIUSRECHENBACH
+[0m16:15:41.799505 [info ] [MainThread]:   database: MERCURIOS_DATA
+[0m16:15:41.799761 [info ] [MainThread]:   warehouse: MERCURIOS_ANALYTICS_WH
+[0m16:15:41.800630 [info ] [MainThread]:   role: ACCOUNTADMIN
+[0m16:15:41.801055 [info ] [MainThread]:   schema: RAW
+[0m16:15:41.801766 [info ] [MainThread]:   authenticator: None
+[0m16:15:41.802337 [info ] [MainThread]:   oauth_client_id: None
+[0m16:15:41.802801 [info ] [MainThread]:   query_tag: None
+[0m16:15:41.803002 [info ] [MainThread]:   client_session_keep_alive: True
+[0m16:15:41.803158 [info ] [MainThread]:   host: None
+[0m16:15:41.803296 [info ] [MainThread]:   port: None
+[0m16:15:41.803433 [info ] [MainThread]:   proxy_host: None
+[0m16:15:41.803569 [info ] [MainThread]:   proxy_port: None
+[0m16:15:41.803704 [info ] [MainThread]:   protocol: None
+[0m16:15:41.803843 [info ] [MainThread]:   connect_retries: 1
+[0m16:15:41.803973 [info ] [MainThread]:   connect_timeout: None
+[0m16:15:41.804553 [info ] [MainThread]:   retry_on_database_errors: False
+[0m16:15:41.804719 [info ] [MainThread]:   retry_all: False
+[0m16:15:41.804865 [info ] [MainThread]:   insecure_mode: False
+[0m16:15:41.805002 [info ] [MainThread]:   reuse_connections: None
+[0m16:15:41.805409 [info ] [MainThread]: Registered adapter: snowflake=1.9.1
+[0m16:15:41.908004 [debug] [MainThread]: Acquiring new snowflake connection 'debug'
+[0m16:15:41.935386 [debug] [MainThread]: Using snowflake connection "debug"
+[0m16:15:41.935636 [debug] [MainThread]: On debug: select 1 as id
+[0m16:15:41.935922 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:16:00.505377 [debug] [MainThread]: SQL status: SUCCESS 1 in 18.569 seconds
+[0m16:16:00.507511 [debug] [MainThread]: On debug: Close
+[0m16:16:00.658063 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m16:16:00.658438 [info ] [MainThread]: [32mAll checks passed![0m
+[0m16:16:00.690998 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 19.849026, "process_in_blocks": "0", "process_kernel_time": 0.640048, "process_mem_max_rss": "182894592", "process_out_blocks": "0", "process_user_time": 2.714782}
+[0m16:16:00.691431 [debug] [MainThread]: Command `dbt debug` succeeded at 16:16:00.691360 after 19.85 seconds
+[0m16:16:00.691682 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m16:16:00.691950 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fc70890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ffc2190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10684c890>]}
+[0m16:16:00.692237 [debug] [MainThread]: Flushing usage events
+[0m16:16:01.188688 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:17:38.921188 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ade7b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ae65dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ae664d0>]}
+
+
+============================== 16:17:38.924850 | a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8 ==============================
+[0m16:17:38.924850 [info ] [MainThread]: Running with dbt=1.9.2
+[0m16:17:38.925220 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/logs', 'profiles_dir': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt run', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m16:17:39.466150 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11f863a50>]}
+[0m16:17:39.498573 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a611f90>]}
+[0m16:17:39.499301 [info ] [MainThread]: Registered adapter: snowflake=1.9.1
+[0m16:17:39.582835 [debug] [MainThread]: checksum: 12b12750b70de726cfd89136b8e24afc3f3e77597a97bff40ab7e5f9b39d5e18, vars: {}, profile: , target: , version: 1.9.2
+[0m16:17:39.583340 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m16:17:39.583574 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11fbde690>]}
+[0m16:17:40.371574 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x129efb650>]}
+[0m16:17:40.413955 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/manifest.json
+[0m16:17:40.416113 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/semantic_manifest.json
+[0m16:17:40.428281 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x129c3d150>]}
+[0m16:17:40.428580 [info ] [MainThread]: Found 13 models, 14 data tests, 5 sources, 472 macros
+[0m16:17:40.428773 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x129e0c510>]}
+[0m16:17:40.429954 [info ] [MainThread]: 
+[0m16:17:40.430156 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:17:40.430303 [info ] [MainThread]: 
+[0m16:17:40.430546 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m16:17:40.432936 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m16:17:40.433206 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m16:17:40.439715 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m16:17:40.440164 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m16:17:40.467426 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m16:17:40.467740 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m16:17:40.467961 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m16:17:40.468126 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m16:17:40.468330 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m16:17:40.468503 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m16:17:40.468668 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m16:17:40.468822 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:17:40.468970 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m16:17:40.469118 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:17:40.469251 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:17:40.469463 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:17:45.806300 [debug] [ThreadPool]: SQL status: SUCCESS 20 in 5.337 seconds
+[0m16:17:45.807766 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m16:17:45.897188 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m16:17:45.897714 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m16:17:45.898071 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:17:49.935762 [debug] [ThreadPool]: SQL status: SUCCESS 20 in 9.466 seconds
+[0m16:17:49.938590 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m16:17:53.684329 [debug] [ThreadPool]: SQL status: SUCCESS 20 in 13.215 seconds
+[0m16:17:53.687369 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m16:17:57.322339 [debug] [ThreadPool]: SQL status: SUCCESS 20 in 16.853 seconds
+[0m16:17:57.324274 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m16:18:00.459668 [debug] [ThreadPool]: SQL status: SUCCESS 20 in 14.562 seconds
+[0m16:18:00.461812 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m16:18:00.780877 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now create_MERCURIOS_DATA_RAW_marts_sales)
+[0m16:18:00.781698 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now create_MERCURIOS_DATA_RAW_staging)
+[0m16:18:00.782242 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now create_MERCURIOS_DATA_RAW_marts_customers)
+[0m16:18:00.782751 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now create_MERCURIOS_DATA_RAW_intermediate)
+[0m16:18:00.784808 [debug] [ThreadPool]: Creating schema "database: "MERCURIOS_DATA"
+schema: "RAW_marts_sales"
+"
+[0m16:18:00.785369 [debug] [ThreadPool]: Creating schema "database: "MERCURIOS_DATA"
+schema: "RAW_staging"
+"
+[0m16:18:00.785871 [debug] [ThreadPool]: Creating schema "database: "MERCURIOS_DATA"
+schema: "RAW_marts_customers"
+"
+[0m16:18:00.786357 [debug] [ThreadPool]: Creating schema "database: "MERCURIOS_DATA"
+schema: "RAW_intermediate"
+"
+[0m16:18:00.792830 [debug] [ThreadPool]: Using snowflake connection "create_MERCURIOS_DATA_RAW_staging"
+[0m16:18:00.794848 [debug] [ThreadPool]: Using snowflake connection "create_MERCURIOS_DATA_RAW_marts_sales"
+[0m16:18:00.797086 [debug] [ThreadPool]: Using snowflake connection "create_MERCURIOS_DATA_RAW_marts_customers"
+[0m16:18:00.799024 [debug] [ThreadPool]: Using snowflake connection "create_MERCURIOS_DATA_RAW_intermediate"
+[0m16:18:00.799351 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_staging: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "create_MERCURIOS_DATA_RAW_staging"} */
+create schema if not exists MERCURIOS_DATA.RAW_staging
+[0m16:18:00.799643 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_marts_sales: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "create_MERCURIOS_DATA_RAW_marts_sales"} */
+create schema if not exists MERCURIOS_DATA.RAW_marts_sales
+[0m16:18:00.799923 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_marts_customers: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "create_MERCURIOS_DATA_RAW_marts_customers"} */
+create schema if not exists MERCURIOS_DATA.RAW_marts_customers
+[0m16:18:00.800185 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_intermediate: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "create_MERCURIOS_DATA_RAW_intermediate"} */
+create schema if not exists MERCURIOS_DATA.RAW_intermediate
+[0m16:18:00.800434 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:00.800745 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:00.801032 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:00.801282 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:04.617054 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 3.816 seconds
+[0m16:18:04.620502 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_marts_sales: Close
+[0m16:18:04.743390 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_MERCURIOS_DATA_RAW_marts_sales, now create_MERCURIOS_DATA_RAW_marts_inventory)
+[0m16:18:04.744376 [debug] [ThreadPool]: Creating schema "database: "MERCURIOS_DATA"
+schema: "RAW_marts_inventory"
+"
+[0m16:18:04.748141 [debug] [ThreadPool]: Using snowflake connection "create_MERCURIOS_DATA_RAW_marts_inventory"
+[0m16:18:04.748593 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_marts_inventory: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "create_MERCURIOS_DATA_RAW_marts_inventory"} */
+create schema if not exists MERCURIOS_DATA.RAW_marts_inventory
+[0m16:18:04.748969 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:08.132017 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 7.330 seconds
+[0m16:18:08.136448 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_intermediate: Close
+[0m16:18:11.635716 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 10.834 seconds
+[0m16:18:11.638630 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_marts_customers: Close
+[0m16:18:16.601838 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 15.801 seconds
+[0m16:18:16.604586 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_staging: Close
+[0m16:18:28.284006 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 23.535 seconds
+[0m16:18:28.285674 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_marts_inventory: Close
+[0m16:18:28.379552 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_MERCURIOS_DATA_RAW_intermediate, now list_MERCURIOS_DATA_RAW_marts_sales)
+[0m16:18:28.380017 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_MERCURIOS_DATA_RAW_marts_customers, now list_MERCURIOS_DATA_RAW_staging)
+[0m16:18:28.380313 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_MERCURIOS_DATA_RAW_marts_inventory, now list_MERCURIOS_DATA_RAW_marts_customers)
+[0m16:18:28.380675 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_MERCURIOS_DATA_RAW_staging, now list_MERCURIOS_DATA_RAW_intermediate)
+[0m16:18:28.387367 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_marts_sales"
+[0m16:18:28.388748 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_staging"
+[0m16:18:28.390061 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_marts_customers"
+[0m16:18:28.391321 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_intermediate"
+[0m16:18:28.391515 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_sales: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_marts_sales"} */
+show objects in MERCURIOS_DATA.RAW_marts_sales limit 10000;
+[0m16:18:28.391729 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_staging: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_staging"} */
+show objects in MERCURIOS_DATA.RAW_staging limit 10000;
+[0m16:18:28.391950 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_customers: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_marts_customers"} */
+show objects in MERCURIOS_DATA.RAW_marts_customers limit 10000;
+[0m16:18:28.392204 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_intermediate: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_intermediate"} */
+show objects in MERCURIOS_DATA.RAW_intermediate limit 10000;
+[0m16:18:28.392383 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:28.392544 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:28.392694 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:28.392841 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:32.002658 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 3.610 seconds
+[0m16:18:32.005024 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_staging: Close
+[0m16:18:32.324987 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_staging, now list_MERCURIOS_DATA_RAW_marts_inventory)
+[0m16:18:32.326896 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_marts_inventory"
+[0m16:18:32.327231 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_inventory: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_marts_inventory"} */
+show objects in MERCURIOS_DATA.RAW_marts_inventory limit 10000;
+[0m16:18:32.327419 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:35.513998 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 7.122 seconds
+[0m16:18:35.516231 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_sales: Close
+[0m16:18:38.838734 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 10.446 seconds
+[0m16:18:38.839617 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_customers: Close
+[0m16:18:42.304112 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 13.911 seconds
+[0m16:18:42.305847 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_intermediate: Close
+[0m16:18:46.128325 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 13.801 seconds
+[0m16:18:46.131085 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_inventory: Close
+[0m16:18:46.224049 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x129efa590>]}
+[0m16:18:46.226517 [debug] [Thread-16 ]: Began running node model.mercurios.stg_articles
+[0m16:18:46.227030 [debug] [Thread-17 ]: Began running node model.mercurios.stg_customers
+[0m16:18:46.227516 [debug] [Thread-18 ]: Began running node model.mercurios.stg_inventory
+[0m16:18:46.228427 [debug] [Thread-19 ]: Began running node model.mercurios.stg_orders
+[0m16:18:46.228117 [info ] [Thread-16 ]: 1 of 13 START sql view model RAW_staging.stg_articles .......................... [RUN]
+[0m16:18:46.229003 [info ] [Thread-17 ]: 2 of 13 START sql view model RAW_staging.stg_customers ......................... [RUN]
+[0m16:18:46.229508 [info ] [Thread-18 ]: 3 of 13 START sql view model RAW_staging.stg_inventory ......................... [RUN]
+[0m16:18:46.229991 [info ] [Thread-19 ]: 4 of 13 START sql view model RAW_staging.stg_orders ............................ [RUN]
+[0m16:18:46.230513 [debug] [Thread-16 ]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_marts_sales, now model.mercurios.stg_articles)
+[0m16:18:46.230969 [debug] [Thread-17 ]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_marts_inventory, now model.mercurios.stg_customers)
+[0m16:18:46.231360 [debug] [Thread-18 ]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_marts_customers, now model.mercurios.stg_inventory)
+[0m16:18:46.231773 [debug] [Thread-19 ]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_intermediate, now model.mercurios.stg_orders)
+[0m16:18:46.232159 [debug] [Thread-16 ]: Began compiling node model.mercurios.stg_articles
+[0m16:18:46.232513 [debug] [Thread-17 ]: Began compiling node model.mercurios.stg_customers
+[0m16:18:46.232863 [debug] [Thread-18 ]: Began compiling node model.mercurios.stg_inventory
+[0m16:18:46.233187 [debug] [Thread-19 ]: Began compiling node model.mercurios.stg_orders
+[0m16:18:46.242887 [debug] [Thread-17 ]: Writing injected SQL for node "model.mercurios.stg_customers"
+[0m16:18:46.246496 [debug] [Thread-16 ]: Writing injected SQL for node "model.mercurios.stg_articles"
+[0m16:18:46.248930 [debug] [Thread-18 ]: Writing injected SQL for node "model.mercurios.stg_inventory"
+[0m16:18:46.251064 [debug] [Thread-19 ]: Writing injected SQL for node "model.mercurios.stg_orders"
+[0m16:18:46.252363 [debug] [Thread-18 ]: Began executing node model.mercurios.stg_inventory
+[0m16:18:46.252723 [debug] [Thread-16 ]: Began executing node model.mercurios.stg_articles
+[0m16:18:46.252974 [debug] [Thread-19 ]: Began executing node model.mercurios.stg_orders
+[0m16:18:46.253196 [debug] [Thread-17 ]: Began executing node model.mercurios.stg_customers
+[0m16:18:46.271436 [debug] [Thread-18 ]: Writing runtime sql for node "model.mercurios.stg_inventory"
+[0m16:18:46.273380 [debug] [Thread-16 ]: Writing runtime sql for node "model.mercurios.stg_articles"
+[0m16:18:46.275193 [debug] [Thread-19 ]: Writing runtime sql for node "model.mercurios.stg_orders"
+[0m16:18:46.277074 [debug] [Thread-17 ]: Writing runtime sql for node "model.mercurios.stg_customers"
+[0m16:18:46.278526 [debug] [Thread-18 ]: Using snowflake connection "model.mercurios.stg_inventory"
+[0m16:18:46.279486 [debug] [Thread-19 ]: Using snowflake connection "model.mercurios.stg_orders"
+[0m16:18:46.280144 [debug] [Thread-17 ]: Using snowflake connection "model.mercurios.stg_customers"
+[0m16:18:46.280849 [debug] [Thread-16 ]: Using snowflake connection "model.mercurios.stg_articles"
+[0m16:18:46.281068 [debug] [Thread-18 ]: On model.mercurios.stg_inventory: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_inventory"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_inventory
+  
+   as (
+    with source as (
+    select * from MERCURIOS_DATA.AWS_LAMBDA.inventory
+),
+
+renamed as (
+    select
+        article_id,
+        tenant_id,
+        warehouse_id,
+        quantity as stock_quantity,
+        updated_at,
+        
+        -- Add calculated fields for inventory status
+        case
+            when stock_quantity <= 0 then 'Out of Stock'
+            when stock_quantity < 5 then 'Low Stock'
+            when stock_quantity < 20 then 'Medium Stock'
+            else 'Well Stocked'
+        end as stock_status,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8' as dbt_updated_by,
+        'stg_inventory' as dbt_model
+    from source
+)
+
+select * from renamed
+  );
+[0m16:18:46.281384 [debug] [Thread-19 ]: On model.mercurios.stg_orders: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_orders"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_orders
+  
+   as (
+    with source as (
+    select * from MERCURIOS_DATA.AWS_LAMBDA.orders
+),
+
+renamed as (
+    select
+        order_id,
+        tenant_id,
+        customer_id,
+        order_date,
+        status,
+        total_amount,
+        shipping_address,
+        shipping_city,
+        shipping_postal_code,
+        shipping_country,
+        created_at,
+        updated_at,
+        
+        -- Add calculated fields
+        datediff('day', order_date, current_date()) as days_since_order,
+        
+        -- Add full shipping address
+        concat_ws(', ', 
+            shipping_address,
+            shipping_city,
+            shipping_postal_code,
+            shipping_country
+        ) as full_shipping_address,
+        
+        -- Add order status categorization
+        case
+            when status = 'completed' then 'Completed'
+            when status = 'shipped' then 'In Transit'
+            when status = 'processing' then 'Processing'
+            when status = 'pending' then 'Pending'
+            when status = 'cancelled' then 'Cancelled'
+            else 'Other'
+        end as order_status_category,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8' as dbt_updated_by,
+        'stg_orders' as dbt_model
+    from source
+)
+
+select * from renamed
+  );
+[0m16:18:46.281676 [debug] [Thread-17 ]: On model.mercurios.stg_customers: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_customers"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_customers
+  
+   as (
+    with source as (
+    select * from MERCURIOS_DATA.AWS_LAMBDA.customers
+),
+
+renamed as (
+    select
+        customer_id,
+        tenant_id,
+        first_name,
+        last_name,
+        email,
+        phone,
+        address,
+        city,
+        postal_code,
+        country,
+        created_at,
+        updated_at,
+        
+        -- Add calculated fields
+        concat(first_name, ' ', last_name) as full_name,
+        
+        -- Add full address
+        concat_ws(', ', 
+            address,
+            city,
+            postal_code,
+            country
+        ) as full_address,
+        
+        -- Calculate customer age (days since creation)
+        datediff('day', created_at, current_date()) as customer_age_days,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8' as dbt_updated_by,
+        'stg_customers' as dbt_model
+    from source
+)
+
+select * from renamed
+  );
+[0m16:18:46.281962 [debug] [Thread-16 ]: On model.mercurios.stg_articles: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_articles"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_articles
+  
+   as (
+    with source as (
+    select * from MERCURIOS_DATA.AWS_LAMBDA.articles
+),
+
+renamed as (
+    select
+        article_id,
+        tenant_id,
+        name as article_name,
+        description,
+        price as retail_price,
+        cost as wholesale_cost,
+        category,
+        supplier_id,
+        created_at,
+        updated_at,
+        
+        -- Add calculated fields
+        (retail_price - wholesale_cost) as gross_profit,
+        case 
+            when wholesale_cost = 0 then null
+            else (retail_price - wholesale_cost) / wholesale_cost 
+        end as margin_percent,
+        
+        -- Add price tier categorization
+        case
+            when retail_price < 10 then 'Budget'
+            when retail_price < 50 then 'Standard'
+            when retail_price < 200 then 'Premium'
+            else 'Luxury'
+        end as price_tier,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8' as dbt_updated_by,
+        'stg_articles' as dbt_model
+    from source
+)
+
+select * from renamed
+  );
+[0m16:18:46.282201 [debug] [Thread-18 ]: Opening a new connection, currently in state closed
+[0m16:18:46.282390 [debug] [Thread-19 ]: Opening a new connection, currently in state closed
+[0m16:18:46.282560 [debug] [Thread-17 ]: Opening a new connection, currently in state closed
+[0m16:18:46.282749 [debug] [Thread-16 ]: Opening a new connection, currently in state closed
+[0m16:18:49.924940 [debug] [Thread-17 ]: Snowflake adapter: Snowflake query id: 01baeab6-0204-2af5-0003-4bde000644ae
+[0m16:18:49.925793 [debug] [Thread-17 ]: Snowflake adapter: Snowflake error: 003001 (42501): SQL access control error:
+Insufficient privileges to operate on table 'CUSTOMERS'
+[0m16:18:49.926519 [debug] [Thread-17 ]: On model.mercurios.stg_customers: Close
+[0m16:18:50.021767 [debug] [Thread-17 ]: Database Error in model stg_customers (models/staging/stg_customers.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'CUSTOMERS'
+  compiled code at target/run/mercurios/models/staging/stg_customers.sql
+[0m16:18:50.023210 [debug] [Thread-17 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x129d67ed0>]}
+[0m16:18:50.023657 [error] [Thread-17 ]: 2 of 13 ERROR creating sql view model RAW_staging.stg_customers ................ [[31mERROR[0m in 3.79s]
+[0m16:18:50.024002 [debug] [Thread-17 ]: Finished running node model.mercurios.stg_customers
+[0m16:18:50.024236 [debug] [Thread-17 ]: Began running node model.mercurios.stg_sales
+[0m16:18:50.024483 [info ] [Thread-17 ]: 5 of 13 START sql view model RAW_staging.stg_sales ............................. [RUN]
+[0m16:18:50.024773 [debug] [Thread-17 ]: Re-using an available connection from the pool (formerly model.mercurios.stg_customers, now model.mercurios.stg_sales)
+[0m16:18:50.025079 [debug] [Thread-22 ]: Marking all children of 'model.mercurios.stg_customers' to be skipped because of status 'error'.  Reason: Database Error in model stg_customers (models/staging/stg_customers.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'CUSTOMERS'
+  compiled code at target/run/mercurios/models/staging/stg_customers.sql.
+[0m16:18:50.025298 [debug] [Thread-17 ]: Began compiling node model.mercurios.stg_sales
+[0m16:18:50.028065 [debug] [Thread-17 ]: Writing injected SQL for node "model.mercurios.stg_sales"
+[0m16:18:50.028728 [debug] [Thread-17 ]: Began executing node model.mercurios.stg_sales
+[0m16:18:50.030750 [debug] [Thread-17 ]: Writing runtime sql for node "model.mercurios.stg_sales"
+[0m16:18:50.031776 [debug] [Thread-17 ]: Using snowflake connection "model.mercurios.stg_sales"
+[0m16:18:50.032019 [debug] [Thread-17 ]: On model.mercurios.stg_sales: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_sales"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_sales
+  
+   as (
+    with source as (
+    select * from MERCURIOS_DATA.AWS_LAMBDA.sales
+),
+
+renamed as (
+    select
+        id as sale_id,
+        article_id,
+        tenant_id,
+        quantity as sold_quantity,
+        price as unit_price,
+        updated_at,
+        
+        -- Add calculated fields
+        (quantity * price) as total_sale_amount,
+        
+        -- Add date dimensions
+        date(updated_at) as sale_date,
+        extract(year from updated_at) as sale_year,
+        extract(month from updated_at) as sale_month,
+        extract(day from updated_at) as sale_day,
+        extract(dayofweek from updated_at) as sale_day_of_week,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8' as dbt_updated_by,
+        'stg_sales' as dbt_model
+    from source
+)
+
+select * from renamed
+  );
+[0m16:18:50.032242 [debug] [Thread-17 ]: Opening a new connection, currently in state closed
+[0m16:18:53.435246 [debug] [Thread-16 ]: Snowflake adapter: Snowflake query id: 01baeab6-0204-29f8-0003-4bde00054bae
+[0m16:18:53.435722 [debug] [Thread-16 ]: Snowflake adapter: Snowflake error: 003001 (42501): SQL access control error:
+Insufficient privileges to operate on table 'ARTICLES'
+[0m16:18:53.436141 [debug] [Thread-16 ]: On model.mercurios.stg_articles: Close
+[0m16:18:53.529335 [debug] [Thread-16 ]: Database Error in model stg_articles (models/staging/stg_articles.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'ARTICLES'
+  compiled code at target/run/mercurios/models/staging/stg_articles.sql
+[0m16:18:53.530127 [debug] [Thread-16 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11fc69c10>]}
+[0m16:18:53.530898 [error] [Thread-16 ]: 1 of 13 ERROR creating sql view model RAW_staging.stg_articles ................. [[31mERROR[0m in 7.30s]
+[0m16:18:53.531490 [debug] [Thread-16 ]: Finished running node model.mercurios.stg_articles
+[0m16:18:53.532002 [debug] [Thread-22 ]: Marking all children of 'model.mercurios.stg_articles' to be skipped because of status 'error'.  Reason: Database Error in model stg_articles (models/staging/stg_articles.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'ARTICLES'
+  compiled code at target/run/mercurios/models/staging/stg_articles.sql.
+[0m16:18:53.532674 [debug] [Thread-16 ]: Began running node model.mercurios.dim_products
+[0m16:18:53.533062 [info ] [Thread-16 ]: 6 of 13 SKIP relation RAW_marts_inventory.dim_products ......................... [[33mSKIP[0m]
+[0m16:18:53.533454 [debug] [Thread-16 ]: Finished running node model.mercurios.dim_products
+[0m16:18:56.800961 [debug] [Thread-18 ]: Snowflake adapter: Snowflake query id: 01baeab6-0204-2af5-0003-4bde000644b2
+[0m16:18:56.801635 [debug] [Thread-18 ]: Snowflake adapter: Snowflake error: 003001 (42501): SQL access control error:
+Insufficient privileges to operate on table 'INVENTORY'
+[0m16:18:56.802129 [debug] [Thread-18 ]: On model.mercurios.stg_inventory: Close
+[0m16:18:56.917408 [debug] [Thread-18 ]: Database Error in model stg_inventory (models/staging/stg_inventory.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'INVENTORY'
+  compiled code at target/run/mercurios/models/staging/stg_inventory.sql
+[0m16:18:56.918033 [debug] [Thread-18 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109ce4250>]}
+[0m16:18:56.918497 [error] [Thread-18 ]: 3 of 13 ERROR creating sql view model RAW_staging.stg_inventory ................ [[31mERROR[0m in 10.69s]
+[0m16:18:56.918909 [debug] [Thread-18 ]: Finished running node model.mercurios.stg_inventory
+[0m16:18:56.919252 [debug] [Thread-22 ]: Marking all children of 'model.mercurios.stg_inventory' to be skipped because of status 'error'.  Reason: Database Error in model stg_inventory (models/staging/stg_inventory.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'INVENTORY'
+  compiled code at target/run/mercurios/models/staging/stg_inventory.sql.
+[0m16:19:00.448333 [debug] [Thread-19 ]: Snowflake adapter: Snowflake query id: 01baeab7-0204-29f7-0003-4bde00050e2a
+[0m16:19:00.448876 [debug] [Thread-19 ]: Snowflake adapter: Snowflake error: 003001 (42501): SQL access control error:
+Insufficient privileges to operate on table 'ORDERS'
+[0m16:19:00.449313 [debug] [Thread-19 ]: On model.mercurios.stg_orders: Close
+[0m16:19:00.634473 [debug] [Thread-19 ]: Database Error in model stg_orders (models/staging/stg_orders.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'ORDERS'
+  compiled code at target/run/mercurios/models/staging/stg_orders.sql
+[0m16:19:00.635399 [debug] [Thread-19 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a639a50>]}
+[0m16:19:00.636268 [error] [Thread-19 ]: 4 of 13 ERROR creating sql view model RAW_staging.stg_orders ................... [[31mERROR[0m in 14.40s]
+[0m16:19:00.636859 [debug] [Thread-19 ]: Finished running node model.mercurios.stg_orders
+[0m16:19:00.637363 [debug] [Thread-22 ]: Marking all children of 'model.mercurios.stg_orders' to be skipped because of status 'error'.  Reason: Database Error in model stg_orders (models/staging/stg_orders.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'ORDERS'
+  compiled code at target/run/mercurios/models/staging/stg_orders.sql.
+[0m16:19:00.638059 [debug] [Thread-16 ]: Began running node model.mercurios.fct_customer_metrics
+[0m16:19:00.638473 [debug] [Thread-18 ]: Began running node model.mercurios.int_order_analysis
+[0m16:19:00.638884 [info ] [Thread-16 ]: 7 of 13 SKIP relation RAW_marts_customers.fct_customer_metrics ................. [[33mSKIP[0m]
+[0m16:19:00.639286 [info ] [Thread-18 ]: 8 of 13 SKIP relation RAW_intermediate.int_order_analysis ...................... [[33mSKIP[0m]
+[0m16:19:00.639688 [debug] [Thread-16 ]: Finished running node model.mercurios.fct_customer_metrics
+[0m16:19:00.640039 [debug] [Thread-18 ]: Finished running node model.mercurios.int_order_analysis
+[0m16:19:04.235267 [debug] [Thread-17 ]: Snowflake adapter: Snowflake query id: 01baeab7-0204-29f7-0003-4bde00050e2e
+[0m16:19:04.237261 [debug] [Thread-17 ]: Snowflake adapter: Snowflake error: 003001 (42501): SQL access control error:
+Insufficient privileges to operate on table 'SALES'
+[0m16:19:04.238126 [debug] [Thread-17 ]: On model.mercurios.stg_sales: Close
+[0m16:19:04.357940 [debug] [Thread-17 ]: Database Error in model stg_sales (models/staging/stg_sales.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'SALES'
+  compiled code at target/run/mercurios/models/staging/stg_sales.sql
+[0m16:19:04.358660 [debug] [Thread-17 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a019a6c4-53b7-4dc1-ab40-3cd2b66e19f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11fc94790>]}
+[0m16:19:04.359395 [error] [Thread-17 ]: 5 of 13 ERROR creating sql view model RAW_staging.stg_sales .................... [[31mERROR[0m in 14.33s]
+[0m16:19:04.359990 [debug] [Thread-17 ]: Finished running node model.mercurios.stg_sales
+[0m16:19:04.360496 [debug] [Thread-22 ]: Marking all children of 'model.mercurios.stg_sales' to be skipped because of status 'error'.  Reason: Database Error in model stg_sales (models/staging/stg_sales.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'SALES'
+  compiled code at target/run/mercurios/models/staging/stg_sales.sql.
+[0m16:19:04.361363 [debug] [Thread-19 ]: Began running node model.mercurios.int_inventory_with_sales
+[0m16:19:04.361794 [debug] [Thread-16 ]: Began running node model.mercurios.int_sales_analysis
+[0m16:19:04.362162 [info ] [Thread-19 ]: 9 of 13 SKIP relation RAW_intermediate.int_inventory_with_sales ................ [[33mSKIP[0m]
+[0m16:19:04.362521 [info ] [Thread-16 ]: 10 of 13 SKIP relation RAW_intermediate.int_sales_analysis ..................... [[33mSKIP[0m]
+[0m16:19:04.362888 [debug] [Thread-19 ]: Finished running node model.mercurios.int_inventory_with_sales
+[0m16:19:04.363200 [debug] [Thread-16 ]: Finished running node model.mercurios.int_sales_analysis
+[0m16:19:04.363777 [debug] [Thread-17 ]: Began running node model.mercurios.fct_inventory_metrics
+[0m16:19:04.364099 [debug] [Thread-18 ]: Began running node model.mercurios.fct_sales_metrics
+[0m16:19:04.364465 [info ] [Thread-17 ]: 11 of 13 SKIP relation RAW_marts_inventory.fct_inventory_metrics ............... [[33mSKIP[0m]
+[0m16:19:04.364848 [info ] [Thread-18 ]: 12 of 13 SKIP relation RAW_marts_sales.fct_sales_metrics ....................... [[33mSKIP[0m]
+[0m16:19:04.365684 [debug] [Thread-17 ]: Finished running node model.mercurios.fct_inventory_metrics
+[0m16:19:04.366085 [debug] [Thread-18 ]: Finished running node model.mercurios.fct_sales_metrics
+[0m16:19:04.366830 [debug] [Thread-16 ]: Began running node model.mercurios.fct_inventory_forecast
+[0m16:19:04.367260 [info ] [Thread-16 ]: 13 of 13 SKIP relation RAW_marts_inventory.fct_inventory_forecast .............. [[33mSKIP[0m]
+[0m16:19:04.367805 [debug] [Thread-16 ]: Finished running node model.mercurios.fct_inventory_forecast
+[0m16:19:04.369544 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:19:04.369865 [debug] [MainThread]: Connection 'model.mercurios.stg_articles' was properly closed.
+[0m16:19:04.370086 [debug] [MainThread]: Connection 'model.mercurios.stg_sales' was properly closed.
+[0m16:19:04.370341 [debug] [MainThread]: Connection 'model.mercurios.stg_inventory' was properly closed.
+[0m16:19:04.370640 [debug] [MainThread]: Connection 'model.mercurios.stg_orders' was properly closed.
+[0m16:19:04.371001 [info ] [MainThread]: 
+[0m16:19:04.371271 [info ] [MainThread]: Finished running 5 table models, 8 view models in 0 hours 1 minutes and 23.94 seconds (83.94s).
+[0m16:19:04.372235 [debug] [MainThread]: Command end result
+[0m16:19:04.392452 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/manifest.json
+[0m16:19:04.394008 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/semantic_manifest.json
+[0m16:19:04.397533 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/run_results.json
+[0m16:19:04.397779 [info ] [MainThread]: 
+[0m16:19:04.398007 [info ] [MainThread]: [31mCompleted with 5 errors, 0 partial successes, and 0 warnings:[0m
+[0m16:19:04.398206 [info ] [MainThread]: 
+[0m16:19:04.398426 [error] [MainThread]:   Database Error in model stg_customers (models/staging/stg_customers.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'CUSTOMERS'
+  compiled code at target/run/mercurios/models/staging/stg_customers.sql
+[0m16:19:04.398597 [info ] [MainThread]: 
+[0m16:19:04.398793 [error] [MainThread]:   Database Error in model stg_articles (models/staging/stg_articles.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'ARTICLES'
+  compiled code at target/run/mercurios/models/staging/stg_articles.sql
+[0m16:19:04.398956 [info ] [MainThread]: 
+[0m16:19:04.399144 [error] [MainThread]:   Database Error in model stg_inventory (models/staging/stg_inventory.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'INVENTORY'
+  compiled code at target/run/mercurios/models/staging/stg_inventory.sql
+[0m16:19:04.399309 [info ] [MainThread]: 
+[0m16:19:04.399494 [error] [MainThread]:   Database Error in model stg_orders (models/staging/stg_orders.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'ORDERS'
+  compiled code at target/run/mercurios/models/staging/stg_orders.sql
+[0m16:19:04.399652 [info ] [MainThread]: 
+[0m16:19:04.399848 [error] [MainThread]:   Database Error in model stg_sales (models/staging/stg_sales.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'SALES'
+  compiled code at target/run/mercurios/models/staging/stg_sales.sql
+[0m16:19:04.400016 [info ] [MainThread]: 
+[0m16:19:04.400186 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=5 SKIP=8 TOTAL=13
+[0m16:19:04.402452 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 85.52804, "process_in_blocks": "0", "process_kernel_time": 1.132173, "process_mem_max_rss": "205193216", "process_out_blocks": "0", "process_user_time": 4.544101}
+[0m16:19:04.402824 [debug] [MainThread]: Command `dbt run` failed at 16:19:04.402770 after 85.53 seconds
+[0m16:19:04.403112 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1043e1e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1043e1c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x129c705d0>]}
+[0m16:19:04.403360 [debug] [MainThread]: Flushing usage events
+[0m16:19:04.990198 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:20:24.675197 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x118fe5950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119862150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119862850>]}
+
+
+============================== 16:20:24.678585 | 268bbaba-a93a-4be3-aee9-ecf58e6b9848 ==============================
+[0m16:20:24.678585 [info ] [MainThread]: Running with dbt=1.9.2
+[0m16:20:24.678952 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt run', 'send_anonymous_usage_stats': 'True'}
+[0m16:20:25.174373 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x118a4e250>]}
+[0m16:20:25.212574 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x118136890>]}
+[0m16:20:25.213722 [info ] [MainThread]: Registered adapter: snowflake=1.9.1
+[0m16:20:25.293068 [debug] [MainThread]: checksum: 12b12750b70de726cfd89136b8e24afc3f3e77597a97bff40ab7e5f9b39d5e18, vars: {}, profile: , target: , version: 1.9.2
+[0m16:20:25.365396 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 2 files changed.
+[0m16:20:25.366404 [debug] [MainThread]: Partial parsing: updated file: mercurios://models/staging/src_prohandel.yml
+[0m16:20:25.366606 [debug] [MainThread]: Partial parsing: updated file: mercurios://models/staging/stg_sales.sql
+[0m16:20:25.810215 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1278c9090>]}
+[0m16:20:25.850244 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/manifest.json
+[0m16:20:25.852169 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/semantic_manifest.json
+[0m16:20:25.864294 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x127b99450>]}
+[0m16:20:25.864604 [info ] [MainThread]: Found 13 models, 14 data tests, 5 sources, 472 macros
+[0m16:20:25.864799 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1278d7d90>]}
+[0m16:20:25.866010 [info ] [MainThread]: 
+[0m16:20:25.866207 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:20:25.866358 [info ] [MainThread]: 
+[0m16:20:25.866610 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m16:20:25.869260 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m16:20:25.869561 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m16:20:25.875247 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m16:20:25.877367 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m16:20:25.905759 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m16:20:25.906152 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m16:20:25.906497 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m16:20:25.906778 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m16:20:25.907002 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m16:20:25.907224 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m16:20:25.907457 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:20:25.907656 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m16:20:25.907875 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m16:20:25.908056 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:20:25.908356 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:20:25.908520 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:20:30.342254 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 4.434 seconds
+[0m16:20:30.344641 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m16:20:30.779816 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m16:20:30.780170 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m16:20:30.780355 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:20:34.112687 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 8.205 seconds
+[0m16:20:34.114827 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m16:20:37.455653 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 11.547 seconds
+[0m16:20:37.459151 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m16:20:40.767581 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 14.860 seconds
+[0m16:20:40.769620 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m16:20:44.310106 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 13.530 seconds
+[0m16:20:44.312347 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m16:20:44.446872 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now list_MERCURIOS_DATA_RAW_marts_customers)
+[0m16:20:44.447683 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now list_MERCURIOS_DATA_RAW_staging)
+[0m16:20:44.449823 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now list_MERCURIOS_DATA_RAW_intermediate)
+[0m16:20:44.450390 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now list_MERCURIOS_DATA_RAW_marts_inventory)
+[0m16:20:44.461319 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_marts_customers"
+[0m16:20:44.464980 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_staging"
+[0m16:20:44.467037 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_intermediate"
+[0m16:20:44.468931 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_marts_inventory"
+[0m16:20:44.469217 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_customers: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_marts_customers"} */
+show objects in MERCURIOS_DATA.RAW_marts_customers limit 10000;
+[0m16:20:44.469476 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_staging: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_staging"} */
+show objects in MERCURIOS_DATA.RAW_staging limit 10000;
+[0m16:20:44.469716 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_intermediate: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_intermediate"} */
+show objects in MERCURIOS_DATA.RAW_intermediate limit 10000;
+[0m16:20:44.469956 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_inventory: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_marts_inventory"} */
+show objects in MERCURIOS_DATA.RAW_marts_inventory limit 10000;
+[0m16:20:44.470189 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:20:44.470392 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:20:44.470594 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:20:44.470796 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:20:48.262700 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 3.792 seconds
+[0m16:20:48.264105 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_customers: Close
+[0m16:20:48.351195 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_marts_customers, now list_MERCURIOS_DATA_RAW_marts_sales)
+[0m16:20:48.353126 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_marts_sales"
+[0m16:20:48.353361 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_sales: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_marts_sales"} */
+show objects in MERCURIOS_DATA.RAW_marts_sales limit 10000;
+[0m16:20:48.353567 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:20:52.016472 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 7.546 seconds
+[0m16:20:52.018798 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_inventory: Close
+[0m16:20:55.691979 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 11.221 seconds
+[0m16:20:55.693004 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_intermediate: Close
+[0m16:20:59.258483 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 14.788 seconds
+[0m16:20:59.259488 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_staging: Close
+[0m16:21:03.112967 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 14.759 seconds
+[0m16:21:03.114114 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_sales: Close
+[0m16:21:03.217572 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x127fd42d0>]}
+[0m16:21:03.219023 [debug] [Thread-11 ]: Began running node model.mercurios.stg_articles
+[0m16:21:03.219455 [info ] [Thread-11 ]: 1 of 13 START sql view model RAW_staging.stg_articles .......................... [RUN]
+[0m16:21:03.219721 [debug] [Thread-12 ]: Began running node model.mercurios.stg_customers
+[0m16:21:03.219963 [debug] [Thread-11 ]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_marts_sales, now model.mercurios.stg_articles)
+[0m16:21:03.220154 [debug] [Thread-13 ]: Began running node model.mercurios.stg_inventory
+[0m16:21:03.220359 [debug] [Thread-14 ]: Began running node model.mercurios.stg_orders
+[0m16:21:03.220646 [info ] [Thread-12 ]: 2 of 13 START sql view model RAW_staging.stg_customers ......................... [RUN]
+[0m16:21:03.221124 [debug] [Thread-11 ]: Began compiling node model.mercurios.stg_articles
+[0m16:21:03.221644 [info ] [Thread-13 ]: 3 of 13 START sql view model RAW_staging.stg_inventory ......................... [RUN]
+[0m16:21:03.222038 [info ] [Thread-14 ]: 4 of 13 START sql view model RAW_staging.stg_orders ............................ [RUN]
+[0m16:21:03.222297 [debug] [Thread-12 ]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_staging, now model.mercurios.stg_customers)
+[0m16:21:03.229618 [debug] [Thread-11 ]: Writing injected SQL for node "model.mercurios.stg_articles"
+[0m16:21:03.230012 [debug] [Thread-13 ]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_intermediate, now model.mercurios.stg_inventory)
+[0m16:21:03.230257 [debug] [Thread-14 ]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_marts_inventory, now model.mercurios.stg_orders)
+[0m16:21:03.230456 [debug] [Thread-12 ]: Began compiling node model.mercurios.stg_customers
+[0m16:21:03.230778 [debug] [Thread-13 ]: Began compiling node model.mercurios.stg_inventory
+[0m16:21:03.231136 [debug] [Thread-14 ]: Began compiling node model.mercurios.stg_orders
+[0m16:21:03.233569 [debug] [Thread-12 ]: Writing injected SQL for node "model.mercurios.stg_customers"
+[0m16:21:03.233925 [debug] [Thread-11 ]: Began executing node model.mercurios.stg_articles
+[0m16:21:03.235940 [debug] [Thread-13 ]: Writing injected SQL for node "model.mercurios.stg_inventory"
+[0m16:21:03.237557 [debug] [Thread-14 ]: Writing injected SQL for node "model.mercurios.stg_orders"
+[0m16:21:03.254407 [debug] [Thread-11 ]: Writing runtime sql for node "model.mercurios.stg_articles"
+[0m16:21:03.254848 [debug] [Thread-12 ]: Began executing node model.mercurios.stg_customers
+[0m16:21:03.255266 [debug] [Thread-14 ]: Began executing node model.mercurios.stg_orders
+[0m16:21:03.257391 [debug] [Thread-12 ]: Writing runtime sql for node "model.mercurios.stg_customers"
+[0m16:21:03.257662 [debug] [Thread-13 ]: Began executing node model.mercurios.stg_inventory
+[0m16:21:03.259358 [debug] [Thread-14 ]: Writing runtime sql for node "model.mercurios.stg_orders"
+[0m16:21:03.260204 [debug] [Thread-11 ]: Using snowflake connection "model.mercurios.stg_articles"
+[0m16:21:03.261895 [debug] [Thread-13 ]: Writing runtime sql for node "model.mercurios.stg_inventory"
+[0m16:21:03.262256 [debug] [Thread-11 ]: On model.mercurios.stg_articles: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_articles"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_articles
+  
+   as (
+    with source as (
+    select * from MERCURIOS_DATA.RAW.articles
+),
+
+renamed as (
+    select
+        article_id,
+        tenant_id,
+        name as article_name,
+        description,
+        price as retail_price,
+        cost as wholesale_cost,
+        category,
+        supplier_id,
+        created_at,
+        updated_at,
+        
+        -- Add calculated fields
+        (retail_price - wholesale_cost) as gross_profit,
+        case 
+            when wholesale_cost = 0 then null
+            else (retail_price - wholesale_cost) / wholesale_cost 
+        end as margin_percent,
+        
+        -- Add price tier categorization
+        case
+            when retail_price < 10 then 'Budget'
+            when retail_price < 50 then 'Standard'
+            when retail_price < 200 then 'Premium'
+            else 'Luxury'
+        end as price_tier,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        '268bbaba-a93a-4be3-aee9-ecf58e6b9848' as dbt_updated_by,
+        'stg_articles' as dbt_model
+    from source
+)
+
+select * from renamed
+  );
+[0m16:21:03.263058 [debug] [Thread-12 ]: Using snowflake connection "model.mercurios.stg_customers"
+[0m16:21:03.263398 [debug] [Thread-11 ]: Opening a new connection, currently in state closed
+[0m16:21:03.264210 [debug] [Thread-14 ]: Using snowflake connection "model.mercurios.stg_orders"
+[0m16:21:03.264492 [debug] [Thread-12 ]: On model.mercurios.stg_customers: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_customers"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_customers
+  
+   as (
+    with source as (
+    select * from MERCURIOS_DATA.RAW.customers
+),
+
+renamed as (
+    select
+        customer_id,
+        tenant_id,
+        first_name,
+        last_name,
+        email,
+        phone,
+        address,
+        city,
+        postal_code,
+        country,
+        created_at,
+        updated_at,
+        
+        -- Add calculated fields
+        concat(first_name, ' ', last_name) as full_name,
+        
+        -- Add full address
+        concat_ws(', ', 
+            address,
+            city,
+            postal_code,
+            country
+        ) as full_address,
+        
+        -- Calculate customer age (days since creation)
+        datediff('day', created_at, current_date()) as customer_age_days,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        '268bbaba-a93a-4be3-aee9-ecf58e6b9848' as dbt_updated_by,
+        'stg_customers' as dbt_model
+    from source
+)
+
+select * from renamed
+  );
+[0m16:21:03.265168 [debug] [Thread-13 ]: Using snowflake connection "model.mercurios.stg_inventory"
+[0m16:21:03.265430 [debug] [Thread-14 ]: On model.mercurios.stg_orders: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_orders"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_orders
+  
+   as (
+    with source as (
+    select * from MERCURIOS_DATA.RAW.orders
+),
+
+renamed as (
+    select
+        order_id,
+        tenant_id,
+        customer_id,
+        order_date,
+        status,
+        total_amount,
+        shipping_address,
+        shipping_city,
+        shipping_postal_code,
+        shipping_country,
+        created_at,
+        updated_at,
+        
+        -- Add calculated fields
+        datediff('day', order_date, current_date()) as days_since_order,
+        
+        -- Add full shipping address
+        concat_ws(', ', 
+            shipping_address,
+            shipping_city,
+            shipping_postal_code,
+            shipping_country
+        ) as full_shipping_address,
+        
+        -- Add order status categorization
+        case
+            when status = 'completed' then 'Completed'
+            when status = 'shipped' then 'In Transit'
+            when status = 'processing' then 'Processing'
+            when status = 'pending' then 'Pending'
+            when status = 'cancelled' then 'Cancelled'
+            else 'Other'
+        end as order_status_category,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        '268bbaba-a93a-4be3-aee9-ecf58e6b9848' as dbt_updated_by,
+        'stg_orders' as dbt_model
+    from source
+)
+
+select * from renamed
+  );
+[0m16:21:03.265674 [debug] [Thread-12 ]: Opening a new connection, currently in state closed
+[0m16:21:03.266130 [debug] [Thread-13 ]: On model.mercurios.stg_inventory: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_inventory"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_inventory
+  
+   as (
+    with source as (
+    select * from MERCURIOS_DATA.RAW.inventory
+),
+
+renamed as (
+    select
+        article_id,
+        tenant_id,
+        warehouse_id,
+        quantity as stock_quantity,
+        updated_at,
+        
+        -- Add calculated fields for inventory status
+        case
+            when stock_quantity <= 0 then 'Out of Stock'
+            when stock_quantity < 5 then 'Low Stock'
+            when stock_quantity < 20 then 'Medium Stock'
+            else 'Well Stocked'
+        end as stock_status,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        '268bbaba-a93a-4be3-aee9-ecf58e6b9848' as dbt_updated_by,
+        'stg_inventory' as dbt_model
+    from source
+)
+
+select * from renamed
+  );
+[0m16:21:03.266531 [debug] [Thread-14 ]: Opening a new connection, currently in state closed
+[0m16:21:03.267000 [debug] [Thread-13 ]: Opening a new connection, currently in state closed
+[0m16:21:07.259545 [debug] [Thread-12 ]: SQL status: SUCCESS 1 in 3.993 seconds
+[0m16:21:07.284630 [debug] [Thread-12 ]: On model.mercurios.stg_customers: Close
+[0m16:21:07.414078 [debug] [Thread-12 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x16e3c3250>]}
+[0m16:21:07.415306 [info ] [Thread-12 ]: 2 of 13 OK created sql view model RAW_staging.stg_customers .................... [[32mSUCCESS 1[0m in 4.19s]
+[0m16:21:07.416072 [debug] [Thread-12 ]: Finished running node model.mercurios.stg_customers
+[0m16:21:07.416590 [debug] [Thread-12 ]: Began running node model.mercurios.stg_sales
+[0m16:21:07.417288 [info ] [Thread-12 ]: 5 of 13 START sql view model RAW_staging.stg_sales ............................. [RUN]
+[0m16:21:07.417897 [debug] [Thread-12 ]: Re-using an available connection from the pool (formerly model.mercurios.stg_customers, now model.mercurios.stg_sales)
+[0m16:21:07.418357 [debug] [Thread-12 ]: Began compiling node model.mercurios.stg_sales
+[0m16:21:07.422847 [debug] [Thread-12 ]: Writing injected SQL for node "model.mercurios.stg_sales"
+[0m16:21:07.423963 [debug] [Thread-12 ]: Began executing node model.mercurios.stg_sales
+[0m16:21:07.427245 [debug] [Thread-12 ]: Writing runtime sql for node "model.mercurios.stg_sales"
+[0m16:21:07.429249 [debug] [Thread-12 ]: Using snowflake connection "model.mercurios.stg_sales"
+[0m16:21:07.429751 [debug] [Thread-12 ]: On model.mercurios.stg_sales: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_sales"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_sales
+  
+   as (
+    with source as (
+    select * from MERCURIOS_DATA.RAW.sales
+),
+
+renamed as (
+    select
+        sale_id,
+        article_id,
+        tenant_id,
+        quantity as sold_quantity,
+        price as unit_price,
+        updated_at,
+        
+        -- Add calculated fields
+        (quantity * price) as total_sale_amount,
+        
+        -- Add date dimensions
+        date(updated_at) as sale_date,
+        extract(year from updated_at) as sale_year,
+        extract(month from updated_at) as sale_month,
+        extract(day from updated_at) as sale_day,
+        extract(dayofweek from updated_at) as sale_day_of_week,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        '268bbaba-a93a-4be3-aee9-ecf58e6b9848' as dbt_updated_by,
+        'stg_sales' as dbt_model
+    from source
+)
+
+select * from renamed
+  );
+[0m16:21:07.430131 [debug] [Thread-12 ]: Opening a new connection, currently in state closed
+[0m16:21:10.484409 [debug] [Thread-14 ]: SQL status: SUCCESS 1 in 7.218 seconds
+[0m16:21:10.487065 [debug] [Thread-14 ]: On model.mercurios.stg_orders: Close
+[0m16:21:10.585924 [debug] [Thread-14 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x16e33f510>]}
+[0m16:21:10.586612 [info ] [Thread-14 ]: 4 of 13 OK created sql view model RAW_staging.stg_orders ....................... [[32mSUCCESS 1[0m in 7.36s]
+[0m16:21:10.586936 [debug] [Thread-14 ]: Finished running node model.mercurios.stg_orders
+[0m16:21:10.587353 [debug] [Thread-14 ]: Began running node model.mercurios.fct_customer_metrics
+[0m16:21:10.587589 [info ] [Thread-14 ]: 6 of 13 START sql table model RAW_marts_customers.fct_customer_metrics ......... [RUN]
+[0m16:21:10.587827 [debug] [Thread-14 ]: Re-using an available connection from the pool (formerly model.mercurios.stg_orders, now model.mercurios.fct_customer_metrics)
+[0m16:21:10.588014 [debug] [Thread-14 ]: Began compiling node model.mercurios.fct_customer_metrics
+[0m16:21:10.656037 [debug] [Thread-14 ]: Writing injected SQL for node "model.mercurios.fct_customer_metrics"
+[0m16:21:10.656843 [debug] [Thread-14 ]: Began executing node model.mercurios.fct_customer_metrics
+[0m16:21:10.668643 [debug] [Thread-14 ]: Writing runtime sql for node "model.mercurios.fct_customer_metrics"
+[0m16:21:10.671142 [debug] [Thread-14 ]: Using snowflake connection "model.mercurios.fct_customer_metrics"
+[0m16:21:10.671520 [debug] [Thread-14 ]: On model.mercurios.fct_customer_metrics: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.fct_customer_metrics"} */
+create or replace transient table MERCURIOS_DATA.RAW_marts_customers.fct_customer_metrics
+         as
+        (with customers as (
+    select * from MERCURIOS_DATA.RAW_staging.stg_customers
+),
+
+orders as (
+    select * from MERCURIOS_DATA.RAW_staging.stg_orders
+),
+
+-- Calculate order metrics per customer
+customer_orders as (
+    select
+        customer_id,
+        tenant_id,
+        count(*) as number_of_orders,
+        sum(total_amount) as total_spent,
+        avg(total_amount) as average_order_value,
+        min(order_date) as first_order_date,
+        max(order_date) as last_order_date,
+        datediff('day', min(order_date), max(order_date)) as customer_lifespan_days
+    from orders
+    group by 1, 2
+),
+
+-- Join customers with order metrics
+final as (
+    select
+        c.customer_id,
+        c.tenant_id,
+        c.first_name,
+        c.last_name,
+        c.full_name,
+        c.email,
+        c.phone,
+        c.full_address,
+        c.city,
+        c.country,
+        c.customer_age_days,
+        
+        -- Order metrics
+        coalesce(o.number_of_orders, 0) as number_of_orders,
+        coalesce(o.total_spent, 0) as total_spent,
+        o.average_order_value,
+        o.first_order_date,
+        o.last_order_date,
+        o.customer_lifespan_days,
+        
+        -- Calculate days since last order
+        datediff('day', o.last_order_date, current_date()) as days_since_last_order,
+        
+        -- Customer segmentation by recency
+        case
+            when o.last_order_date is null then 'Never Ordered'
+            when datediff('day', o.last_order_date, current_date()) <= 30 then 'Active'
+            when datediff('day', o.last_order_date, current_date()) <= 90 then 'Recent'
+            when datediff('day', o.last_order_date, current_date()) <= 180 then 'Lapsed'
+            else 'Inactive'
+        end as recency_segment,
+        
+        -- Customer segmentation by frequency
+        case
+            when o.number_of_orders is null then 'Never Ordered'
+            when o.number_of_orders = 1 then 'One-time Customer'
+            when o.number_of_orders < 5 then 'Occasional Customer'
+            when o.number_of_orders < 10 then 'Regular Customer'
+            else 'Loyal Customer'
+        end as frequency_segment,
+        
+        -- Customer segmentation by monetary value
+        case
+            when o.total_spent is null then 'No Spend'
+            when o.total_spent < 100 then 'Low Spend'
+            when o.total_spent < 500 then 'Medium Spend'
+            when o.total_spent < 1000 then 'High Spend'
+            else 'VIP'
+        end as monetary_segment,
+        
+        -- RFM combined segment
+        case
+            when o.last_order_date is null then 'Never Ordered'
+            when datediff('day', o.last_order_date, current_date()) <= 30 
+                and o.number_of_orders >= 5 
+                and o.total_spent >= 500 then 'Champions'
+            when datediff('day', o.last_order_date, current_date()) <= 30 
+                and o.number_of_orders >= 2 then 'Loyal Customers'
+            when datediff('day', o.last_order_date, current_date()) <= 90 
+                and o.number_of_orders = 1 then 'Promising'
+            when datediff('day', o.last_order_date, current_date()) > 90 
+                and o.number_of_orders >= 5 then 'At Risk'
+            when datediff('day', o.last_order_date, current_date()) > 180 
+                and o.number_of_orders >= 2 then 'Needs Attention'
+            when datediff('day', o.last_order_date, current_date()) <= 30 
+                and o.number_of_orders = 1 then 'New Customers'
+            else 'Others'
+        end as rfm_segment,
+        
+        -- Metadata
+        current_timestamp() as dbt_updated_at,
+        '268bbaba-a93a-4be3-aee9-ecf58e6b9848' as dbt_updated_by,
+        'fct_customer_metrics' as dbt_model
+    from customers c
+    left join customer_orders o on c.customer_id = o.customer_id and c.tenant_id = o.tenant_id
+)
+
+select * from final
+        );
+[0m16:21:10.671845 [debug] [Thread-14 ]: Opening a new connection, currently in state closed
+[0m16:21:14.117421 [debug] [Thread-11 ]: SQL status: SUCCESS 1 in 10.854 seconds
+[0m16:21:14.120452 [debug] [Thread-11 ]: On model.mercurios.stg_articles: Close
+[0m16:21:14.220148 [debug] [Thread-11 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x16e3bd410>]}
+[0m16:21:14.221302 [info ] [Thread-11 ]: 1 of 13 OK created sql view model RAW_staging.stg_articles ..................... [[32mSUCCESS 1[0m in 11.00s]
+[0m16:21:14.222024 [debug] [Thread-11 ]: Finished running node model.mercurios.stg_articles
+[0m16:21:14.222559 [debug] [Thread-11 ]: Began running node model.mercurios.int_order_analysis
+[0m16:21:14.223277 [info ] [Thread-11 ]: 7 of 13 START sql view model RAW_intermediate.int_order_analysis ............... [RUN]
+[0m16:21:14.224036 [debug] [Thread-11 ]: Re-using an available connection from the pool (formerly model.mercurios.stg_articles, now model.mercurios.int_order_analysis)
+[0m16:21:14.224489 [debug] [Thread-11 ]: Began compiling node model.mercurios.int_order_analysis
+[0m16:21:14.229686 [debug] [Thread-11 ]: Writing injected SQL for node "model.mercurios.int_order_analysis"
+[0m16:21:14.231190 [debug] [Thread-11 ]: Began executing node model.mercurios.int_order_analysis
+[0m16:21:14.234767 [debug] [Thread-11 ]: Writing runtime sql for node "model.mercurios.int_order_analysis"
+[0m16:21:14.236912 [debug] [Thread-11 ]: Using snowflake connection "model.mercurios.int_order_analysis"
+[0m16:21:14.237376 [debug] [Thread-11 ]: On model.mercurios.int_order_analysis: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.int_order_analysis"} */
+create or replace   view MERCURIOS_DATA.RAW_intermediate.int_order_analysis
+  
+   as (
+    with orders as (
+    select * from MERCURIOS_DATA.RAW_staging.stg_orders
+),
+
+customers as (
+    select * from MERCURIOS_DATA.RAW_staging.stg_customers
+),
+
+-- Join orders with customer information
+final as (
+    select
+        o.order_id,
+        o.tenant_id,
+        o.customer_id,
+        o.order_date,
+        o.status,
+        o.total_amount,
+        o.full_shipping_address,
+        o.order_status_category,
+        o.days_since_order,
+        
+        -- Customer information
+        c.full_name as customer_name,
+        c.email as customer_email,
+        c.phone as customer_phone,
+        c.full_address as customer_address,
+        c.customer_age_days,
+        
+        -- Order metrics
+        case
+            when o.days_since_order <= 30 then 'Recent'
+            when o.days_since_order <= 90 then 'Medium'
+            else 'Old'
+        end as order_age_category,
+        
+        -- Order value categorization
+        case
+            when o.total_amount < 50 then 'Low Value'
+            when o.total_amount < 200 then 'Medium Value'
+            when o.total_amount < 500 then 'High Value'
+            else 'Very High Value'
+        end as order_value_category,
+        
+        -- Metadata
+        current_timestamp() as dbt_updated_at,
+        '268bbaba-a93a-4be3-aee9-ecf58e6b9848' as dbt_updated_by,
+        'int_order_analysis' as dbt_model
+    from orders o
+    left join customers c on o.customer_id = c.customer_id and o.tenant_id = c.tenant_id
+)
+
+select * from final
+  );
+[0m16:21:14.237782 [debug] [Thread-11 ]: Opening a new connection, currently in state closed
+[0m16:21:19.032832 [debug] [Thread-13 ]: Snowflake adapter: Snowflake query id: 01baeab9-0204-2b0e-0003-4bde000613be
+[0m16:21:19.033274 [debug] [Thread-13 ]: Snowflake adapter: Snowflake error: 002003 (42S02): SQL compilation error:
+Object 'MERCURIOS_DATA.RAW.INVENTORY' does not exist or not authorized.
+[0m16:21:19.034238 [debug] [Thread-13 ]: On model.mercurios.stg_inventory: Close
+[0m16:21:19.136496 [debug] [Thread-13 ]: Database Error in model stg_inventory (models/staging/stg_inventory.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'MERCURIOS_DATA.RAW.INVENTORY' does not exist or not authorized.
+  compiled code at target/run/mercurios/models/staging/stg_inventory.sql
+[0m16:21:19.137053 [debug] [Thread-13 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1278c9f90>]}
+[0m16:21:19.137554 [error] [Thread-13 ]: 3 of 13 ERROR creating sql view model RAW_staging.stg_inventory ................ [[31mERROR[0m in 15.91s]
+[0m16:21:19.138087 [debug] [Thread-13 ]: Finished running node model.mercurios.stg_inventory
+[0m16:21:19.138321 [debug] [Thread-13 ]: Began running node model.mercurios.dim_products
+[0m16:21:19.138557 [info ] [Thread-13 ]: 8 of 13 START sql table model RAW_marts_inventory.dim_products ................. [RUN]
+[0m16:21:19.138926 [debug] [Thread-17 ]: Marking all children of 'model.mercurios.stg_inventory' to be skipped because of status 'error'.  Reason: Database Error in model stg_inventory (models/staging/stg_inventory.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'MERCURIOS_DATA.RAW.INVENTORY' does not exist or not authorized.
+  compiled code at target/run/mercurios/models/staging/stg_inventory.sql.
+[0m16:21:19.139270 [debug] [Thread-13 ]: Re-using an available connection from the pool (formerly model.mercurios.stg_inventory, now model.mercurios.dim_products)
+[0m16:21:19.140176 [debug] [Thread-13 ]: Began compiling node model.mercurios.dim_products
+[0m16:21:19.145031 [debug] [Thread-13 ]: Writing injected SQL for node "model.mercurios.dim_products"
+[0m16:21:19.146483 [debug] [Thread-13 ]: Began executing node model.mercurios.dim_products
+[0m16:21:19.150156 [debug] [Thread-13 ]: Writing runtime sql for node "model.mercurios.dim_products"
+[0m16:21:19.152475 [debug] [Thread-13 ]: Using snowflake connection "model.mercurios.dim_products"
+[0m16:21:19.153002 [debug] [Thread-13 ]: On model.mercurios.dim_products: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.dim_products"} */
+create or replace transient table MERCURIOS_DATA.RAW_marts_inventory.dim_products
+         as
+        (with articles as (
+    select * from MERCURIOS_DATA.RAW_staging.stg_articles
+),
+
+-- Create a comprehensive dimension table for products
+final as (
+    select
+        article_id,
+        tenant_id,
+        article_name,
+        description,
+        category,
+        supplier_id,
+        retail_price,
+        wholesale_cost,
+        gross_profit,
+        margin_percent,
+        price_tier,
+        created_at,
+        updated_at,
+        
+        -- Add product age
+        datediff('day', created_at, current_date()) as product_age_days,
+        
+        -- Add product status based on age
+        case
+            when datediff('day', created_at, current_date()) <= 30 then 'New'
+            when datediff('day', created_at, current_date()) <= 180 then 'Recent'
+            else 'Established'
+        end as product_age_category,
+        
+        -- Metadata
+        current_timestamp() as dbt_updated_at,
+        '268bbaba-a93a-4be3-aee9-ecf58e6b9848' as dbt_updated_by,
+        'dim_products' as dbt_model
+    from articles
+)
+
+select * from final
+        );
+[0m16:21:19.153393 [debug] [Thread-13 ]: Opening a new connection, currently in state closed
+[0m16:21:45.985514 [debug] [Thread-12 ]: Snowflake adapter: Snowflake query id: 01baeab9-0204-28bf-0003-4bde0004ff22
+[0m16:21:45.986962 [debug] [Thread-12 ]: Snowflake adapter: Snowflake error: 002003 (42S02): SQL compilation error:
+Object 'MERCURIOS_DATA.RAW.SALES' does not exist or not authorized.
+[0m16:21:45.987395 [debug] [Thread-12 ]: On model.mercurios.stg_sales: Close
+[0m16:21:46.091983 [debug] [Thread-12 ]: Database Error in model stg_sales (models/staging/stg_sales.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'MERCURIOS_DATA.RAW.SALES' does not exist or not authorized.
+  compiled code at target/run/mercurios/models/staging/stg_sales.sql
+[0m16:21:46.092912 [debug] [Thread-12 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1278d6150>]}
+[0m16:21:46.093641 [error] [Thread-12 ]: 5 of 13 ERROR creating sql view model RAW_staging.stg_sales .................... [[31mERROR[0m in 38.67s]
+[0m16:21:46.094151 [debug] [Thread-12 ]: Finished running node model.mercurios.stg_sales
+[0m16:21:46.094685 [debug] [Thread-17 ]: Marking all children of 'model.mercurios.stg_sales' to be skipped because of status 'error'.  Reason: Database Error in model stg_sales (models/staging/stg_sales.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'MERCURIOS_DATA.RAW.SALES' does not exist or not authorized.
+  compiled code at target/run/mercurios/models/staging/stg_sales.sql.
+[0m16:21:46.095388 [debug] [Thread-12 ]: Began running node model.mercurios.int_inventory_with_sales
+[0m16:21:46.095735 [info ] [Thread-12 ]: 9 of 13 SKIP relation RAW_intermediate.int_inventory_with_sales ................ [[33mSKIP[0m]
+[0m16:21:46.096102 [debug] [Thread-12 ]: Finished running node model.mercurios.int_inventory_with_sales
+[0m16:21:46.096404 [debug] [Thread-12 ]: Began running node model.mercurios.int_sales_analysis
+[0m16:21:46.096777 [info ] [Thread-12 ]: 10 of 13 SKIP relation RAW_intermediate.int_sales_analysis ..................... [[33mSKIP[0m]
+[0m16:21:46.097162 [debug] [Thread-12 ]: Finished running node model.mercurios.int_sales_analysis
+[0m16:21:46.097607 [debug] [Thread-12 ]: Began running node model.mercurios.fct_inventory_metrics
+[0m16:21:46.097897 [info ] [Thread-12 ]: 11 of 13 SKIP relation RAW_marts_inventory.fct_inventory_metrics ............... [[33mSKIP[0m]
+[0m16:21:46.098191 [debug] [Thread-12 ]: Finished running node model.mercurios.fct_inventory_metrics
+[0m16:21:46.098462 [debug] [Thread-12 ]: Began running node model.mercurios.fct_sales_metrics
+[0m16:21:46.098763 [info ] [Thread-12 ]: 12 of 13 SKIP relation RAW_marts_sales.fct_sales_metrics ....................... [[33mSKIP[0m]
+[0m16:21:46.099079 [debug] [Thread-12 ]: Finished running node model.mercurios.fct_sales_metrics
+[0m16:21:46.099869 [debug] [Thread-12 ]: Began running node model.mercurios.fct_inventory_forecast
+[0m16:21:46.100196 [info ] [Thread-12 ]: 13 of 13 SKIP relation RAW_marts_inventory.fct_inventory_forecast .............. [[33mSKIP[0m]
+[0m16:21:46.100515 [debug] [Thread-12 ]: Finished running node model.mercurios.fct_inventory_forecast
+[0m16:21:50.269303 [debug] [Thread-14 ]: SQL status: SUCCESS 1 in 39.597 seconds
+[0m16:21:50.273006 [debug] [Thread-14 ]: On model.mercurios.fct_customer_metrics: Close
+[0m16:21:50.471827 [debug] [Thread-14 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11e21eb50>]}
+[0m16:21:50.472378 [info ] [Thread-14 ]: 6 of 13 OK created sql table model RAW_marts_customers.fct_customer_metrics .... [[32mSUCCESS 1[0m in 39.88s]
+[0m16:21:50.472749 [debug] [Thread-14 ]: Finished running node model.mercurios.fct_customer_metrics
+[0m16:21:53.620080 [debug] [Thread-11 ]: SQL status: SUCCESS 1 in 39.382 seconds
+[0m16:21:53.624636 [debug] [Thread-11 ]: On model.mercurios.int_order_analysis: Close
+[0m16:21:53.763553 [debug] [Thread-11 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x16e3bda10>]}
+[0m16:21:53.764077 [info ] [Thread-11 ]: 7 of 13 OK created sql view model RAW_intermediate.int_order_analysis .......... [[32mSUCCESS 1[0m in 39.54s]
+[0m16:21:53.764410 [debug] [Thread-11 ]: Finished running node model.mercurios.int_order_analysis
+[0m16:21:57.619977 [debug] [Thread-13 ]: SQL status: SUCCESS 1 in 38.467 seconds
+[0m16:21:57.621671 [debug] [Thread-13 ]: On model.mercurios.dim_products: Close
+[0m16:21:57.713624 [debug] [Thread-13 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '268bbaba-a93a-4be3-aee9-ecf58e6b9848', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12713ab10>]}
+[0m16:21:57.714235 [info ] [Thread-13 ]: 8 of 13 OK created sql table model RAW_marts_inventory.dim_products ............ [[32mSUCCESS 1[0m in 38.57s]
+[0m16:21:57.714610 [debug] [Thread-13 ]: Finished running node model.mercurios.dim_products
+[0m16:21:57.715597 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:21:57.715806 [debug] [MainThread]: Connection 'model.mercurios.int_order_analysis' was properly closed.
+[0m16:21:57.715977 [debug] [MainThread]: Connection 'model.mercurios.stg_sales' was properly closed.
+[0m16:21:57.716137 [debug] [MainThread]: Connection 'model.mercurios.dim_products' was properly closed.
+[0m16:21:57.716299 [debug] [MainThread]: Connection 'model.mercurios.fct_customer_metrics' was properly closed.
+[0m16:21:57.716578 [info ] [MainThread]: 
+[0m16:21:57.716825 [info ] [MainThread]: Finished running 5 table models, 8 view models in 0 hours 1 minutes and 31.85 seconds (91.85s).
+[0m16:21:57.717797 [debug] [MainThread]: Command end result
+[0m16:21:57.737197 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/manifest.json
+[0m16:21:57.739329 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/semantic_manifest.json
+[0m16:21:57.742577 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/run_results.json
+[0m16:21:57.742769 [info ] [MainThread]: 
+[0m16:21:57.742990 [info ] [MainThread]: [31mCompleted with 2 errors, 0 partial successes, and 0 warnings:[0m
+[0m16:21:57.743153 [info ] [MainThread]: 
+[0m16:21:57.743355 [error] [MainThread]:   Database Error in model stg_inventory (models/staging/stg_inventory.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'MERCURIOS_DATA.RAW.INVENTORY' does not exist or not authorized.
+  compiled code at target/run/mercurios/models/staging/stg_inventory.sql
+[0m16:21:57.743512 [info ] [MainThread]: 
+[0m16:21:57.743685 [error] [MainThread]:   Database Error in model stg_sales (models/staging/stg_sales.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'MERCURIOS_DATA.RAW.SALES' does not exist or not authorized.
+  compiled code at target/run/mercurios/models/staging/stg_sales.sql
+[0m16:21:57.743846 [info ] [MainThread]: 
+[0m16:21:57.744020 [info ] [MainThread]: Done. PASS=6 WARN=0 ERROR=2 SKIP=5 TOTAL=13
+[0m16:21:57.746446 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 93.11308, "process_in_blocks": "0", "process_kernel_time": 0.458712, "process_mem_max_rss": "203948032", "process_out_blocks": "0", "process_user_time": 4.770725}
+[0m16:21:57.746699 [debug] [MainThread]: Command `dbt run` failed at 16:21:57.746658 after 93.11 seconds
+[0m16:21:57.746961 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x118fe7910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119887c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107c2dc90>]}
+[0m16:21:57.747168 [debug] [MainThread]: Flushing usage events
+[0m16:21:58.374541 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:27:10.929925 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1094ebc90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10956e010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10956e710>]}
+
+
+============================== 10:27:10.935957 | b1e47044-e608-4bc9-85bd-9d85edb5d40b ==============================
+[0m10:27:10.935957 [info ] [MainThread]: Running with dbt=1.9.2
+[0m10:27:10.936514 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt', 'version_check': 'True', 'debug': 'False', 'log_path': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select stg_ga4_product_performance stg_ga4_user_acquisition int_product_performance_combined int_customer_behavior_combined fct_product_insights fct_customer_insights fct_inventory_forecast_enhanced', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m10:27:12.048018 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b1e47044-e608-4bc9-85bd-9d85edb5d40b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ffcffd0>]}
+[0m10:27:12.082688 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b1e47044-e608-4bc9-85bd-9d85edb5d40b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108fb1990>]}
+[0m10:27:12.083523 [info ] [MainThread]: Registered adapter: snowflake=1.9.1
+[0m10:27:12.190290 [debug] [MainThread]: checksum: 12b12750b70de726cfd89136b8e24afc3f3e77597a97bff40ab7e5f9b39d5e18, vars: {}, profile: , target: , version: 1.9.2
+[0m10:27:12.280417 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 9 files added, 0 files changed.
+[0m10:27:12.281045 [debug] [MainThread]: Partial parsing: added file: mercurios://models/marts/ga4_integration.yml
+[0m10:27:12.281275 [debug] [MainThread]: Partial parsing: added file: mercurios://models/staging/stg_ga4_product_performance.sql
+[0m10:27:12.281477 [debug] [MainThread]: Partial parsing: added file: mercurios://models/marts/fct_customer_insights.sql
+[0m10:27:12.281638 [debug] [MainThread]: Partial parsing: added file: mercurios://models/staging/stg_ga4_user_acquisition.sql
+[0m10:27:12.281799 [debug] [MainThread]: Partial parsing: added file: mercurios://models/intermediate/int_product_performance_combined.sql
+[0m10:27:12.282070 [debug] [MainThread]: Partial parsing: added file: mercurios://models/staging/src_google_analytics.yml
+[0m10:27:12.282229 [debug] [MainThread]: Partial parsing: added file: mercurios://models/intermediate/int_customer_behavior_combined.sql
+[0m10:27:12.282382 [debug] [MainThread]: Partial parsing: added file: mercurios://models/marts/fct_inventory_forecast_enhanced.sql
+[0m10:27:12.282562 [debug] [MainThread]: Partial parsing: added file: mercurios://models/marts/fct_product_insights.sql
+[0m10:27:12.618136 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b1e47044-e608-4bc9-85bd-9d85edb5d40b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a670cd0>]}
+[0m10:27:12.664903 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/manifest.json
+[0m10:27:12.667477 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/semantic_manifest.json
+[0m10:27:12.682768 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b1e47044-e608-4bc9-85bd-9d85edb5d40b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a903e90>]}
+[0m10:27:12.683112 [info ] [MainThread]: Found 20 models, 14 data tests, 16 sources, 472 macros
+[0m10:27:12.683301 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b1e47044-e608-4bc9-85bd-9d85edb5d40b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107da27d0>]}
+[0m10:27:12.684808 [info ] [MainThread]: 
+[0m10:27:12.684991 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m10:27:12.685136 [info ] [MainThread]: 
+[0m10:27:12.685380 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m10:27:12.687769 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m10:27:12.688183 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m10:27:12.695247 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m10:27:12.728576 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m10:27:12.728879 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m10:27:12.729056 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m10:27:12.729260 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m10:27:12.729421 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m10:27:12.729581 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:27:12.729733 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m10:27:12.729879 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:27:12.730080 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:27:19.492392 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 6.763 seconds
+[0m10:27:19.494306 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m10:27:23.833348 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 11.103 seconds
+[0m10:27:23.835496 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m10:27:27.415131 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 14.686 seconds
+[0m10:27:27.416779 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m10:27:27.516371 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now create_MERCURIOS_DATA_RAW_marts)
+[0m10:27:27.517856 [debug] [ThreadPool]: Creating schema "database: "MERCURIOS_DATA"
+schema: "RAW_marts"
+"
+[0m10:27:27.521682 [debug] [ThreadPool]: Using snowflake connection "create_MERCURIOS_DATA_RAW_marts"
+[0m10:27:27.521945 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_marts: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "create_MERCURIOS_DATA_RAW_marts"} */
+create schema if not exists MERCURIOS_DATA.RAW_marts
+[0m10:27:27.522143 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m10:27:30.984057 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 3.462 seconds
+[0m10:27:30.985134 [debug] [ThreadPool]: On create_MERCURIOS_DATA_RAW_marts: Close
+[0m10:27:31.195623 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now list_MERCURIOS_DATA_RAW_marts)
+[0m10:27:31.196108 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_MERCURIOS_DATA_RAW_marts, now list_MERCURIOS_DATA_RAW_staging)
+[0m10:27:31.204656 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA, now list_MERCURIOS_DATA_RAW_marts_inventory)
+[0m10:27:31.205369 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_marts"
+[0m10:27:31.205875 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA_RAW_intermediate'
+[0m10:27:31.207849 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_staging"
+[0m10:27:31.209664 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_marts_inventory"
+[0m10:27:31.209984 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_marts"} */
+show objects in MERCURIOS_DATA.RAW_marts limit 10000;
+[0m10:27:31.212631 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_intermediate"
+[0m10:27:31.212942 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_staging: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_staging"} */
+show objects in MERCURIOS_DATA.RAW_staging limit 10000;
+[0m10:27:31.213195 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_inventory: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_marts_inventory"} */
+show objects in MERCURIOS_DATA.RAW_marts_inventory limit 10000;
+[0m10:27:31.213441 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m10:27:31.213687 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_intermediate: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_intermediate"} */
+show objects in MERCURIOS_DATA.RAW_intermediate limit 10000;
+[0m10:27:31.213920 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m10:27:31.214162 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m10:27:31.214532 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:27:34.403068 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 3.189 seconds
+[0m10:27:34.405695 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_inventory: Close
+[0m10:27:34.510527 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_marts_inventory, now list_MERCURIOS_DATA_RAW_marts_customers)
+[0m10:27:34.512619 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_marts_customers"
+[0m10:27:34.512864 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_customers: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_marts_customers"} */
+show objects in MERCURIOS_DATA.RAW_marts_customers limit 10000;
+[0m10:27:34.513058 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m10:27:42.969399 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 11.755 seconds
+[0m10:27:42.971613 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_intermediate: Close
+[0m10:27:43.066665 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_intermediate, now list_MERCURIOS_DATA_RAW_marts_sales)
+[0m10:27:43.069319 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA_RAW_marts_sales"
+[0m10:27:43.069696 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_sales: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA_RAW_marts_sales"} */
+show objects in MERCURIOS_DATA.RAW_marts_sales limit 10000;
+[0m10:27:43.069949 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m10:27:46.637546 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 15.424 seconds
+[0m10:27:46.639050 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts: Close
+[0m10:27:51.701479 [debug] [ThreadPool]: SQL status: SUCCESS 3 in 20.488 seconds
+[0m10:27:51.705015 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_staging: Close
+[0m10:27:55.178630 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 20.666 seconds
+[0m10:27:55.180121 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_customers: Close
+[0m10:28:05.104850 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 22.035 seconds
+[0m10:28:05.105943 [debug] [ThreadPool]: On list_MERCURIOS_DATA_RAW_marts_sales: Close
+[0m10:28:05.223143 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b1e47044-e608-4bc9-85bd-9d85edb5d40b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a5d06d0>]}
+[0m10:28:05.224323 [debug] [Thread-11 ]: Began running node model.mercurios.stg_ga4_product_performance
+[0m10:28:05.224543 [debug] [Thread-12 ]: Began running node model.mercurios.stg_ga4_user_acquisition
+[0m10:28:05.224927 [info ] [Thread-11 ]: 1 of 7 START sql view model RAW_staging.stg_ga4_product_performance ............ [RUN]
+[0m10:28:05.225275 [info ] [Thread-12 ]: 2 of 7 START sql view model RAW_staging.stg_ga4_user_acquisition ............... [RUN]
+[0m10:28:05.225691 [debug] [Thread-11 ]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_marts, now model.mercurios.stg_ga4_product_performance)
+[0m10:28:05.225942 [debug] [Thread-12 ]: Re-using an available connection from the pool (formerly list_MERCURIOS_DATA_RAW_staging, now model.mercurios.stg_ga4_user_acquisition)
+[0m10:28:05.226171 [debug] [Thread-11 ]: Began compiling node model.mercurios.stg_ga4_product_performance
+[0m10:28:05.226415 [debug] [Thread-12 ]: Began compiling node model.mercurios.stg_ga4_user_acquisition
+[0m10:28:05.231544 [debug] [Thread-11 ]: Writing injected SQL for node "model.mercurios.stg_ga4_product_performance"
+[0m10:28:05.234059 [debug] [Thread-12 ]: Writing injected SQL for node "model.mercurios.stg_ga4_user_acquisition"
+[0m10:28:05.234964 [debug] [Thread-12 ]: Began executing node model.mercurios.stg_ga4_user_acquisition
+[0m10:28:05.235375 [debug] [Thread-11 ]: Began executing node model.mercurios.stg_ga4_product_performance
+[0m10:28:05.251532 [debug] [Thread-12 ]: Writing runtime sql for node "model.mercurios.stg_ga4_user_acquisition"
+[0m10:28:05.253334 [debug] [Thread-11 ]: Writing runtime sql for node "model.mercurios.stg_ga4_product_performance"
+[0m10:28:05.255711 [debug] [Thread-11 ]: Using snowflake connection "model.mercurios.stg_ga4_product_performance"
+[0m10:28:05.257864 [debug] [Thread-12 ]: Using snowflake connection "model.mercurios.stg_ga4_user_acquisition"
+[0m10:28:05.258248 [debug] [Thread-11 ]: On model.mercurios.stg_ga4_product_performance: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_ga4_product_performance"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_ga4_product_performance
+  
+   as (
+    with ecommerce_item_id as (
+    select 
+        date_date,
+        property_id,
+        item_id,
+        item_name,
+        item_brand,
+        item_category,
+        item_category2,
+        item_category3,
+        item_category4,
+        item_category5,
+        price,
+        quantity,
+        item_revenue,
+        purchase_revenue,
+        purchase_revenue_in_usd,
+        refund_value,
+        refund_value_in_usd,
+        shipping_value,
+        shipping_value_in_usd,
+        tax_value,
+        tax_value_in_usd,
+        unique_items,
+        transactions
+    from MERCURIOS_DATA.GOOGLE_ANALYTICS_4.ECOMMERCE_PURCHASES_ITEM_ID_REPORT
+),
+
+ecommerce_item_name as (
+    select 
+        date_date,
+        property_id,
+        item_name,
+        sum(quantity) as total_quantity,
+        sum(item_revenue) as total_revenue,
+        sum(transactions) as total_transactions,
+        count(distinct date_date) as days_with_sales
+    from MERCURIOS_DATA.GOOGLE_ANALYTICS_4.ECOMMERCE_PURCHASES_ITEM_NAME_REPORT
+    group by 1, 2, 3
+),
+
+page_views as (
+    select 
+        date_date,
+        property_id,
+        page_path,
+        page_title,
+        screen_class,
+        screen_name,
+        entrances,
+        engaged_sessions,
+        engagement_rate,
+        engagement_time_msec,
+        page_views,
+        screen_views,
+        active_users
+    from MERCURIOS_DATA.GOOGLE_ANALYTICS_4.PAGES_PATH_REPORT
+),
+
+combined as (
+    select 
+        e.date_date,
+        e.property_id,
+        e.item_id,
+        e.item_name,
+        e.item_brand,
+        e.item_category,
+        e.price,
+        e.quantity,
+        e.item_revenue,
+        e.transactions,
+        n.total_quantity,
+        n.total_revenue,
+        n.total_transactions,
+        n.days_with_sales,
+        
+        -- Join with page views (assuming product pages follow a pattern like /product/[item_id])
+        -- This is an example and might need adjustment based on your actual URL structure
+        p.page_views,
+        p.active_users,
+        p.engagement_rate,
+        
+        -- Calculate metrics
+        case 
+            when n.days_with_sales > 0 then n.total_quantity / n.days_with_sales 
+            else 0 
+        end as daily_sales_rate,
+        
+        case 
+            when p.page_views > 0 then (n.total_transactions * 100.0) / p.page_views 
+            else 0 
+        end as conversion_rate,
+        
+        -- Add product performance categorization
+        case
+            when n.total_revenue > 1000 then 'High Value'
+            when n.total_revenue > 500 then 'Medium Value'
+            when n.total_revenue > 100 then 'Low Value'
+            else 'Very Low Value'
+        end as revenue_category,
+        
+        case
+            when n.total_quantity > 50 then 'High Volume'
+            when n.total_quantity > 20 then 'Medium Volume'
+            when n.total_quantity > 5 then 'Low Volume'
+            else 'Very Low Volume'
+        end as volume_category,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        'b1e47044-e608-4bc9-85bd-9d85edb5d40b' as dbt_updated_by,
+        'stg_ga4_product_performance' as dbt_model
+    from ecommerce_item_id e
+    left join ecommerce_item_name n
+        on e.date_date = n.date_date
+        and e.property_id = n.property_id
+        and e.item_name = n.item_name
+    left join page_views p
+        on e.date_date = p.date_date
+        and e.property_id = p.property_id
+        and p.page_path like '%/product/' || e.item_id || '%'
+)
+
+select * from combined
+  );
+[0m10:28:05.258841 [debug] [Thread-12 ]: On model.mercurios.stg_ga4_user_acquisition: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "node_id": "model.mercurios.stg_ga4_user_acquisition"} */
+create or replace   view MERCURIOS_DATA.RAW_staging.stg_ga4_user_acquisition
+  
+   as (
+    with user_source_medium as (
+    select 
+        date_date,
+        property_id,
+        first_user_source,
+        first_user_medium,
+        first_user_campaign,
+        first_user_google_ads_ad_network_type,
+        first_user_google_ads_ad_group_name,
+        active_users,
+        new_users,
+        engaged_sessions,
+        engagement_rate,
+        engagement_time_msec,
+        total_revenue,
+        total_revenue_per_user,
+        transactions,
+        transactions_per_user,
+        conversions,
+        conversions_per_user,
+        ecommerce_purchases,
+        ecommerce_purchases_per_user
+    from MERCURIOS_DATA.GOOGLE_ANALYTICS_4.USER_ACQUISITION_FIRST_USER_SOURCE_MEDIUM_REPORT
+),
+
+user_campaign as (
+    select 
+        date_date,
+        property_id,
+        first_user_campaign,
+        sum(active_users) as total_active_users,
+        sum(new_users) as total_new_users,
+        sum(engaged_sessions) as total_engaged_sessions,
+        sum(total_revenue) as total_campaign_revenue,
+        sum(transactions) as total_campaign_transactions,
+        sum(conversions) as total_campaign_conversions,
+        sum(ecommerce_purchases) as total_campaign_purchases
+    from MERCURIOS_DATA.GOOGLE_ANALYTICS_4.USER_ACQUISITION_FIRST_USER_CAMPAIGN_REPORT
+    group by 1, 2, 3
+),
+
+demographic_data as (
+    select 
+        date_date,
+        property_id,
+        country,
+        region,
+        city,
+        sum(active_users) as total_users_by_location,
+        sum(new_users) as new_users_by_location,
+        sum(total_revenue) as total_revenue_by_location,
+        sum(transactions) as transactions_by_location
+    from MERCURIOS_DATA.GOOGLE_ANALYTICS_4.DEMOGRAPHIC_CITY_REPORT
+    group by 1, 2, 3, 4, 5
+),
+
+combined as (
+    select 
+        u.date_date,
+        u.property_id,
+        u.first_user_source,
+        u.first_user_medium,
+        u.first_user_campaign,
+        u.active_users,
+        u.new_users,
+        u.engaged_sessions,
+        u.engagement_rate,
+        u.total_revenue,
+        u.transactions,
+        u.conversions,
+        u.ecommerce_purchases,
+        
+        -- Join with campaign data
+        c.total_active_users as campaign_active_users,
+        c.total_new_users as campaign_new_users,
+        c.total_campaign_revenue,
+        c.total_campaign_transactions,
+        
+        -- Calculate user value metrics
+        case 
+            when u.active_users > 0 then u.total_revenue / u.active_users 
+            else 0 
+        end as revenue_per_user,
+        
+        case 
+            when u.active_users > 0 then u.transactions / u.active_users 
+            else 0 
+        end as transactions_per_user,
+        
+        case 
+            when u.active_users > 0 then u.conversions / u.active_users 
+            else 0 
+        end as conversions_per_user,
+        
+        -- Add user acquisition categorization
+        case
+            when u.first_user_source = 'google' and u.first_user_medium = 'organic' then 'Organic Search'
+            when u.first_user_source = 'google' and u.first_user_medium = 'cpc' then 'Paid Search'
+            when u.first_user_medium = 'email' then 'Email Marketing'
+            when u.first_user_medium = 'social' then 'Social Media'
+            when u.first_user_medium = 'referral' then 'Referral'
+            when u.first_user_medium = 'direct' then 'Direct'
+            else 'Other'
+        end as acquisition_channel,
+        
+        -- Add user value categorization
+        case
+            when u.total_revenue > 500 then 'High Value'
+            when u.total_revenue > 100 then 'Medium Value'
+            when u.total_revenue > 0 then 'Low Value'
+            else 'No Purchase'
+        end as user_value_segment,
+        
+        -- Add metadata fields
+        current_timestamp() as dbt_updated_at,
+        'b1e47044-e608-4bc9-85bd-9d85edb5d40b' as dbt_updated_by,
+        'stg_ga4_user_acquisition' as dbt_model
+    from user_source_medium u
+    left join user_campaign c
+        on u.date_date = c.date_date
+        and u.property_id = c.property_id
+        and u.first_user_campaign = c.first_user_campaign
+)
+
+select * from combined
+  );
+[0m10:28:05.259211 [debug] [Thread-11 ]: Opening a new connection, currently in state closed
+[0m10:28:05.259410 [debug] [Thread-12 ]: Opening a new connection, currently in state closed
+[0m10:28:09.122107 [debug] [Thread-11 ]: Snowflake adapter: Snowflake query id: 01baeef8-0204-29a8-0003-4bde0007b00a
+[0m10:28:09.122428 [debug] [Thread-11 ]: Snowflake adapter: Snowflake error: 003001 (42501): SQL access control error:
+Insufficient privileges to operate on table 'ECOMMERCE_PURCHASES_ITEM_ID_REPORT'
+[0m10:28:09.122730 [debug] [Thread-11 ]: On model.mercurios.stg_ga4_product_performance: Close
+[0m10:28:09.213819 [debug] [Thread-11 ]: Database Error in model stg_ga4_product_performance (models/staging/stg_ga4_product_performance.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'ECOMMERCE_PURCHASES_ITEM_ID_REPORT'
+  compiled code at target/run/mercurios/models/staging/stg_ga4_product_performance.sql
+[0m10:28:09.215282 [debug] [Thread-11 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b1e47044-e608-4bc9-85bd-9d85edb5d40b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11b205610>]}
+[0m10:28:09.215679 [error] [Thread-11 ]: 1 of 7 ERROR creating sql view model RAW_staging.stg_ga4_product_performance ... [[31mERROR[0m in 3.99s]
+[0m10:28:09.215991 [debug] [Thread-11 ]: Finished running node model.mercurios.stg_ga4_product_performance
+[0m10:28:09.216266 [debug] [Thread-17 ]: Marking all children of 'model.mercurios.stg_ga4_product_performance' to be skipped because of status 'error'.  Reason: Database Error in model stg_ga4_product_performance (models/staging/stg_ga4_product_performance.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'ECOMMERCE_PURCHASES_ITEM_ID_REPORT'
+  compiled code at target/run/mercurios/models/staging/stg_ga4_product_performance.sql.
+[0m10:28:09.216823 [debug] [Thread-14 ]: Began running node model.mercurios.int_product_performance_combined
+[0m10:28:09.217027 [info ] [Thread-14 ]: 3 of 7 SKIP relation RAW_intermediate.int_product_performance_combined ......... [[33mSKIP[0m]
+[0m10:28:09.217236 [debug] [Thread-14 ]: Finished running node model.mercurios.int_product_performance_combined
+[0m10:28:09.217473 [debug] [Thread-11 ]: Began running node model.mercurios.fct_product_insights
+[0m10:28:09.217648 [info ] [Thread-11 ]: 4 of 7 SKIP relation RAW_marts.fct_product_insights ............................ [[33mSKIP[0m]
+[0m10:28:09.217858 [debug] [Thread-11 ]: Finished running node model.mercurios.fct_product_insights
+[0m10:28:12.501708 [debug] [Thread-12 ]: Snowflake adapter: Snowflake query id: 01baeef8-0204-2b31-0003-4bde00065a7a
+[0m10:28:12.502096 [debug] [Thread-12 ]: Snowflake adapter: Snowflake error: 003001 (42501): SQL access control error:
+Insufficient privileges to operate on table 'USER_ACQUISITION_FIRST_USER_SOURCE_MEDIUM_REPORT'
+[0m10:28:12.502470 [debug] [Thread-12 ]: On model.mercurios.stg_ga4_user_acquisition: Close
+[0m10:28:12.602135 [debug] [Thread-12 ]: Database Error in model stg_ga4_user_acquisition (models/staging/stg_ga4_user_acquisition.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'USER_ACQUISITION_FIRST_USER_SOURCE_MEDIUM_REPORT'
+  compiled code at target/run/mercurios/models/staging/stg_ga4_user_acquisition.sql
+[0m10:28:12.602747 [debug] [Thread-12 ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b1e47044-e608-4bc9-85bd-9d85edb5d40b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a8b7990>]}
+[0m10:28:12.603329 [error] [Thread-12 ]: 2 of 7 ERROR creating sql view model RAW_staging.stg_ga4_user_acquisition ...... [[31mERROR[0m in 7.38s]
+[0m10:28:12.603825 [debug] [Thread-12 ]: Finished running node model.mercurios.stg_ga4_user_acquisition
+[0m10:28:12.604249 [debug] [Thread-17 ]: Marking all children of 'model.mercurios.stg_ga4_user_acquisition' to be skipped because of status 'error'.  Reason: Database Error in model stg_ga4_user_acquisition (models/staging/stg_ga4_user_acquisition.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'USER_ACQUISITION_FIRST_USER_SOURCE_MEDIUM_REPORT'
+  compiled code at target/run/mercurios/models/staging/stg_ga4_user_acquisition.sql.
+[0m10:28:12.604929 [debug] [Thread-14 ]: Began running node model.mercurios.int_customer_behavior_combined
+[0m10:28:12.605351 [info ] [Thread-14 ]: 5 of 7 SKIP relation RAW_intermediate.int_customer_behavior_combined ........... [[33mSKIP[0m]
+[0m10:28:12.605729 [debug] [Thread-14 ]: Finished running node model.mercurios.int_customer_behavior_combined
+[0m10:28:12.606237 [debug] [Thread-11 ]: Began running node model.mercurios.fct_customer_insights
+[0m10:28:12.606640 [info ] [Thread-11 ]: 6 of 7 SKIP relation RAW_marts.fct_customer_insights ........................... [[33mSKIP[0m]
+[0m10:28:12.606958 [debug] [Thread-11 ]: Finished running node model.mercurios.fct_customer_insights
+[0m10:28:12.607319 [debug] [Thread-13 ]: Began running node model.mercurios.fct_inventory_forecast_enhanced
+[0m10:28:12.607672 [info ] [Thread-13 ]: 7 of 7 SKIP relation RAW_marts.fct_inventory_forecast_enhanced ................. [[33mSKIP[0m]
+[0m10:28:12.608027 [debug] [Thread-13 ]: Finished running node model.mercurios.fct_inventory_forecast_enhanced
+[0m10:28:12.608853 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m10:28:12.609091 [debug] [MainThread]: Connection 'model.mercurios.stg_ga4_product_performance' was properly closed.
+[0m10:28:12.609388 [debug] [MainThread]: Connection 'model.mercurios.stg_ga4_user_acquisition' was properly closed.
+[0m10:28:12.609863 [debug] [MainThread]: Connection 'list_MERCURIOS_DATA_RAW_marts_customers' was properly closed.
+[0m10:28:12.610098 [debug] [MainThread]: Connection 'list_MERCURIOS_DATA_RAW_marts_sales' was properly closed.
+[0m10:28:12.610446 [info ] [MainThread]: 
+[0m10:28:12.610714 [info ] [MainThread]: Finished running 3 table models, 4 view models in 0 hours 0 minutes and 59.93 seconds (59.93s).
+[0m10:28:12.611379 [debug] [MainThread]: Command end result
+[0m10:28:12.685295 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/manifest.json
+[0m10:28:12.686807 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/semantic_manifest.json
+[0m10:28:12.690062 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/run_results.json
+[0m10:28:12.690259 [info ] [MainThread]: 
+[0m10:28:12.690463 [info ] [MainThread]: [31mCompleted with 2 errors, 0 partial successes, and 0 warnings:[0m
+[0m10:28:12.690626 [info ] [MainThread]: 
+[0m10:28:12.690819 [error] [MainThread]:   Database Error in model stg_ga4_product_performance (models/staging/stg_ga4_product_performance.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'ECOMMERCE_PURCHASES_ITEM_ID_REPORT'
+  compiled code at target/run/mercurios/models/staging/stg_ga4_product_performance.sql
+[0m10:28:12.690974 [info ] [MainThread]: 
+[0m10:28:12.691155 [error] [MainThread]:   Database Error in model stg_ga4_user_acquisition (models/staging/stg_ga4_user_acquisition.sql)
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on table 'USER_ACQUISITION_FIRST_USER_SOURCE_MEDIUM_REPORT'
+  compiled code at target/run/mercurios/models/staging/stg_ga4_user_acquisition.sql
+[0m10:28:12.691308 [info ] [MainThread]: 
+[0m10:28:12.691462 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=2 SKIP=5 TOTAL=7
+[0m10:28:12.722909 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 61.878265, "process_in_blocks": "0", "process_kernel_time": 0.702617, "process_mem_max_rss": "205127680", "process_out_blocks": "0", "process_user_time": 3.748774}
+[0m10:28:12.723262 [debug] [MainThread]: Command `dbt run` failed at 10:28:12.723213 after 61.88 seconds
+[0m10:28:12.723506 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104489f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1044d4510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11b4b6450>]}
+[0m10:28:12.723720 [debug] [MainThread]: Flushing usage events
+[0m10:28:13.285277 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:36:00.253655 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110fe4e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111069f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11106a610>]}
+
+
+============================== 10:36:00.257247 | cf025f98-463f-4b4f-a929-18f46d7a1883 ==============================
+[0m10:36:00.257247 [info ] [MainThread]: Running with dbt=1.9.2
+[0m10:36:00.257664 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt run --select stg_ga4_product_performance stg_ga4_user_acquisition int_product_performance_combined int_customer_behavior_combined fct_product_insights fct_customer_insights fct_inventory_forecast_enhanced', 'send_anonymous_usage_stats': 'True'}
+[0m10:36:00.895412 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'cf025f98-463f-4b4f-a929-18f46d7a1883', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x116c75d50>]}
+[0m10:36:00.927729 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'cf025f98-463f-4b4f-a929-18f46d7a1883', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110a4ed90>]}
+[0m10:36:00.928410 [info ] [MainThread]: Registered adapter: snowflake=1.9.1
+[0m10:36:01.005945 [debug] [MainThread]: checksum: 12b12750b70de726cfd89136b8e24afc3f3e77597a97bff40ab7e5f9b39d5e18, vars: {}, profile: , target: , version: 1.9.2
+[0m10:36:01.086662 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 3 files added, 2 files changed.
+[0m10:36:01.087105 [debug] [MainThread]: Partial parsing: added file: mercurios://models/intermediate/ga4_intermediate_models.yml
+[0m10:36:01.087309 [debug] [MainThread]: Partial parsing: added file: mercurios://models/marts/ga4_mart_models.yml
+[0m10:36:01.087486 [debug] [MainThread]: Partial parsing: added file: mercurios://models/staging/ga4_models.yml
+[0m10:36:01.087669 [debug] [MainThread]: Partial parsing: updated file: mercurios://models/staging/stg_ga4_product_performance.sql
+[0m10:36:01.087845 [debug] [MainThread]: Partial parsing: updated file: mercurios://models/staging/stg_ga4_user_acquisition.sql
+[0m10:36:01.307762 [error] [MainThread]: Encountered an error:
+Compilation Error
+  dbt found two schema.yml entries for the same resource named fct_product_insights. Resources and their associated columns may only be described a single time. To fix this, remove the resource entry for fct_product_insights in one of these files:
+   - models/marts/ga4_mart_models.yml
+  models/marts/ga4_integration.yml
+[0m10:36:01.310690 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 1.1046845, "process_in_blocks": "0", "process_kernel_time": 1.562722, "process_mem_max_rss": "177897472", "process_out_blocks": "0", "process_user_time": 2.271222}
+[0m10:36:01.310992 [debug] [MainThread]: Command `dbt run` failed at 10:36:01.310946 after 1.11 seconds
+[0m10:36:01.311210 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102f7da50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110ab5550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x116d04390>]}
+[0m10:36:01.311425 [debug] [MainThread]: Flushing usage events
+[0m10:36:01.870067 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:37:05.976180 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1076e5610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10774df50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107500550>]}
+
+
+============================== 10:37:05.978960 | 686e1796-9601-48d2-8caf-1e4f8497f914 ==============================
+[0m10:37:05.978960 [info ] [MainThread]: Running with dbt=1.9.2
+[0m10:37:05.979306 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/logs', 'debug': 'False', 'profiles_dir': '/Users/juliusrechenbach/API ProHandelTest/mercurios_dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'invocation_command': 'dbt run --select stg_ga4_product_performance stg_ga4_user_acquisition int_product_performance_combined int_customer_behavior_combined fct_product_insights fct_customer_insights fct_inventory_forecast_enhanced', 'send_anonymous_usage_stats': 'True'}
+[0m10:37:06.528147 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '686e1796-9601-48d2-8caf-1e4f8497f914', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11ef75110>]}
+[0m10:37:06.560679 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '686e1796-9601-48d2-8caf-1e4f8497f914', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1065ee790>]}
+[0m10:37:06.561354 [info ] [MainThread]: Registered adapter: snowflake=1.9.1
+[0m10:37:06.636250 [debug] [MainThread]: checksum: 12b12750b70de726cfd89136b8e24afc3f3e77597a97bff40ab7e5f9b39d5e18, vars: {}, profile: , target: , version: 1.9.2
+[0m10:37:06.713047 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 2 files added, 3 files changed.
+[0m10:37:06.713516 [debug] [MainThread]: Partial parsing: added file: mercurios://models/intermediate/ga4_intermediate_models.yml
+[0m10:37:06.713718 [debug] [MainThread]: Partial parsing: added file: mercurios://models/staging/ga4_models.yml
+[0m10:37:06.714178 [debug] [MainThread]: Partial parsing: updated file: mercurios://models/marts/ga4_integration.yml
+[0m10:37:06.714370 [debug] [MainThread]: Partial parsing: updated file: mercurios://models/staging/stg_ga4_user_acquisition.sql
+[0m10:37:06.714545 [debug] [MainThread]: Partial parsing: updated file: mercurios://models/staging/stg_ga4_product_performance.sql
+[0m10:37:06.998096 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '686e1796-9601-48d2-8caf-1e4f8497f914', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11f3aced0>]}
+[0m10:37:07.043510 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/manifest.json
+[0m10:37:07.045801 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/juliusrechenbach/API ProHandelTest/mercurios_dbt/target/semantic_manifest.json
+[0m10:37:07.059664 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '686e1796-9601-48d2-8caf-1e4f8497f914', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11f78bfd0>]}
+[0m10:37:07.059994 [info ] [MainThread]: Found 20 models, 14 data tests, 16 sources, 472 macros
+[0m10:37:07.060191 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '686e1796-9601-48d2-8caf-1e4f8497f914', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1054a0890>]}
+[0m10:37:07.061696 [info ] [MainThread]: 
+[0m10:37:07.061877 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m10:37:07.062025 [info ] [MainThread]: 
+[0m10:37:07.062273 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m10:37:07.064623 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m10:37:07.064907 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m10:37:07.065164 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_MERCURIOS_DATA'
+[0m10:37:07.098782 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m10:37:07.099088 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m10:37:07.099311 [debug] [ThreadPool]: Using snowflake connection "list_MERCURIOS_DATA"
+[0m10:37:07.099468 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m10:37:07.099637 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m10:37:07.099804 [debug] [ThreadPool]: On list_MERCURIOS_DATA: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m10:37:07.099969 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:37:07.100112 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:37:07.100251 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:37:15.642353 [debug] [ThreadPool]: SQL status: SUCCESS 26 in 8.542 seconds
+[0m10:37:15.643731 [debug] [ThreadPool]: On list_MERCURIOS_DATA: Close
+[0m10:38:48.643030 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m10:38:48.643570 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "mercurios", "target_name": "dev", "connection_name": "list_MERCURIOS_DATA"} */
+show terse schemas in database MERCURIOS_DATA
+    limit 10000
+[0m10:38:48.643795 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m10:38:48.643966 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m10:38:48.644244 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_schemas
+[0m10:38:48.644444 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_schemas
+[0m10:38:48.644597 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m10:38:48.644754 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m10:38:48.645011 [debug] [ThreadPool]: On list_MERCURIOS_DATA: No close available on handle
+[0m10:38:48.645210 [debug] [ThreadPool]: On list_MERCURIOS_DATA: No close available on handle
+[0m10:38:48.645843 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m10:38:48.646040 [debug] [MainThread]: Connection 'list_MERCURIOS_DATA' was properly closed.
+[0m10:38:48.646190 [debug] [MainThread]: Connection 'list_MERCURIOS_DATA' was properly closed.
+[0m10:38:48.646323 [debug] [MainThread]: Connection 'list_MERCURIOS_DATA' was properly closed.
+[0m10:38:48.646510 [info ] [MainThread]: 
+[0m10:38:48.646698 [info ] [MainThread]: Finished running  in 0 hours 1 minutes and 41.58 seconds (101.58s).
+[0m10:38:48.647085 [error] [MainThread]: Encountered an error:
+
+[0m10:38:48.649458 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 153, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 235, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 264, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 311, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 328, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/cli/main.py", line 578, in run
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/task/runnable.py", line 588, in run
+    result = self.execute_with_hooks(selected_uids)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/task/runnable.py", line 526, in execute_with_hooks
+    before_run_status = self.before_run(adapter, selected_uids)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/task/run.py", line 994, in before_run
+    self.create_schemas(adapter, required_schemas)
+  File "/Users/juliusrechenbach/API ProHandelTest/.venv/lib/python3.11/site-packages/dbt/task/runnable.py", line 694, in create_schemas
+    for ls_future in as_completed(list_futures):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 243, in as_completed
+    waiter.event.wait(wait_timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/threading.py", line 622, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+[0m10:38:48.651449 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 102.71905, "process_in_blocks": "0", "process_kernel_time": 0.941414, "process_mem_max_rss": "196198400", "process_out_blocks": "0", "process_user_time": 3.326518}
+[0m10:38:48.651714 [debug] [MainThread]: Command `dbt run` failed at 10:38:48.651668 after 102.72 seconds
+[0m10:38:48.651991 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107500a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107766890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1004e2350>]}
+[0m10:38:48.652250 [debug] [MainThread]: Flushing usage events
+[0m10:38:49.215751 [debug] [MainThread]: An error was encountered while trying to flush usage events

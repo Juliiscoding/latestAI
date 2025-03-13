@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Inventory Schema",
+  "description": "Schema for validating inventory data from the ProHandel API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the inventory item"
+    },
+    "articleNumber": {
+      "type": "number",
+      "description": "Article number"
+    },
+    "branchNumber": {
+      "type": "integer",
+      "description": "Branch number"
+    },
+    "supplierNumber": {
+      "type": ["integer", "null"],
+      "description": "Supplier number"
+    },
+    "shopNumber": {
+      "type": ["integer", "null"],
+      "description": "Shop number"
+    },
+    "categoryNumber": {
+      "type": ["integer", "null"],
+      "description": "Category number"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the inventory item is active"
+    },
+    "date": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Inventory date"
+    },
+    "stocktakingDate": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Stocktaking date"
+    },
+    "type": {
+      "type": ["integer", "null"],
+      "description": "Inventory type"
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "Quantity"
+    },
+    "lastChange": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date of last change"
+    },
+    "isDeleted": {
+      "type": "boolean",
+      "description": "Whether the inventory item is deleted"
+    }
+  },
+  "required": ["id", "articleNumber", "branchNumber", "quantity"],
+  "additionalProperties": true
+}

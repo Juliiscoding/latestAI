@@ -1,0 +1,13 @@
+2025-03-03 11:59:47.554 | WARNING  | etl.validators.schema_validator:_load_schemas:32 - Schemas directory /Users/juliusrechenbach/API ProHandelTest/etl/validators/schemas does not exist
+2025-03-03 11:59:47.877 | INFO     | lambda_function:lambda_handler:41 - Received event: {"request": {"operation": "test"}}
+2025-03-03 11:59:47.877 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 1, pagesize 1)
+2025-03-03 11:59:47.877 | INFO     | etl.utils.auth:authenticate:42 - Authenticating with ProHandel API...
+2025-03-03 11:59:47.980 | ERROR    | etl.utils.auth:authenticate:64 - Authentication failed: 404 Client Error: Not Found for url: https://linde.prohandel.de/api/v2/auth/token
+2025-03-03 11:59:47.980 | ERROR    | etl.utils.auth:authenticate:66 - Response status: 404
+2025-03-03 11:59:49.983 | INFO     | etl.utils.auth:authenticate:42 - Authenticating with ProHandel API...
+2025-03-03 11:59:50.086 | ERROR    | etl.utils.auth:authenticate:64 - Authentication failed: 404 Client Error: Not Found for url: https://linde.prohandel.de/api/v2/auth/token
+2025-03-03 11:59:50.086 | ERROR    | etl.utils.auth:authenticate:66 - Response status: 404
+2025-03-03 11:59:52.091 | INFO     | etl.utils.auth:authenticate:42 - Authenticating with ProHandel API...
+2025-03-03 11:59:52.193 | ERROR    | etl.utils.auth:authenticate:64 - Authentication failed: 404 Client Error: Not Found for url: https://linde.prohandel.de/api/v2/auth/token
+2025-03-03 11:59:52.193 | ERROR    | etl.utils.auth:authenticate:66 - Response status: 404
+2025-03-03 11:59:52.193 | ERROR    | etl.connectors.prohandel_connector:get_entity_list:121 - Error fetching article data: RetryError[<Future at 0x10910aed0 state=finished raised HTTPError>]

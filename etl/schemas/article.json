@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Article Schema",
+  "description": "Schema for validating article data from the ProHandel API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the article"
+    },
+    "number": {
+      "type": "number",
+      "description": "Article number"
+    },
+    "name": {
+      "type": "string",
+      "description": "Article name"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Article description"
+    },
+    "purchasePrice": {
+      "type": "number",
+      "description": "Purchase price of the article"
+    },
+    "salePrice": {
+      "type": "number",
+      "description": "Sale price of the article"
+    },
+    "isActive": {
+      "type": "boolean",
+      "description": "Whether the article is active"
+    },
+    "manufacturerNumber": {
+      "type": ["integer", "null"],
+      "description": "Manufacturer number"
+    },
+    "supplierArticleNumber": {
+      "type": ["string", "null"],
+      "description": "Supplier article number"
+    },
+    "firstPurchaseDate": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date of first purchase"
+    },
+    "lastPurchaseDate": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date of last purchase"
+    },
+    "lastChange": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date of last change"
+    },
+    "isDeleted": {
+      "type": "boolean",
+      "description": "Whether the article is deleted"
+    }
+  },
+  "required": ["id", "number", "name"],
+  "additionalProperties": true
+}

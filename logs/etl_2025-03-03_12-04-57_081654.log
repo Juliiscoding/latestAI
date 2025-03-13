@@ -1,0 +1,212 @@
+2025-03-03 12:04:57.293 | WARNING  | etl.validators.schema_validator:_load_schemas:32 - Schemas directory /Users/juliusrechenbach/API ProHandelTest/etl/validators/schemas does not exist
+2025-03-03 12:04:57.624 | INFO     | lambda_function:lambda_handler:42 - Received event: {"request": {"operation": "sync"}}
+2025-03-03 12:04:57.624 | INFO     | lambda_function:handle_sync:284 - Syncing entity: article
+2025-03-03 12:04:57.624 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 1, pagesize 100)
+2025-03-03 12:04:57.624 | INFO     | etl.utils.auth:authenticate:42 - Authenticating with ProHandel API...
+2025-03-03 12:04:57.769 | INFO     | etl.utils.auth:authenticate:60 - Authentication successful
+2025-03-03 12:04:57.995 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for article, skipping validation
+2025-03-03 12:04:57.995 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 2, pagesize 100)
+2025-03-03 12:04:58.182 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for article, skipping validation
+2025-03-03 12:04:58.182 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 3, pagesize 100)
+2025-03-03 12:04:58.373 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for article, skipping validation
+2025-03-03 12:04:58.373 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 4, pagesize 100)
+2025-03-03 12:04:58.904 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for article, skipping validation
+2025-03-03 12:04:58.904 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 5, pagesize 100)
+2025-03-03 12:04:59.137 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for article, skipping validation
+2025-03-03 12:04:59.137 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 6, pagesize 100)
+2025-03-03 12:04:59.307 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for article, skipping validation
+2025-03-03 12:04:59.308 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 7, pagesize 100)
+2025-03-03 12:04:59.480 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for article, skipping validation
+2025-03-03 12:04:59.480 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 8, pagesize 100)
+2025-03-03 12:04:59.664 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for article, skipping validation
+2025-03-03 12:04:59.664 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 9, pagesize 100)
+2025-03-03 12:04:59.842 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for article, skipping validation
+2025-03-03 12:04:59.842 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching article data (page 10, pagesize 100)
+2025-03-03 12:05:00.067 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for article, skipping validation
+2025-03-03 12:05:00.067 | WARNING  | lambda_function:handle_sync:310 - Reached maximum page limit for article
+2025-03-03 12:05:00.067 | INFO     | lambda_function:handle_sync:318 - Enhancing 1000 records for article
+2025-03-03 12:05:00.091 | INFO     | lambda_function:handle_sync:333 - Found 1000 records for article
+2025-03-03 12:05:00.091 | INFO     | lambda_function:handle_sync:284 - Syncing entity: customer
+2025-03-03 12:05:00.091 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 1, pagesize 100)
+2025-03-03 12:05:00.297 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for customer, skipping validation
+2025-03-03 12:05:00.297 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 2, pagesize 100)
+2025-03-03 12:05:00.511 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for customer, skipping validation
+2025-03-03 12:05:00.511 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 3, pagesize 100)
+2025-03-03 12:05:00.720 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for customer, skipping validation
+2025-03-03 12:05:00.720 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 4, pagesize 100)
+2025-03-03 12:05:00.929 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for customer, skipping validation
+2025-03-03 12:05:00.929 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 5, pagesize 100)
+2025-03-03 12:05:01.142 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for customer, skipping validation
+2025-03-03 12:05:01.142 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 6, pagesize 100)
+2025-03-03 12:05:01.351 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for customer, skipping validation
+2025-03-03 12:05:01.351 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 7, pagesize 100)
+2025-03-03 12:05:01.579 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for customer, skipping validation
+2025-03-03 12:05:01.579 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 8, pagesize 100)
+2025-03-03 12:05:01.866 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for customer, skipping validation
+2025-03-03 12:05:01.866 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 9, pagesize 100)
+2025-03-03 12:05:02.173 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for customer, skipping validation
+2025-03-03 12:05:02.173 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching customer data (page 10, pagesize 100)
+2025-03-03 12:05:02.468 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for customer, skipping validation
+2025-03-03 12:05:02.468 | WARNING  | lambda_function:handle_sync:310 - Reached maximum page limit for customer
+2025-03-03 12:05:02.468 | INFO     | lambda_function:handle_sync:318 - Enhancing 1000 records for customer
+2025-03-03 12:05:02.491 | INFO     | lambda_function:handle_sync:333 - Found 1000 records for customer
+2025-03-03 12:05:02.491 | INFO     | lambda_function:handle_sync:284 - Syncing entity: order
+2025-03-03 12:05:02.491 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 1, pagesize 100)
+2025-03-03 12:05:03.814 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for order, skipping validation
+2025-03-03 12:05:03.814 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 2, pagesize 100)
+2025-03-03 12:05:04.661 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for order, skipping validation
+2025-03-03 12:05:04.661 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 3, pagesize 100)
+2025-03-03 12:05:05.687 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for order, skipping validation
+2025-03-03 12:05:05.687 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 4, pagesize 100)
+2025-03-03 12:05:07.085 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for order, skipping validation
+2025-03-03 12:05:07.085 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 5, pagesize 100)
+2025-03-03 12:05:08.083 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for order, skipping validation
+2025-03-03 12:05:08.083 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 6, pagesize 100)
+2025-03-03 12:05:09.436 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for order, skipping validation
+2025-03-03 12:05:09.436 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 7, pagesize 100)
+2025-03-03 12:05:10.329 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for order, skipping validation
+2025-03-03 12:05:10.330 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 8, pagesize 100)
+2025-03-03 12:05:12.079 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for order, skipping validation
+2025-03-03 12:05:12.080 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 9, pagesize 100)
+2025-03-03 12:05:13.381 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for order, skipping validation
+2025-03-03 12:05:13.381 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching order data (page 10, pagesize 100)
+2025-03-03 12:05:14.337 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for order, skipping validation
+2025-03-03 12:05:14.337 | WARNING  | lambda_function:handle_sync:310 - Reached maximum page limit for order
+2025-03-03 12:05:14.337 | INFO     | lambda_function:handle_sync:318 - Enhancing 1000 records for order
+2025-03-03 12:05:14.344 | INFO     | lambda_function:handle_sync:333 - Found 1000 records for order
+2025-03-03 12:05:14.344 | INFO     | lambda_function:handle_sync:284 - Syncing entity: orderposition
+2025-03-03 12:05:14.344 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching orderposition data (page 1, pagesize 100)
+2025-03-03 12:05:14.879 | ERROR    | etl.connectors.prohandel_connector:_make_request:78 - All URL patterns failed for endpoint orderposition
+2025-03-03 12:05:17.396 | ERROR    | etl.connectors.prohandel_connector:_make_request:78 - All URL patterns failed for endpoint orderposition
+2025-03-03 12:05:20.393 | ERROR    | etl.connectors.prohandel_connector:_make_request:78 - All URL patterns failed for endpoint orderposition
+2025-03-03 12:05:20.394 | ERROR    | etl.connectors.prohandel_connector:get_entity_list:121 - Error fetching orderposition data: 404 Client Error: Not Found for url: https://linde.prohandel.de/api/v2/orderposition?page=1&pagesize=100
+2025-03-03 12:05:20.394 | INFO     | lambda_function:handle_sync:336 - No new data for orderposition
+2025-03-03 12:05:20.394 | INFO     | lambda_function:handle_sync:284 - Syncing entity: sale
+2025-03-03 12:05:20.394 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 1, pagesize 100)
+2025-03-03 12:05:21.731 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for sale, skipping validation
+2025-03-03 12:05:21.731 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 2, pagesize 100)
+2025-03-03 12:05:23.533 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for sale, skipping validation
+2025-03-03 12:05:23.533 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 3, pagesize 100)
+2025-03-03 12:05:24.728 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for sale, skipping validation
+2025-03-03 12:05:24.728 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 4, pagesize 100)
+2025-03-03 12:05:26.639 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for sale, skipping validation
+2025-03-03 12:05:26.639 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 5, pagesize 100)
+2025-03-03 12:05:27.853 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for sale, skipping validation
+2025-03-03 12:05:27.853 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 6, pagesize 100)
+2025-03-03 12:05:29.858 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for sale, skipping validation
+2025-03-03 12:05:29.858 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 7, pagesize 100)
+2025-03-03 12:05:31.997 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for sale, skipping validation
+2025-03-03 12:05:31.998 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 8, pagesize 100)
+2025-03-03 12:05:33.998 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for sale, skipping validation
+2025-03-03 12:05:33.998 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 9, pagesize 100)
+2025-03-03 12:05:35.562 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for sale, skipping validation
+2025-03-03 12:05:35.562 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching sale data (page 10, pagesize 100)
+2025-03-03 12:05:36.771 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for sale, skipping validation
+2025-03-03 12:05:36.771 | WARNING  | lambda_function:handle_sync:310 - Reached maximum page limit for sale
+2025-03-03 12:05:36.771 | INFO     | lambda_function:handle_sync:318 - Enhancing 1000 records for sale
+2025-03-03 12:05:36.787 | INFO     | lambda_function:handle_sync:333 - Found 1000 records for sale
+2025-03-03 12:05:36.787 | INFO     | lambda_function:handle_sync:284 - Syncing entity: inventory
+2025-03-03 12:05:36.787 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 1, pagesize 100)
+2025-03-03 12:05:36.929 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for inventory, skipping validation
+2025-03-03 12:05:36.929 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 2, pagesize 100)
+2025-03-03 12:05:37.057 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for inventory, skipping validation
+2025-03-03 12:05:37.058 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 3, pagesize 100)
+2025-03-03 12:05:37.179 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for inventory, skipping validation
+2025-03-03 12:05:37.179 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 4, pagesize 100)
+2025-03-03 12:05:37.306 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for inventory, skipping validation
+2025-03-03 12:05:37.306 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 5, pagesize 100)
+2025-03-03 12:05:37.445 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for inventory, skipping validation
+2025-03-03 12:05:37.445 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 6, pagesize 100)
+2025-03-03 12:05:37.575 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for inventory, skipping validation
+2025-03-03 12:05:37.575 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 7, pagesize 100)
+2025-03-03 12:05:37.699 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for inventory, skipping validation
+2025-03-03 12:05:37.699 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 8, pagesize 100)
+2025-03-03 12:05:37.839 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for inventory, skipping validation
+2025-03-03 12:05:37.839 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 9, pagesize 100)
+2025-03-03 12:05:37.970 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for inventory, skipping validation
+2025-03-03 12:05:37.970 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching inventory data (page 10, pagesize 100)
+2025-03-03 12:05:38.099 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for inventory, skipping validation
+2025-03-03 12:05:38.099 | WARNING  | lambda_function:handle_sync:310 - Reached maximum page limit for inventory
+2025-03-03 12:05:38.099 | INFO     | lambda_function:handle_sync:318 - Enhancing 1000 records for inventory
+2025-03-03 12:05:38.103 | INFO     | lambda_function:handle_sync:333 - Found 1000 records for inventory
+2025-03-03 12:05:38.103 | INFO     | lambda_function:handle_sync:284 - Syncing entity: supplier
+2025-03-03 12:05:38.103 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 1, pagesize 100)
+2025-03-03 12:05:38.257 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for supplier, skipping validation
+2025-03-03 12:05:38.258 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 2, pagesize 100)
+2025-03-03 12:05:38.416 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for supplier, skipping validation
+2025-03-03 12:05:38.417 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 3, pagesize 100)
+2025-03-03 12:05:38.584 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for supplier, skipping validation
+2025-03-03 12:05:38.584 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 4, pagesize 100)
+2025-03-03 12:05:38.795 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for supplier, skipping validation
+2025-03-03 12:05:38.795 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 5, pagesize 100)
+2025-03-03 12:05:38.953 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for supplier, skipping validation
+2025-03-03 12:05:38.954 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 6, pagesize 100)
+2025-03-03 12:05:39.140 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for supplier, skipping validation
+2025-03-03 12:05:39.140 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 7, pagesize 100)
+2025-03-03 12:05:39.307 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for supplier, skipping validation
+2025-03-03 12:05:39.307 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 8, pagesize 100)
+2025-03-03 12:05:39.471 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for supplier, skipping validation
+2025-03-03 12:05:39.471 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 9, pagesize 100)
+2025-03-03 12:05:39.642 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for supplier, skipping validation
+2025-03-03 12:05:39.642 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching supplier data (page 10, pagesize 100)
+2025-03-03 12:05:39.747 | INFO     | lambda_function:handle_sync:318 - Enhancing 876 records for supplier
+2025-03-03 12:05:39.747 | INFO     | lambda_function:handle_sync:333 - Found 876 records for supplier
+2025-03-03 12:05:39.747 | INFO     | lambda_function:handle_sync:284 - Syncing entity: category
+2025-03-03 12:05:39.747 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching category data (page 1, pagesize 100)
+2025-03-03 12:05:39.887 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for category, skipping validation
+2025-03-03 12:05:39.888 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching category data (page 2, pagesize 100)
+2025-03-03 12:05:40.039 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for category, skipping validation
+2025-03-03 12:05:40.040 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching category data (page 3, pagesize 100)
+2025-03-03 12:05:40.159 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for category, skipping validation
+2025-03-03 12:05:40.159 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching category data (page 4, pagesize 100)
+2025-03-03 12:05:40.258 | INFO     | lambda_function:handle_sync:318 - Enhancing 287 records for category
+2025-03-03 12:05:40.258 | INFO     | lambda_function:handle_sync:333 - Found 287 records for category
+2025-03-03 12:05:40.258 | INFO     | lambda_function:handle_sync:284 - Syncing entity: invoice
+2025-03-03 12:05:40.258 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 1, pagesize 100)
+2025-03-03 12:05:40.448 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for invoice, skipping validation
+2025-03-03 12:05:40.448 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 2, pagesize 100)
+2025-03-03 12:05:40.578 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for invoice, skipping validation
+2025-03-03 12:05:40.578 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 3, pagesize 100)
+2025-03-03 12:05:40.703 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for invoice, skipping validation
+2025-03-03 12:05:40.703 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 4, pagesize 100)
+2025-03-03 12:05:40.841 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for invoice, skipping validation
+2025-03-03 12:05:40.841 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 5, pagesize 100)
+2025-03-03 12:05:40.983 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for invoice, skipping validation
+2025-03-03 12:05:40.983 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 6, pagesize 100)
+2025-03-03 12:05:41.119 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for invoice, skipping validation
+2025-03-03 12:05:41.119 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 7, pagesize 100)
+2025-03-03 12:05:41.254 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for invoice, skipping validation
+2025-03-03 12:05:41.254 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 8, pagesize 100)
+2025-03-03 12:05:41.393 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for invoice, skipping validation
+2025-03-03 12:05:41.393 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 9, pagesize 100)
+2025-03-03 12:05:41.524 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for invoice, skipping validation
+2025-03-03 12:05:41.524 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching invoice data (page 10, pagesize 100)
+2025-03-03 12:05:41.662 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for invoice, skipping validation
+2025-03-03 12:05:41.662 | WARNING  | lambda_function:handle_sync:310 - Reached maximum page limit for invoice
+2025-03-03 12:05:41.662 | INFO     | lambda_function:handle_sync:318 - Enhancing 1000 records for invoice
+2025-03-03 12:05:41.662 | INFO     | lambda_function:handle_sync:333 - Found 1000 records for invoice
+2025-03-03 12:05:41.662 | INFO     | lambda_function:handle_sync:284 - Syncing entity: payment
+2025-03-03 12:05:41.662 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 1, pagesize 100)
+2025-03-03 12:05:41.841 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for payment, skipping validation
+2025-03-03 12:05:41.842 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 2, pagesize 100)
+2025-03-03 12:05:41.996 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for payment, skipping validation
+2025-03-03 12:05:41.997 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 3, pagesize 100)
+2025-03-03 12:05:42.150 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for payment, skipping validation
+2025-03-03 12:05:42.150 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 4, pagesize 100)
+2025-03-03 12:05:42.421 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for payment, skipping validation
+2025-03-03 12:05:42.421 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 5, pagesize 100)
+2025-03-03 12:05:42.642 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for payment, skipping validation
+2025-03-03 12:05:42.642 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 6, pagesize 100)
+2025-03-03 12:05:42.868 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for payment, skipping validation
+2025-03-03 12:05:42.868 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 7, pagesize 100)
+2025-03-03 12:05:43.022 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for payment, skipping validation
+2025-03-03 12:05:43.022 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 8, pagesize 100)
+2025-03-03 12:05:43.174 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for payment, skipping validation
+2025-03-03 12:05:43.174 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 9, pagesize 100)
+2025-03-03 12:05:43.363 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for payment, skipping validation
+2025-03-03 12:05:43.363 | INFO     | etl.connectors.prohandel_connector:get_entity_list:106 - Fetching payment data (page 10, pagesize 100)
+2025-03-03 12:05:43.541 | WARNING  | etl.validators.schema_validator:validate_batch:82 - No schema found for payment, skipping validation
+2025-03-03 12:05:43.541 | WARNING  | lambda_function:handle_sync:310 - Reached maximum page limit for payment
+2025-03-03 12:05:43.541 | INFO     | lambda_function:handle_sync:318 - Enhancing 1000 records for payment
+2025-03-03 12:05:43.541 | INFO     | lambda_function:handle_sync:333 - Found 1000 records for payment
+2025-03-03 12:05:43.551 | ERROR    | lambda_function:handle_sync:361 - Sync failed: "Column(s) ['number', 'total'] do not exist"

@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sale Schema",
+  "description": "Schema for validating sale data from the ProHandel API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the sale"
+    },
+    "articleNumber": {
+      "type": "number",
+      "description": "Article number"
+    },
+    "branchNumber": {
+      "type": "integer",
+      "description": "Branch number"
+    },
+    "customerNumber": {
+      "type": ["integer", "null"],
+      "description": "Customer number"
+    },
+    "receiptNumber": {
+      "type": "integer",
+      "description": "Receipt number"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Sale date"
+    },
+    "purchasePrice": {
+      "type": "number",
+      "description": "Purchase price"
+    },
+    "discount": {
+      "type": ["number", "null"],
+      "description": "Discount"
+    },
+    "deduction": {
+      "type": ["number", "null"],
+      "description": "Deduction"
+    },
+    "staffDiscount": {
+      "type": ["number", "null"],
+      "description": "Staff discount"
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "Quantity"
+    },
+    "lastChange": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date of last change"
+    },
+    "isDeleted": {
+      "type": "boolean",
+      "description": "Whether the sale is deleted"
+    }
+  },
+  "required": ["id", "articleNumber", "date", "quantity"],
+  "additionalProperties": true
+}

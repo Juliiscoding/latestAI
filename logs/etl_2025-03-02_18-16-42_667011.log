@@ -1,0 +1,44 @@
+2025-03-02 18:16:42.671 | INFO     | __main__:main:222 - Starting ETL transformer demonstration...
+2025-03-02 18:16:42.672 | INFO     | __main__:demo_base_transformer:130 - Demonstrating BaseTransformer...
+2025-03-02 18:16:42.672 | WARNING  | etl.transformers.base_transformer:_load_exchange_rates:143 - No exchange rate API key found, using static rates
+2025-03-02 18:16:42.672 | INFO     | etl.transformers.base_transformer:_load_static_exchange_rates:202 - Loaded static exchange rates for 15 currencies
+2025-03-02 18:16:42.672 | INFO     | __main__:demo_base_transformer:144 - Timestamp standardization:
+2025-03-02 18:16:42.672 | INFO     | __main__:demo_base_transformer:147 -   Original: 2023-01-15T14:30:00Z, Standardized: 2023-01-15 14:30:00+00:00
+2025-03-02 18:16:42.672 | INFO     | __main__:demo_base_transformer:147 -   Original: 2023-01-15 14:30:00, Standardized: 2023-01-15 14:30:00
+2025-03-02 18:16:42.673 | WARNING  | etl.transformers.base_transformer:standardize_timestamp:94 - Could not parse timestamp timestamp: 15/01/2023 14:30:00
+2025-03-02 18:16:42.673 | INFO     | __main__:demo_base_transformer:147 -   Original: 15/01/2023 14:30:00, Standardized: None
+2025-03-02 18:16:42.673 | WARNING  | etl.transformers.base_transformer:standardize_timestamp:94 - Could not parse timestamp timestamp: 01/15/2023 2:30 PM
+2025-03-02 18:16:42.673 | INFO     | __main__:demo_base_transformer:147 -   Original: 01/15/2023 2:30 PM, Standardized: None
+2025-03-02 18:16:42.673 | WARNING  | etl.transformers.base_transformer:standardize_timestamp:100 - Unsupported timestamp timestamp type: <class 'int'>
+2025-03-02 18:16:42.673 | INFO     | __main__:demo_base_transformer:147 -   Original: 1673795400, Standardized: None
+2025-03-02 18:16:42.673 | INFO     | __main__:demo_base_transformer:154 - Currency conversion:
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_base_transformer:157 -   100.0 USD = 93.19 EUR
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_base_transformer:169 - Product ID normalization:
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_base_transformer:172 -   Original: PROD-123, Normalized: PROD-123
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_base_transformer:172 -   Original: prod123, Normalized: prod123
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_base_transformer:172 -   Original: P-123, Normalized: P-123
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_base_transformer:172 -   Original: 123, Normalized: 123
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:176 - 
+Demonstrating SupplierTransformer...
+2025-03-02 18:16:42.674 | WARNING  | etl.transformers.base_transformer:_load_exchange_rates:143 - No exchange rate API key found, using static rates
+2025-03-02 18:16:42.674 | INFO     | etl.transformers.base_transformer:_load_static_exchange_rates:202 - Loaded static exchange rates for 15 currencies
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:187 - Transformed supplier: Reliable Supplies Inc.
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:188 -   Supplier ID: SUP001
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:189 -   Contact: John Smith
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:190 -   Location: Supplier City, SC, USA
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:187 - Transformed supplier: Quality Products Ltd.
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:188 -   Supplier ID: SUP002
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:189 -   Contact: Jane Doe
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:190 -   Location: Quality Town, QT, USA
+2025-03-02 18:16:42.674 | INFO     | etl.transformers.base_transformer:transform_batch:61 - Transformed 2/2 supplier records
+2025-03-02 18:16:42.674 | INFO     | etl.transformers.supplier_transformer:_generate_supplier_metrics:450 - Generating supplier metrics for 2 suppliers
+2025-03-02 18:16:42.674 | INFO     | etl.transformers.supplier_transformer:_generate_supplier_metrics:470 - Supplier metrics generated successfully
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:196 - 
+Supplier Metrics:
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:198 - 
+Metrics for SUP001:
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:201 -   Order Frequency:
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:202 -     Orders per month: 3.70
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:203 -     Orders per week: 0.86
+2025-03-02 18:16:42.674 | INFO     | __main__:demo_supplier_transformer:204 -     Days between orders: 9.0
+2025-03-02 18:16:42.675 | INFO     | __main__:demo_supplier_transformer:207 -   Average Order Size:

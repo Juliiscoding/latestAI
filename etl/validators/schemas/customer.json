@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Customer Schema",
+  "description": "Schema for validating customer data from ProHandel API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the customer"
+    },
+    "number": {
+      "type": ["number", "string", "null"],
+      "description": "Customer number"
+    },
+    "name1": {
+      "type": ["string", "null"],
+      "description": "Primary name of the customer"
+    },
+    "name2": {
+      "type": ["string", "null"],
+      "description": "Secondary name of the customer"
+    },
+    "name3": {
+      "type": ["string", "null"],
+      "description": "Tertiary name of the customer"
+    },
+    "searchTerm": {
+      "type": ["string", "null"],
+      "description": "Search term for the customer"
+    },
+    "street": {
+      "type": ["string", "null"],
+      "description": "Street address of the customer"
+    },
+    "zipCode": {
+      "type": ["string", "null"],
+      "description": "Zip code of the customer"
+    },
+    "city": {
+      "type": ["string", "null"],
+      "description": "City of the customer"
+    },
+    "countryNumber": {
+      "type": ["string", "null"],
+      "description": "Country number of the customer"
+    },
+    "telephone": {
+      "type": ["string", "null"],
+      "description": "Telephone number of the customer"
+    },
+    "mobilePhone": {
+      "type": ["string", "null"],
+      "description": "Mobile phone number of the customer"
+    },
+    "fax": {
+      "type": ["string", "null"],
+      "description": "Fax number of the customer"
+    },
+    "email": {
+      "type": ["string", "null"],
+      "description": "Email address of the customer"
+    },
+    "website": {
+      "type": ["string", "null"],
+      "description": "Website of the customer"
+    },
+    "birthday": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Birthday of the customer"
+    },
+    "gender": {
+      "type": ["number", "string", "null"],
+      "description": "Gender of the customer"
+    },
+    "isActive": {
+      "type": ["boolean", "null"],
+      "description": "Whether the customer is active"
+    },
+    "lastChange": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Last change timestamp of the customer"
+    },
+    "isDeleted": {
+      "type": ["boolean", "null"],
+      "description": "Whether the customer is deleted"
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": true
+}

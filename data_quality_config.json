@@ -1,0 +1,112 @@
+{
+  "database": {
+    "type": "snowflake",
+    "account": "vrxdfzx-zz95717",
+    "user": "FIVETRAN_USER",
+    "password": "MJya#zpp^&VsQufT",
+    "database": "MERCURIOS_DATA",
+    "schema": "RAW",
+    "warehouse": "MERCURIOS_LOADING_WH",
+    "role": "MERCURIOS_FIVETRAN_SERVICE"
+  },
+  "tables": [
+    {
+      "name": "article",
+      "min_count": 1,
+      "required_columns": ["article_number", "name"],
+      "unique_columns": ["article_number"],
+      "timestamp_column": "last_modified",
+      "max_age_hours": 24,
+      "categorical_columns": [
+        {
+          "name": "status",
+          "expected_values": ["active", "inactive", "discontinued"]
+        }
+      ]
+    },
+    {
+      "name": "customer",
+      "min_count": 1,
+      "required_columns": ["customer_number", "name"],
+      "unique_columns": ["customer_number"],
+      "timestamp_column": "last_modified",
+      "max_age_hours": 24
+    },
+    {
+      "name": "order",
+      "min_count": 1,
+      "required_columns": ["order_number", "customer_number", "order_date"],
+      "unique_columns": ["order_number"],
+      "timestamp_column": "order_date",
+      "max_age_hours": 24,
+      "foreign_keys": [
+        {
+          "column": "customer_number",
+          "ref_table": "customer",
+          "ref_column": "customer_number"
+        }
+      ]
+    },
+    {
+      "name": "sale",
+      "min_count": 1,
+      "required_columns": ["sale_id", "article_number", "quantity", "amount"],
+      "unique_columns": ["sale_id"],
+      "timestamp_column": "sale_date",
+      "max_age_hours": 24,
+      "foreign_keys": [
+        {
+          "column": "article_number",
+          "ref_table": "article",
+          "ref_column": "article_number"
+        }
+      ]
+    },
+    {
+      "name": "inventory",
+      "min_count": 1,
+      "required_columns": ["inventory_id", "article_number", "warehouse_id", "quantity"],
+      "unique_columns": ["inventory_id"],
+      "timestamp_column": "last_updated",
+      "max_age_hours": 24,
+      "foreign_keys": [
+        {
+          "column": "article_number",
+          "ref_table": "article",
+          "ref_column": "article_number"
+        }
+      ]
+    },
+    {
+      "name": "daily_sales_agg",
+      "min_count": 0,
+      "required_columns": ["agg_date", "total_sales", "total_quantity"],
+      "unique_columns": ["agg_date"],
+      "timestamp_column": "agg_date",
+      "max_age_hours": 24
+    },
+    {
+      "name": "article_sales_agg",
+      "min_count": 0,
+      "required_columns": ["agg_id", "article_number", "total_sales", "total_quantity"],
+      "unique_columns": ["agg_id"],
+      "timestamp_column": "agg_date",
+      "max_age_hours": 24,
+      "foreign_keys": [
+        {
+          "column": "article_number",
+          "ref_table": "article",
+          "ref_column": "article_number"
+        }
+      ]
+    },
+    {
+      "name": "warehouse_inventory_agg",
+      "min_count": 0,
+      "required_columns": ["agg_id", "warehouse_id", "total_quantity"],
+      "unique_columns": ["agg_id"],
+      "timestamp_column": "agg_date",
+      "max_age_hours": 24
+    }
+  ]
+}

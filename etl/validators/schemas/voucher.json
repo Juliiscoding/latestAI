@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Voucher Schema",
+  "description": "Schema for validating voucher data from ProHandel API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the voucher"
+    },
+    "number": {
+      "type": ["string", "null"],
+      "description": "Voucher number"
+    },
+    "branchNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Branch number where the voucher was issued"
+    },
+    "customerNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Customer number associated with the voucher"
+    },
+    "currencyNumber": {
+      "type": ["string", "null"],
+      "description": "Currency number of the voucher"
+    },
+    "date": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date when the voucher was issued"
+    },
+    "validFrom": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date from which the voucher is valid"
+    },
+    "validTo": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date until which the voucher is valid"
+    },
+    "amount": {
+      "type": ["number", "null"],
+      "description": "Amount of the voucher"
+    },
+    "amountUsed": {
+      "type": ["number", "null"],
+      "description": "Amount of the voucher that has been used"
+    },
+    "status": {
+      "type": ["number", "string", "null"],
+      "description": "Status of the voucher"
+    },
+    "type": {
+      "type": ["number", "string", "null"],
+      "description": "Type of the voucher"
+    },
+    "staffNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Staff number who issued the voucher"
+    },
+    "cashRegisterNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Cash register number where the voucher was issued"
+    },
+    "receiptNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Receipt number associated with the voucher"
+    },
+    "lastChange": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Last change timestamp of the voucher"
+    },
+    "isDeleted": {
+      "type": ["boolean", "null"],
+      "description": "Whether the voucher is deleted"
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": true
+}

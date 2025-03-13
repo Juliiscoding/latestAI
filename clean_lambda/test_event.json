@@ -1,0 +1,9 @@
+{
+  "type": "test",
+  "secrets": {
+    "PROHANDEL_API_KEY": "7e7c639358434c4fa215d4e3978739d0",
+    "PROHANDEL_API_SECRET": "1cjnuux79d",
+    "PROHANDEL_AUTH_URL": "https://auth.prohandel.cloud/api/v4",
+    "PROHANDEL_API_URL": "https://linde.prohandel.de/api/v2"
+  }
+}

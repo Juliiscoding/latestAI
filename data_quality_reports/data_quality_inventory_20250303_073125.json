@@ -1,0 +1,43 @@
+{
+  "monitors": {
+    "Outlier Monitor": {
+      "metrics": {
+        "column_outliers": {
+          "article_id": {
+            "outlier_count": 0,
+            "total_count": 20,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          },
+          "current_stock": {
+            "outlier_count": 0,
+            "total_count": 20,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          },
+          "min_stock": {
+            "outlier_count": 1,
+            "total_count": 20,
+            "outlier_ratio": 0.05,
+            "outlier_indices": [
+              16
+            ]
+          },
+          "max_stock": {
+            "outlier_count": 0,
+            "total_count": 20,
+            "outlier_ratio": 0.0,
+            "outlier_indices": []
+          }
+        },
+        "overall_outlier_ratio": 0.0125,
+        "method": "zscore",
+        "threshold": 3.0
+      },
+      "alerts": [],
+      "timestamp": "2025-03-03T07:31:25.485863"
+    }
+  },
+  "all_alerts": [],
+  "timestamp": "2025-03-03T07:31:25.486006"
+}

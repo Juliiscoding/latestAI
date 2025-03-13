@@ -1,0 +1,404 @@
+{
+  "timestamp": "2025-03-03T07:52:22.097525",
+  "data_shape": {
+    "rows": 10000,
+    "columns": 7
+  },
+  "column_types": {
+    "id": "object",
+    "date": "datetime64[ns]",
+    "email": "object",
+    "phone": "object",
+    "value": "float64",
+    "category": "object",
+    "subcategory": "object"
+  },
+  "monitor_results": {
+    "completeness": {
+      "column_completeness": {
+        "id": {
+          "non_null_count": 1956,
+          "total_count": 2000,
+          "completeness_ratio": 0.978
+        },
+        "date": {
+          "non_null_count": 2000,
+          "total_count": 2000,
+          "completeness_ratio": 1.0
+        },
+        "email": {
+          "non_null_count": 2000,
+          "total_count": 2000,
+          "completeness_ratio": 1.0
+        },
+        "phone": {
+          "non_null_count": 2000,
+          "total_count": 2000,
+          "completeness_ratio": 1.0
+        },
+        "value": {
+          "non_null_count": 2000,
+          "total_count": 2000,
+          "completeness_ratio": 1.0
+        },
+        "category": {
+          "non_null_count": 2000,
+          "total_count": 2000,
+          "completeness_ratio": 1.0
+        },
+        "subcategory": {
+          "non_null_count": 2000,
+          "total_count": 2000,
+          "completeness_ratio": 1.0
+        }
+      },
+      "overall_completeness": 0.9968571428571428
+    },
+    "outlier": {
+      "column_outliers": {
+        "value": {
+          "outlier_count": 0,
+          "total_count": 2000,
+          "outlier_ratio": 0.0,
+          "outlier_indices": []
+        }
+      },
+      "overall_outlier_ratio": 0.0,
+      "method": "zscore",
+      "threshold": 3.0
+    },
+    "consistency": {
+      "duplicates": {
+        "id_uniqueness": {
+          "duplicate_count": 0,
+          "total_count": 2000,
+          "duplicate_ratio": 0.0,
+          "duplicate_values": []
+        }
+      },
+      "related_columns": {},
+      "constraints": {}
+    },
+    "format": {
+      "metrics": {
+        "format_violations": {
+          "email_email_format": {
+            "column": "email",
+            "rule": "email_format",
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            "violation_count": 102,
+            "total_count": 2000,
+            "violation_ratio": 0.051
+          },
+          "phone_phone_format": {
+            "column": "phone",
+            "rule": "phone_format",
+            "pattern": "^\\+?[0-9]{8,15}$",
+            "violation_count": 88,
+            "total_count": 2000,
+            "violation_ratio": 0.044
+          },
+          "id_id_format": {
+            "column": "id",
+            "rule": "id_format",
+            "pattern": "^ID-\\d+$",
+            "violation_count": 44,
+            "total_count": 1956,
+            "violation_ratio": 0.022494887525562373
+          }
+        },
+        "violation_counts": {
+          "email_email_format": 102,
+          "phone_phone_format": 88,
+          "id_id_format": 44
+        },
+        "violation_ratios": {
+          "email_email_format": 0.051,
+          "phone_phone_format": 0.044,
+          "id_id_format": 0.022494887525562373
+        },
+        "overall": {
+          "total_violations": 234,
+          "total_values": 5956,
+          "overall_violation_ratio": 0.03928811282740094
+        }
+      },
+      "alerts": [
+        {
+          "severity": "error",
+          "message": "Format validation failed for column 'email' with rule 'email_format': 102 violations out of 2000 values (5.10%)",
+          "monitor": "format",
+          "column": "email",
+          "rule": "email_format",
+          "violation_count": 102,
+          "violation_ratio": 0.051,
+          "threshold": 0.03,
+          "timestamp": "2025-03-03T07:52:22.108590"
+        },
+        {
+          "severity": "error",
+          "message": "Format validation failed for column 'phone' with rule 'phone_format': 88 violations out of 2000 values (4.40%)",
+          "monitor": "format",
+          "column": "phone",
+          "rule": "phone_format",
+          "violation_count": 88,
+          "violation_ratio": 0.044,
+          "threshold": 0.03,
+          "timestamp": "2025-03-03T07:52:22.109915"
+        },
+        {
+          "severity": "error",
+          "message": "Overall format validation failed: 234 violations out of 5956 values (3.93%)",
+          "monitor": "format",
+          "violation_count": 234,
+          "violation_ratio": 0.03928811282740094,
+          "threshold": 0.03,
+          "timestamp": "2025-03-03T07:52:22.110997"
+        }
+      ]
+    },
+    "freshness": {
+      "metrics": {
+        "freshness_checks": {
+          "recent_data": {
+            "column": "date",
+            "max_age": 30,
+            "max_age_unit": "days",
+            "reference_time": "2025-03-03T07:52:22.097465",
+            "cutoff_time": "2025-02-01T07:52:22.097465",
+            "stale_count": 1821,
+            "total_count": 2000,
+            "stale_ratio": 0.9105,
+            "min_age_days": 1.1344560185185186e-06,
+            "max_age_days": 364.000001134456,
+            "mean_age_days": 181.045001134456,
+            "median_age_days": 183.00000113445603
+          },
+          "very_old_data": {
+            "column": "date",
+            "max_age": 180,
+            "max_age_unit": "days",
+            "reference_time": "2025-03-03T07:52:22.097465",
+            "cutoff_time": "2024-09-04T07:52:22.097465",
+            "stale_count": 1023,
+            "total_count": 2000,
+            "stale_ratio": 0.5115,
+            "min_age_days": 1.1344560185185186e-06,
+            "max_age_days": 364.000001134456,
+            "mean_age_days": 181.045001134456,
+            "median_age_days": 183.00000113445603
+          }
+        },
+        "stale_counts": {
+          "recent_data": 1821,
+          "very_old_data": 1023
+        },
+        "stale_ratios": {
+          "recent_data": 0.9105,
+          "very_old_data": 0.5115
+        },
+        "overall": {
+          "total_stale": 2844,
+          "total_records": 4000,
+          "overall_stale_ratio": 0.711,
+          "reference_time": "2025-03-03T07:52:22.097465"
+        }
+      },
+      "alerts": [
+        {
+          "severity": "warning",
+          "message": "Data freshness check failed for rule 'recent_data': 1821 out of 2000 records (91.05%) are older than 30 days",
+          "monitor": "freshness",
+          "rule": "recent_data",
+          "column": "date",
+          "max_age": 30,
+          "max_age_unit": "days",
+          "stale_count": 1821,
+          "stale_ratio": 0.9105,
+          "threshold": 0.1,
+          "reference_time": "2025-03-03T07:52:22.097465",
+          "timestamp": "2025-03-03T07:52:22.112341"
+        },
+        {
+          "severity": "error",
+          "message": "Data freshness check failed for rule 'very_old_data': 1023 out of 2000 records (51.15%) are older than 180 days",
+          "monitor": "freshness",
+          "rule": "very_old_data",
+          "column": "date",
+          "max_age": 180,
+          "max_age_unit": "days",
+          "stale_count": 1023,
+          "stale_ratio": 0.5115,
+          "threshold": 0.02,
+          "reference_time": "2025-03-03T07:52:22.097465",
+          "timestamp": "2025-03-03T07:52:22.112876"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "format": {
+      "format_violations": {
+        "email_email_format": {
+          "column": "email",
+          "rule": "email_format",
+          "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+          "violation_count": 102,
+          "total_count": 2000,
+          "violation_ratio": 0.051
+        },
+        "phone_phone_format": {
+          "column": "phone",
+          "rule": "phone_format",
+          "pattern": "^\\+?[0-9]{8,15}$",
+          "violation_count": 88,
+          "total_count": 2000,
+          "violation_ratio": 0.044
+        },
+        "id_id_format": {
+          "column": "id",
+          "rule": "id_format",
+          "pattern": "^ID-\\d+$",
+          "violation_count": 44,
+          "total_count": 1956,
+          "violation_ratio": 0.022494887525562373
+        }
+      },
+      "violation_counts": {
+        "email_email_format": 102,
+        "phone_phone_format": 88,
+        "id_id_format": 44
+      },
+      "violation_ratios": {
+        "email_email_format": 0.051,
+        "phone_phone_format": 0.044,
+        "id_id_format": 0.022494887525562373
+      },
+      "overall": {
+        "total_violations": 234,
+        "total_values": 5956,
+        "overall_violation_ratio": 0.03928811282740094
+      }
+    },
+    "freshness": {
+      "freshness_checks": {
+        "recent_data": {
+          "column": "date",
+          "max_age": 30,
+          "max_age_unit": "days",
+          "reference_time": "2025-03-03T07:52:22.097465",
+          "cutoff_time": "2025-02-01T07:52:22.097465",
+          "stale_count": 1821,
+          "total_count": 2000,
+          "stale_ratio": 0.9105,
+          "min_age_days": 1.1344560185185186e-06,
+          "max_age_days": 364.000001134456,
+          "mean_age_days": 181.045001134456,
+          "median_age_days": 183.00000113445603
+        },
+        "very_old_data": {
+          "column": "date",
+          "max_age": 180,
+          "max_age_unit": "days",
+          "reference_time": "2025-03-03T07:52:22.097465",
+          "cutoff_time": "2024-09-04T07:52:22.097465",
+          "stale_count": 1023,
+          "total_count": 2000,
+          "stale_ratio": 0.5115,
+          "min_age_days": 1.1344560185185186e-06,
+          "max_age_days": 364.000001134456,
+          "mean_age_days": 181.045001134456,
+          "median_age_days": 183.00000113445603
+        }
+      },
+      "stale_counts": {
+        "recent_data": 1821,
+        "very_old_data": 1023
+      },
+      "stale_ratios": {
+        "recent_data": 0.9105,
+        "very_old_data": 0.5115
+      },
+      "overall": {
+        "total_stale": 2844,
+        "total_records": 4000,
+        "overall_stale_ratio": 0.711,
+        "reference_time": "2025-03-03T07:52:22.097465"
+      }
+    }
+  },
+  "all_alerts": [
+    {
+      "severity": "error",
+      "message": "Format validation failed for column 'email' with rule 'email_format': 102 violations out of 2000 values (5.10%)",
+      "monitor": "format",
+      "column": "email",
+      "rule": "email_format",
+      "violation_count": 102,
+      "violation_ratio": 0.051,
+      "threshold": 0.03,
+      "timestamp": "2025-03-03T07:52:22.108590"
+    },
+    {
+      "severity": "error",
+      "message": "Format validation failed for column 'phone' with rule 'phone_format': 88 violations out of 2000 values (4.40%)",
+      "monitor": "format",
+      "column": "phone",
+      "rule": "phone_format",
+      "violation_count": 88,
+      "violation_ratio": 0.044,
+      "threshold": 0.03,
+      "timestamp": "2025-03-03T07:52:22.109915"
+    },
+    {
+      "severity": "error",
+      "message": "Overall format validation failed: 234 violations out of 5956 values (3.93%)",
+      "monitor": "format",
+      "violation_count": 234,
+      "violation_ratio": 0.03928811282740094,
+      "threshold": 0.03,
+      "timestamp": "2025-03-03T07:52:22.110997"
+    },
+    {
+      "severity": "warning",
+      "message": "Data freshness check failed for rule 'recent_data': 1821 out of 2000 records (91.05%) are older than 30 days",
+      "monitor": "freshness",
+      "rule": "recent_data",
+      "column": "date",
+      "max_age": 30,
+      "max_age_unit": "days",
+      "stale_count": 1821,
+      "stale_ratio": 0.9105,
+      "threshold": 0.1,
+      "reference_time": "2025-03-03T07:52:22.097465",
+      "timestamp": "2025-03-03T07:52:22.112341"
+    },
+    {
+      "severity": "error",
+      "message": "Data freshness check failed for rule 'very_old_data': 1023 out of 2000 records (51.15%) are older than 180 days",
+      "monitor": "freshness",
+      "rule": "very_old_data",
+      "column": "date",
+      "max_age": 180,
+      "max_age_unit": "days",
+      "stale_count": 1023,
+      "stale_ratio": 0.5115,
+      "threshold": 0.02,
+      "reference_time": "2025-03-03T07:52:22.097465",
+      "timestamp": "2025-03-03T07:52:22.112876"
+    },
+    {
+      "severity": "info",
+      "message": "Data quality results are based on a sample of 2000 rows out of 10000 total rows (20.00%). Sampling method: outlier_biased.",
+      "monitor": "sampling",
+      "timestamp": "2025-03-03T07:52:22.112968"
+    }
+  ],
+  "sampling": {
+    "sampled": true,
+    "original_size": 10000,
+    "sample_size": 2000,
+    "sampling_ratio": 0.2,
+    "method": "outlier_biased"
+  }
+}

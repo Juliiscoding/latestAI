@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Supplier Schema",
+  "description": "Schema for validating supplier data from ProHandel API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the supplier"
+    },
+    "number": {
+      "type": ["number", "string", "null"],
+      "description": "Supplier number"
+    },
+    "name1": {
+      "type": ["string", "null"],
+      "description": "Primary name of the supplier"
+    },
+    "name2": {
+      "type": ["string", "null"],
+      "description": "Secondary name of the supplier"
+    },
+    "name3": {
+      "type": ["string", "null"],
+      "description": "Tertiary name of the supplier"
+    },
+    "searchTerm": {
+      "type": ["string", "null"],
+      "description": "Search term for the supplier"
+    },
+    "street": {
+      "type": ["string", "null"],
+      "description": "Street address of the supplier"
+    },
+    "zipCode": {
+      "type": ["string", "null"],
+      "description": "Zip code of the supplier"
+    },
+    "city": {
+      "type": ["string", "null"],
+      "description": "City of the supplier"
+    },
+    "countryNumber": {
+      "type": ["string", "null"],
+      "description": "Country number of the supplier"
+    },
+    "telephone": {
+      "type": ["string", "null"],
+      "description": "Telephone number of the supplier"
+    },
+    "mobilePhone": {
+      "type": ["string", "null"],
+      "description": "Mobile phone number of the supplier"
+    },
+    "fax": {
+      "type": ["string", "null"],
+      "description": "Fax number of the supplier"
+    },
+    "email": {
+      "type": ["string", "null"],
+      "description": "Email address of the supplier"
+    },
+    "website": {
+      "type": ["string", "null"],
+      "description": "Website of the supplier"
+    },
+    "currencyNumber": {
+      "type": ["string", "null"],
+      "description": "Currency number of the supplier"
+    },
+    "isActive": {
+      "type": ["boolean", "null"],
+      "description": "Whether the supplier is active"
+    },
+    "isEDI": {
+      "type": ["boolean", "null"],
+      "description": "Whether the supplier uses EDI"
+    },
+    "bankCode": {
+      "type": ["number", "string", "null"],
+      "description": "Bank code of the supplier"
+    },
+    "bankAccount": {
+      "type": ["string", "null"],
+      "description": "Bank account of the supplier"
+    },
+    "iban": {
+      "type": ["string", "null"],
+      "description": "IBAN of the supplier"
+    },
+    "bic": {
+      "type": ["string", "null"],
+      "description": "BIC of the supplier"
+    },
+    "info1": {
+      "type": ["string", "null"],
+      "description": "Additional information 1"
+    },
+    "info2": {
+      "type": ["string", "null"],
+      "description": "Additional information 2"
+    },
+    "shipmentOptionNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Shipment option number"
+    },
+    "paymentOptionNumber": {
+      "type": ["number", "string", "null"],
+      "description": "Payment option number"
+    },
+    "lastChange": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Last change timestamp of the supplier"
+    },
+    "isDeleted": {
+      "type": ["boolean", "null"],
+      "description": "Whether the supplier is deleted"
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": true
+}
