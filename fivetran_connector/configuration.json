@@ -1,7 +1,0 @@
-{
-  "api_url": "https://api.prohandel.example.com/v1",
-  "api_key": "YOUR_PROHANDEL_API_KEY",
-  "api_secret": "YOUR_PROHANDEL_API_SECRET",
-  "fivetran_api_key": "eWMMoSTR8ijWdw2u",
-  "fivetran_api_secret": "hcH43fVni4oIPcmTFQZqmvbeZ0zmG9sp"
-}

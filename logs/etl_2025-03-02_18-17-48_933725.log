@@ -1,8 +1,0 @@
-2025-03-02 18:17:48.938 | INFO     | __main__:main:221 - Starting supplier metrics visualization...
-2025-03-02 18:17:48.940 | WARNING  | etl.transformers.base_transformer:_load_exchange_rates:143 - No exchange rate API key found, using static rates
-2025-03-02 18:17:48.940 | INFO     | etl.transformers.base_transformer:_load_static_exchange_rates:202 - Loaded static exchange rates for 15 currencies
-2025-03-02 18:17:48.940 | INFO     | etl.transformers.base_transformer:transform_batch:61 - Transformed 5/5 supplier records
-2025-03-02 18:17:48.940 | INFO     | etl.transformers.supplier_transformer:_generate_supplier_metrics:450 - Generating supplier metrics for 5 suppliers
-2025-03-02 18:17:48.940 | INFO     | etl.transformers.supplier_transformer:_generate_supplier_metrics:470 - Supplier metrics generated successfully
-2025-03-02 18:17:49.664 | INFO     | __main__:visualize_supplier_metrics:214 - Visualization saved to /Users/juliusrechenbach/API ProHandelTest/output/supplier_metrics.png
-2025-03-02 18:19:58.178 | INFO     | __main__:main:236 - Visualization completed successfully!

@@ -1,6 +1,0 @@
-2025-03-03 07:51:57.437 | INFO     | data_quality.base_monitor:__init__:33 - Initialized Completeness Monitor data quality monitor
-2025-03-03 07:51:57.437 | INFO     | data_quality.base_monitor:__init__:33 - Initialized Outlier Monitor data quality monitor
-2025-03-03 07:51:57.437 | INFO     | data_quality.base_monitor:__init__:33 - Initialized Consistency Monitor data quality monitor
-2025-03-03 07:51:57.437 | INFO     | data_quality.base_monitor:__init__:33 - Initialized Format Monitor data quality monitor
-2025-03-03 07:51:57.437 | INFO     | data_quality.base_monitor:__init__:33 - Initialized Freshness Monitor data quality monitor
-2025-03-03 07:51:57.437 | INFO     | data_quality.manager:__init__:56 - Initialized data quality manager with 5 monitors
