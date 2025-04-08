@@ -14,6 +14,7 @@ interface AIInsightsPanelProps {
   contextData?: any;
   isLoading?: boolean;
   categoryFilter?: string;
+  error?: Error | string | null;
 }
 
 interface Message {
@@ -36,7 +37,8 @@ const AIInsightsPanel = forwardRef<AIInsightsPanelHandle, AIInsightsPanelProps>(
   initialPrompt = "Give me a summary of the current performance",
   contextData,
   isLoading: externalLoading,
-  categoryFilter
+  categoryFilter,
+  error
 }, ref) => {
   // Local state
   const [messages, setMessages] = useState<Message[]>([]);
@@ -56,7 +58,7 @@ const AIInsightsPanel = forwardRef<AIInsightsPanelHandle, AIInsightsPanelProps>(
   const { 
     data: fetchedContext, 
     isLoading: fetchLoading,
-    error
+    error: fetchError
   } = useAIAssistantContext(warehouseId, { enabled: !contextData });
   
   const aiContext = contextData || fetchedContext;
@@ -119,16 +121,25 @@ const AIInsightsPanel = forwardRef<AIInsightsPanelHandle, AIInsightsPanelProps>(
       // Show loading state
       setIsThinking(true);
       
-      // Call the AI API endpoint
-      const response = await fetch('/api/ai/ask', {
+      // Call the AI API endpoint - now using direct MCP API URL
+      const mcpApiUrl = process.env.NEXT_PUBLIC_MCP_API_URL || 'https://mcp.mercurios.ai/api';
+      const response = await fetch(`${mcpApiUrl}/execute`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'tenant-id': userId.split('-')[0] || 'mercurios'
         },
         body: JSON.stringify({
-          question: messageText,
-          warehouseId,
-          userId
+          tool: 'ask-assistant',
+          params: {
+            prompt: messageText,
+            context: {
+              warehouseId,
+              userId,
+              categoryFilter
+            },
+            threadId: threadId
+          }
         })
       });
       
@@ -244,16 +255,28 @@ const AIInsightsPanel = forwardRef<AIInsightsPanelHandle, AIInsightsPanelProps>(
   const formatError = (error: unknown): string => {
     if (error instanceof Error) {
       return error.message;
+    } else if (typeof error === 'string') {
+      return error;
+    } else if (error && typeof error === 'object') {
+      return JSON.stringify(error);
     }
-    return String(error || 'Unknown error');
+    return 'Unknown error occurred';
   };
 
   const handleError = () => {
-    if (error) {
-      const errorMessage = formatError(error);
+    // Combine errors from props and from the data hook
+    const combinedError = error || fetchError;
+    
+    if (combinedError) {
       return (
-        <div className="ai-error-message" style={{ color: '#e53935', padding: '10px', margin: '10px 0' }}>
-          <p><strong>Error:</strong> {errorMessage}</p>
+        <div className="error-message" style={{ 
+          padding: '10px 15px',
+          backgroundColor: '#ffebee',
+          color: '#c62828',
+          borderRadius: '8px',
+          margin: '10px 0'
+        }}>
+          <strong>Error:</strong> {formatError(combinedError)}
         </div>
       );
     }

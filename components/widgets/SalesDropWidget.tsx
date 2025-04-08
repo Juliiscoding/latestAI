@@ -79,17 +79,21 @@ export default function SalesDropWidget({
       // Call the MCP API with caching
       const result = await fetchMcpResponseWithCache<SalesDropAnalysisResult>(
         async () => {
-          // For simplicity in this example, we're just calling our local API
-          // In production, you'd call your deployed MCP API directly
-          const response = await fetch('/api/mcp/analyze-sales-drop', {
+          // In production, call the deployed MCP API directly
+          const mcpApiUrl = process.env.NEXT_PUBLIC_MCP_API_URL || 'https://mcp.mercurios.ai/api';
+          const response = await fetch(`${mcpApiUrl}/execute`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
+              'tenant-id': tenant
             },
             body: JSON.stringify({
-              params,
-              context: contextData,
-              forceFresh: forceRefresh
+              tool: 'analyze-sales-drop',
+              params: {
+                ...params,
+                context: contextData,
+                forceFresh: forceRefresh
+              }
             }),
           });
           
