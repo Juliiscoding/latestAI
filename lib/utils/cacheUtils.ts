@@ -4,8 +4,10 @@
  * Provides caching for expensive API calls with configurable TTL
  * and automatic serialization/deserialization.
  */
-import Redis from 'ioredis';
-import { v4 as uuidv4 } from 'uuid';
+// Import Redis only on the server side
+const Redis = typeof window === 'undefined' ? require('ioredis') : null;
+// Import uuid only on the server side
+const { v4: uuidv4 } = typeof window === 'undefined' ? require('uuid') : { v4: () => `client-${Date.now()}` };
 
 // Configure Redis connection - support for both local and cloud Redis
 const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
@@ -19,14 +21,19 @@ const DEFAULT_TTL = {
 };
 
 // Initialize Redis client with connection retry logic
-let redisClient: Redis | null = null;
+let redisClient: any = null;
 
-const getRedisClient = (): Redis | null => {
+const getRedisClient = (): any => {
+  // Only initialize Redis on the server side
+  if (typeof window !== 'undefined') {
+    return null;
+  }
+  
   if (!redisClient) {
     try {
       redisClient = new Redis(REDIS_URL, {
         password: REDIS_PASSWORD,
-        retryStrategy: (times) => {
+        retryStrategy: (times: number) => {
           // Exponential backoff up to 30 seconds
           const delay = Math.min(times * 100, 30000);
           return delay;
@@ -34,7 +41,7 @@ const getRedisClient = (): Redis | null => {
         maxRetriesPerRequest: 3,
       });
       
-      redisClient.on('error', (err) => {
+      redisClient.on('error', (err: Error) => {
         console.error('Redis connection error:', err);
         if (process.env.NODE_ENV === 'production') {
           // Log to monitoring service in production
