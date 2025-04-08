@@ -60,6 +60,7 @@ const navSections: NavSection[] = [
     label: "EARTH",
     items: [
       { label: "Dashboard", href: "/dashboard" },
+      { label: "Business Intelligence", href: "/dashboard/business-intelligence" },
       { label: "Sales Analytics", href: "/earth/sales" },
       { label: "Product & Inventory Analysis", href: "/earth/inventory" },
       { label: "Customer Analysis & Segmentation", href: "/earth/customers" },
@@ -300,4 +301,3 @@ export function NavMain({ collapsed }: { collapsed: boolean }) {
     </SidebarGroup>
   )
 }
-
