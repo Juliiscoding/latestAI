@@ -1,10 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useWarehouses, useAIAssistantContext } from '../../lib/hooks/useProHandelData';
 import AIInsightsPanel from '../../components/ai/AIInsightsPanel';
 
+// Define types for the card components
+interface CardProps {
+  title: string;
+  icon: React.ReactNode;
+  description: string;
+  onSelect: () => void;
+  isSelected: boolean;
+}
+
 // Analysis Category Component
-const AnalysisCategory = ({ title, icon, description, onSelect, isSelected }) => {
+const AnalysisCategory: React.FC<CardProps> = ({ title, icon, description, onSelect, isSelected }) => {
   return (
     <div 
       className={`analysis-category ${isSelected ? 'selected' : ''}`}
@@ -50,10 +59,18 @@ const AnalysisCategory = ({ title, icon, description, onSelect, isSelected }) =>
   );
 };
 
+// Type for insights message
+interface InsightsMessage {
+  title: string;
+  content: string;
+  type: 'opportunity' | 'risk' | 'insight' | 'other';
+  date: string;
+}
+
 // Insight Card Component
-const InsightCard = ({ title, content, type, date }) => {
+const InsightCard: React.FC<InsightsMessage> = ({ title, content, type, date }) => {
   // Determine styling based on insight type
-  const getTypeStyle = (type) => {
+  const getTypeStyle = (type: string) => {
     switch (type) {
       case 'opportunity':
         return { 
@@ -117,18 +134,22 @@ const InsightCard = ({ title, content, type, date }) => {
 // AI Insights Page
 const AIInsightsPage: React.FC = () => {
   const router = useRouter();
-  const [selectedWarehouse, setSelectedWarehouse] = useState<string | undefined>(undefined);
-  const { data: warehouses, isLoading: warehousesLoading } = useWarehouses();
+  const [selectedWarehouse, setSelectedWarehouse] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('overview');
   const [question, setQuestion] = useState<string>('');
-  const { data: aiContext, isLoading: contextLoading } = useAIAssistantContext(selectedWarehouse);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [aiResponse, setAiResponse] = useState<string>('');
+  const { data: warehouseData, isLoading: warehousesLoading } = useWarehouses();
+  const { data: aiContext, isLoading: contextLoading } = useAIAssistantContext(selectedWarehouse, { enabled: !!selectedWarehouse });
+  const inputRef = useRef<HTMLInputElement>(null);
+  const aiPanelRef = useRef<any>(null);
   
   // Set the first warehouse as default when data loads
   useEffect(() => {
-    if (warehouses && warehouses.length > 0 && !selectedWarehouse) {
-      setSelectedWarehouse(warehouses[0].id);
+    if (warehouseData && warehouseData.length > 0 && !selectedWarehouse) {
+      setSelectedWarehouse(warehouseData[0].id);
     }
-  }, [warehouses, selectedWarehouse]);
+  }, [warehouseData, selectedWarehouse]);
   
   // Analysis categories
   const analysisCategories = [
@@ -165,7 +186,7 @@ const AIInsightsPage: React.FC = () => {
   ];
   
   // Sample pre-generated insights (these would come from the AI in production)
-  const sampleInsights = [
+  const sampleInsights: InsightsMessage[] = [
     {
       title: 'Revenue Acceleration Opportunity',
       content: 'Based on sales patterns, bundling "Premium Drill Set" with "Safety Goggles" could increase average order value by 12%. Customers who purchase drills often buy safety equipment separately within 7 days.',
@@ -202,6 +223,53 @@ const AIInsightsPage: React.FC = () => {
     "Which products should I consider discontinuing?"
   ];
   
+  // Function to send question to AI assistant
+  const handleSendQuestion = async () => {
+    if (!question.trim() || !selectedWarehouse) return;
+    
+    try {
+      setLoading(true);
+      
+      // Call our AI API endpoint
+      const response = await fetch('/api/ai/ask', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          question: question.trim(),
+          warehouseId: selectedWarehouse,
+          userId: `user-${Date.now()}`
+        })
+      });
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`API error: ${response.status} ${errorText}`);
+      }
+      
+      const data = await response.json();
+      setAiResponse(data.answer || 'Sorry, I could not generate a response.');
+      
+      // Clear input after sending
+      setQuestion('');
+      if (inputRef.current) {
+        inputRef.current.value = '';
+      }
+      
+      // Update the panel component
+      if (aiPanelRef.current && typeof aiPanelRef.current.handleSendMessage === 'function') {
+        aiPanelRef.current.handleSendMessage(question.trim());
+      }
+      
+    } catch (error) {
+      console.error('Error sending question to AI:', error);
+      alert(`Error: ${error instanceof Error ? error.message : 'Failed to process your request'}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   return (
     <div className="ai-insights-container" style={{ padding: '20px', maxWidth: '1400px', margin: '0 auto' }}>
       <header style={{ 
@@ -229,8 +297,8 @@ const AIInsightsPage: React.FC = () => {
             >
               {warehousesLoading ? (
                 <option>Loading warehouses...</option>
-              ) : warehouses?.length ? (
-                warehouses.map(warehouse => (
+              ) : warehouseData?.length ? (
+                warehouseData.map(warehouse => (
                   <option key={warehouse.id} value={warehouse.id}>
                     {warehouse.name}
                   </option>
@@ -303,41 +371,67 @@ const AIInsightsPage: React.FC = () => {
           }}>
             <h2 style={{ marginTop: 0, marginBottom: '20px' }}>ProHandel Assistant</h2>
             
-            <AIInsightsPanel 
-              warehouseId={selectedWarehouse}
-              contextData={aiContext}
-              isLoading={contextLoading}
-              categoryFilter={selectedCategory}
-            />
+            <div className="ai-insights-panel">
+              <AIInsightsPanel 
+                warehouseId={selectedWarehouse}
+                userId={`user-${Date.now()}`}
+                contextData={aiContext}
+                isLoading={contextLoading}
+              />
+            </div>
             
-            <div className="question-input" style={{
-              marginTop: '20px',
+            <div className="ai-query-input" style={{ 
+              marginTop: '20px', 
               display: 'flex',
-              gap: '10px'
+              alignItems: 'center',
+              justifyContent: 'space-between'
             }}>
-              <input
-                type="text"
+              <input 
+                type="text" 
+                placeholder="Ask a question about your data..." 
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
-                placeholder="Ask anything about your business data..."
-                style={{
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSendQuestion();
+                  }
+                }}
+                style={{ 
                   flex: 1,
-                  padding: '12px 15px',
-                  borderRadius: '8px',
+                  padding: '12px 16px',
+                  borderRadius: '4px',
                   border: '1px solid #ccc',
                   fontSize: '1em'
                 }}
+                ref={inputRef}
               />
-              <button style={{
-                padding: '12px 20px',
-                backgroundColor: '#4a6ebb',
-                color: 'white',
-                border: 'none',
-                borderRadius: '8px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}>
-                Ask AI
+              <button 
+                onClick={handleSendQuestion}
+                disabled={loading || contextLoading || !selectedWarehouse}
+                style={{
+                  padding: '12px 20px',
+                  backgroundColor: loading || contextLoading || !selectedWarehouse ? '#a0a0a0' : '#4a6ebb',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  marginLeft: '10px',
+                  cursor: loading || contextLoading || !selectedWarehouse ? 'not-allowed' : 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                {loading ? (
+                  <span className="loading-spinner" style={{ 
+                    width: '20px', 
+                    height: '20px',
+                    border: '2px solid rgba(255,255,255,0.3)',
+                    borderTop: '2px solid white',
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite'
+                  }}></span>
+                ) : 'Ask AI'}
               </button>
             </div>
             

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import { useAIAssistantContext } from '../../lib/hooks/useProHandelData';
 import { 
   getOrCreateThread, 
@@ -11,6 +11,9 @@ interface AIInsightsPanelProps {
   warehouseId?: string;
   userId: string;
   initialPrompt?: string;
+  contextData?: any;
+  isLoading?: boolean;
+  categoryFilter?: string;
 }
 
 interface Message {
@@ -18,16 +21,23 @@ interface Message {
   role: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: Date;
+  sources?: any[];
+  isError?: boolean;
 }
 
-const AIInsightsPanel: React.FC<AIInsightsPanelProps> = ({
+// Export the panel methods for ref access
+export interface AIInsightsPanelHandle {
+  handleSendMessage: (message: string) => void;
+}
+
+const AIInsightsPanel = forwardRef<AIInsightsPanelHandle, AIInsightsPanelProps>(({
   warehouseId,
   userId,
-  initialPrompt = "Give me a summary of the current performance"
-}) => {
-  // Fetch AI context data using our hook
-  const { data: aiContext, isLoading, error } = useAIAssistantContext(warehouseId);
-  
+  initialPrompt = "Give me a summary of the current performance",
+  contextData,
+  isLoading: externalLoading,
+  categoryFilter
+}, ref) => {
   // Local state
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -41,6 +51,23 @@ const AIInsightsPanel: React.FC<AIInsightsPanelProps> = ({
   ]);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  // Use passed context data if available, otherwise fetch it
+  const { 
+    data: fetchedContext, 
+    isLoading: fetchLoading,
+    error
+  } = useAIAssistantContext(warehouseId, { enabled: !contextData });
+  
+  const aiContext = contextData || fetchedContext;
+  const isLoading = externalLoading || fetchLoading;
+  
+  // Expose methods to parent via ref
+  useImperativeHandle(ref, () => ({
+    handleSendMessage: (message: string) => {
+      handleSendMessage(message, false);
+    }
+  }));
   
   // Initialize thread and load initial prompt
   useEffect(() => {
@@ -75,85 +102,74 @@ const AIInsightsPanel: React.FC<AIInsightsPanelProps> = ({
   
   // Handle sending a message to the assistant
   const handleSendMessage = async (messageText: string, isInitial = false) => {
-    if (!messageText.trim() || !threadId || !aiContext) return;
+    if (!messageText.trim()) return;
     
     try {
-      setIsThinking(true);
-      
-      // Add user message to UI
+      // Add user message to the chat
       const userMessage: Message = {
-        id: `user-${Date.now()}`,
+        id: `msg-${Date.now()}`,
         role: 'user',
         content: messageText,
         timestamp: new Date()
       };
       
-      if (!isInitial) {
-        setMessages(prev => [...prev, userMessage]);
-        setInput('');
+      setMessages(prevMessages => [...prevMessages, userMessage]);
+      setInput('');
+      
+      // Show loading state
+      setIsThinking(true);
+      
+      // Call the AI API endpoint
+      const response = await fetch('/api/ai/ask', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          question: messageText,
+          warehouseId,
+          userId
+        })
+      });
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`API error: ${response.status} ${errorText}`);
       }
       
-      // Send message to assistant
-      const { runId } = await sendMessageToAssistant(
-        threadId,
-        messageText,
-        aiContext
-      );
+      const data = await response.json();
       
-      // Poll for response
-      const pollInterval = setInterval(async () => {
-        try {
-          const result = await checkRunStatus(
-            threadId, 
-            runId,
-            handleToolCall
-          );
-          
-          if (result.status === 'completed') {
-            clearInterval(pollInterval);
-            
-            // Get the latest assistant message
-            const assistantMessage = result.messages
-              .filter(msg => msg.role === 'assistant')
-              .pop();
-            
-            if (assistantMessage) {
-              // Add assistant message to UI
-              const newMessage: Message = {
-                id: `assistant-${Date.now()}`,
-                role: 'assistant',
-                content: assistantMessage.content,
-                timestamp: new Date()
-              };
-              
-              setMessages(prev => [...prev, newMessage]);
-            }
-            
-            setIsThinking(false);
-          } else if (['failed', 'cancelled', 'expired'].includes(result.status)) {
-            clearInterval(pollInterval);
-            setIsThinking(false);
-            
-            // Add error message
-            const errorMessage: Message = {
-              id: `error-${Date.now()}`,
-              role: 'system',
-              content: `Sorry, I encountered an error. Please try again.`,
-              timestamp: new Date()
-            };
-            
-            setMessages(prev => [...prev, errorMessage]);
-          }
-        } catch (error) {
-          clearInterval(pollInterval);
-          setIsThinking(false);
-          console.error('Error polling for assistant response:', error);
-        }
-      }, 1000);
+      // Add AI response to the chat
+      const aiMessage: Message = {
+        id: `msg-${Date.now() + 1}`,
+        role: 'assistant',
+        content: data.answer || 'Sorry, I could not generate a response at this time.',
+        timestamp: new Date(),
+        sources: data.sources || []
+      };
       
-    } catch (error) {
+      setMessages(prevMessages => [...prevMessages, aiMessage]);
       setIsThinking(false);
-      console.error('Error sending message to assistant:', error);
+      
+      // Scroll to the bottom of the chat
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+    } catch (error: unknown) {
+      console.error('Error sending message to AI:', error);
+      setIsThinking(false);
+      
+      // Add error message to the chat
+      const errorMessage: Message = {
+        id: `msg-${Date.now() + 1}`,
+        role: 'system',
+        content: `An error occurred: ${formatError(error)}. Please try again.`,
+        timestamp: new Date(),
+        isError: true
+      };
+      
+      setMessages(prevMessages => [...prevMessages, errorMessage]);
     }
   };
   
@@ -224,6 +240,26 @@ const AIInsightsPanel: React.FC<AIInsightsPanelProps> = ({
     }
   };
   
+  // Format errors properly
+  const formatError = (error: unknown): string => {
+    if (error instanceof Error) {
+      return error.message;
+    }
+    return String(error || 'Unknown error');
+  };
+
+  const handleError = () => {
+    if (error) {
+      const errorMessage = formatError(error);
+      return (
+        <div className="ai-error-message" style={{ color: '#e53935', padding: '10px', margin: '10px 0' }}>
+          <p><strong>Error:</strong> {errorMessage}</p>
+        </div>
+      );
+    }
+    return null;
+  };
+  
   const formatTimestamp = (date: Date) => {
     return new Intl.DateTimeFormat('en-US', {
       hour: 'numeric',
@@ -235,18 +271,32 @@ const AIInsightsPanel: React.FC<AIInsightsPanelProps> = ({
   // Handle loading and error states
   if (isLoading) {
     return (
-      <div className="ai-insights-loading" style={{ padding: '20px', textAlign: 'center' }}>
-        <div className="loading-spinner" style={{ marginBottom: '10px' }}></div>
-        <p>Loading AI Insights...</p>
+      <div className="ai-insights-loading" style={{ 
+        padding: '40px', 
+        textAlign: 'center',
+        backgroundColor: '#f5f5f5',
+        borderRadius: '8px'
+      }}>
+        <div className="loading-spinner" style={{ 
+          margin: '0 auto 20px',
+          width: '40px',
+          height: '40px',
+          border: '4px solid #f3f3f3',
+          borderTop: '4px solid #4a6ebb',
+          borderRadius: '50%',
+          animation: 'spin 1s linear infinite'
+        }}></div>
+        <p>Loading AI insights...</p>
       </div>
     );
   }
   
-  if (error) {
+  // Handle potential error states
+  if (!aiContext) {
     return (
       <div className="ai-insights-error" style={{ padding: '20px', color: '#e53935' }}>
         <h3>Error Loading AI Insights</h3>
-        <p>{error.message}</p>
+        <p>Unable to load context data. Please try again later.</p>
         <button 
           onClick={() => window.location.reload()}
           style={{ padding: '8px 16px', marginTop: '10px' }}
@@ -295,6 +345,7 @@ const AIInsightsPanel: React.FC<AIInsightsPanelProps> = ({
         padding: '16px',
         backgroundColor: '#f5f5f5'
       }}>
+        {handleError()}
         {messages.length === 0 ? (
           <div className="welcome-message" style={{ 
             textAlign: 'center',
@@ -402,6 +453,6 @@ const AIInsightsPanel: React.FC<AIInsightsPanelProps> = ({
       </div>
     </div>
   );
-};
+});
 
 export default AIInsightsPanel;

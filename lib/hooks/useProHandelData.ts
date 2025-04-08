@@ -28,13 +28,16 @@ export const QUERY_KEYS = {
   SALES_FORECAST: 'salesForecast'
 };
 
+// Force real data by default (no mock data)
+const USE_REAL_DATA = true;
+
 /**
  * Get list of all warehouses/locations
  */
-export const useWarehouses = (options?: UseQueryOptions<Warehouse[]>) => {
-  return useQuery({
+export const useWarehouses = (options?: Partial<UseQueryOptions<Warehouse[]>>) => {
+  return useQuery<Warehouse[]>({
     queryKey: [QUERY_KEYS.WAREHOUSES],
-    queryFn: () => prohandelData.getWarehouses(),
+    queryFn: () => prohandelData.getWarehouses(USE_REAL_DATA),
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 15 * 60 * 1000, // 15 minutes
     ...options
@@ -47,11 +50,11 @@ export const useWarehouses = (options?: UseQueryOptions<Warehouse[]>) => {
 export const useSalesData = (
   warehouseId?: string,
   period: '7d' | '30d' | '90d' = '30d',
-  options?: UseQueryOptions<SalesSummary>
+  options?: Partial<UseQueryOptions<SalesSummary>>
 ) => {
-  return useQuery({
+  return useQuery<SalesSummary>({
     queryKey: [QUERY_KEYS.SALES, warehouseId || 'all', period],
-    queryFn: () => prohandelData.getSalesDataByWarehouse(warehouseId, period),
+    queryFn: () => prohandelData.getSalesDataByWarehouse(warehouseId, period, USE_REAL_DATA),
     staleTime: 5 * 60 * 1000, // 5 minutes
     ...options
   });
@@ -63,11 +66,11 @@ export const useSalesData = (
 export const useTopProducts = (
   warehouseId?: string,
   limit: number = 10,
-  options?: UseQueryOptions<ProductSales[]>
+  options?: Partial<UseQueryOptions<ProductSales[]>>
 ) => {
-  return useQuery({
+  return useQuery<ProductSales[]>({
     queryKey: [QUERY_KEYS.TOP_PRODUCTS, warehouseId || 'all', limit],
-    queryFn: () => prohandelData.getTopProductsByRevenue(warehouseId, limit),
+    queryFn: () => prohandelData.getTopProductsByRevenue(warehouseId, limit, USE_REAL_DATA),
     staleTime: 10 * 60 * 1000, // 10 minutes
     ...options
   });
@@ -78,11 +81,11 @@ export const useTopProducts = (
  */
 export const useInventoryData = (
   warehouseId?: string,
-  options?: UseQueryOptions<InventorySummary>
+  options?: Partial<UseQueryOptions<InventorySummary>>
 ) => {
-  return useQuery({
+  return useQuery<InventorySummary>({
     queryKey: [QUERY_KEYS.INVENTORY, warehouseId || 'all'],
-    queryFn: () => prohandelData.getInventoryByCategory(warehouseId),
+    queryFn: () => prohandelData.getInventoryByCategory(warehouseId, USE_REAL_DATA),
     staleTime: 5 * 60 * 1000, // 5 minutes
     ...options
   });
@@ -93,11 +96,11 @@ export const useInventoryData = (
  */
 export const useStockoutRisks = (
   warehouseId?: string,
-  options?: UseQueryOptions<InventoryRisk[]>
+  options?: Partial<UseQueryOptions<InventoryRisk[]>>
 ) => {
-  return useQuery({
+  return useQuery<InventoryRisk[]>({
     queryKey: [QUERY_KEYS.STOCKOUT_RISKS, warehouseId || 'all'],
-    queryFn: () => prohandelData.getStockoutRiskAssessment(warehouseId),
+    queryFn: () => prohandelData.getStockoutRiskAssessment(warehouseId, USE_REAL_DATA),
     staleTime: 5 * 60 * 1000, // 5 minutes
     ...options
   });
@@ -108,11 +111,11 @@ export const useStockoutRisks = (
  */
 export const useAIAssistantContext = (
   warehouseId?: string,
-  options?: UseQueryOptions<AIDataContext>
+  options?: Partial<UseQueryOptions<AIDataContext>>
 ) => {
-  return useQuery({
+  return useQuery<AIDataContext>({
     queryKey: [QUERY_KEYS.AI_CONTEXT, warehouseId || 'all'],
-    queryFn: () => prohandelData.getAIAssistantContext(warehouseId),
+    queryFn: () => prohandelData.getAIAssistantContext(warehouseId, USE_REAL_DATA),
     staleTime: 10 * 60 * 1000, // 10 minutes
     ...options
   });
@@ -125,11 +128,11 @@ export const useSalesComparison = (
   warehouseId1: string,
   warehouseId2: string,
   period: '7d' | '30d' | '90d' = '30d',
-  options?: UseQueryOptions<any>
+  options?: Partial<UseQueryOptions<any>>
 ) => {
-  return useQuery({
+  return useQuery<any>({
     queryKey: [QUERY_KEYS.SALES_COMPARISON, warehouseId1, warehouseId2, period],
-    queryFn: () => prohandelData.compareSalesBetweenWarehouses(warehouseId1, warehouseId2, period),
+    queryFn: () => prohandelData.compareSalesBetweenWarehouses(warehouseId1, warehouseId2, period, USE_REAL_DATA),
     staleTime: 10 * 60 * 1000, // 10 minutes
     enabled: !!warehouseId1 && !!warehouseId2 && (options?.enabled !== false),
     ...options
@@ -142,11 +145,11 @@ export const useSalesComparison = (
 export const useSalesForecast = (
   warehouseId?: string,
   days: number = 14,
-  options?: UseQueryOptions<TrendPoint[]>
+  options?: Partial<UseQueryOptions<TrendPoint[]>>
 ) => {
-  return useQuery({
+  return useQuery<TrendPoint[]>({
     queryKey: [QUERY_KEYS.SALES_FORECAST, warehouseId || 'all', days],
-    queryFn: () => prohandelData.getSalesForecast(warehouseId, days),
+    queryFn: () => prohandelData.getSalesForecast(warehouseId, days, USE_REAL_DATA),
     staleTime: 30 * 60 * 1000, // 30 minutes (forecasts don't change as frequently)
     ...options
   });

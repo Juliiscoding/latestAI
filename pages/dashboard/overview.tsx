@@ -4,9 +4,19 @@ import { useWarehouses } from '../../lib/hooks/useProHandelData';
 import RevenueBreakdownChart from '../../components/charts/RevenueBreakdownChart';
 import CategoryPerformanceChart from '../../components/charts/CategoryPerformanceChart';
 import AIInsightsPanel from '../../components/ai/AIInsightsPanel';
+import SalesDropWidget from '../../components/widgets/SalesDropWidget';
 
 // KPI Card component
-const KPICard = ({ title, value, trend, trendValue, icon, color }) => (
+interface KPICardProps {
+  title: string;
+  value: string;
+  trend: 'up' | 'down' | 'neutral';
+  trendValue: string;
+  icon: React.ReactNode;
+  color: string;
+}
+
+const KPICard: React.FC<KPICardProps> = ({ title, value, trend, trendValue, icon, color }) => (
   <div className="kpi-card" style={{ 
     backgroundColor: 'white',
     borderRadius: '8px',
@@ -74,7 +84,7 @@ const DashboardOverview: React.FC = () => {
     {
       title: 'Total Revenue',
       value: '$124,568',
-      trend: 'up',
+      trend: 'up' as const,
       trendValue: '8.2%',
       icon: '💰',
       color: '#4285F4'
@@ -82,7 +92,7 @@ const DashboardOverview: React.FC = () => {
     {
       title: 'Total Orders',
       value: '1,254',
-      trend: 'up',
+      trend: 'up' as const,
       trendValue: '5.1%',
       icon: '📦',
       color: '#34A853'
@@ -90,7 +100,7 @@ const DashboardOverview: React.FC = () => {
     {
       title: 'Avg Order Value',
       value: '$99.34',
-      trend: 'up',
+      trend: 'up' as const,
       trendValue: '3.0%',
       icon: '📊',
       color: '#FBBC05'
@@ -98,7 +108,7 @@ const DashboardOverview: React.FC = () => {
     {
       title: 'Inventory Health',
       value: '92%',
-      trend: 'down',
+      trend: 'down' as const,
       trendValue: '2.3%',
       icon: '📈',
       color: '#EA4335'
@@ -227,6 +237,21 @@ const DashboardOverview: React.FC = () => {
               warehouseId={selectedWarehouse} 
               period={selectedPeriod}
               showForecast={true}
+            />
+          </div>
+          
+          {/* Sales Drop Analysis Widget */}
+          <div className="chart-container" style={{ 
+            backgroundColor: 'white',
+            borderRadius: '8px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            marginBottom: '20px',
+            overflow: 'hidden'
+          }}>
+            <SalesDropWidget
+              warehouseId={selectedWarehouse}
+              tenant={process.env.TENANT_ID || 'default'}
+              onRefresh={() => console.log('Widget refreshed')}
             />
           </div>
           

@@ -6,6 +6,7 @@
  */
 
 import Cookies from 'js-cookie';
+import * as mockData from '../../mock/prohandel-mock';
 
 // Configuration for ProHandel API - values from environment variables with fallbacks
 // Based on the known working configuration from API testing
@@ -277,41 +278,32 @@ const apiClient = async <T>(
  * Based on testing multiple endpoints, this is the one that provides location data
  * with names, addresses, and other relevant information.
  * 
+ * @param useRealData Whether to use real API data or mock data
  * @returns List of warehouses
  */
-export const getWarehouses = async () => {
+export const getWarehouses = async (useRealData: boolean = true) => {
   try {
-    // Using the '/branch' endpoint discovered through API exploration
-    console.log('Getting ProHandel warehouses from /branch endpoint');
+    if (!useRealData) {
+      console.log('Using mock warehouse data');
+      return mockData.warehouses;
+    }
+
+    // Get the endpoint for warehouses
+    const endpoint = '/branch';
+    const data = await apiClient<any[]>(endpoint);
     
-    const branches = await apiClient<any[]>('/branch');
-    
-    // Map branch data to warehouse format
-    const warehouses = branches.map(branch => ({
-      id: branch.id || branch.number.toString(),
-      name: branch.name1 || `Branch ${branch.number}`,
-      description: branch.city ? `${branch.name1} - ${branch.city}` : branch.name1,
-      address: branch.street ? `${branch.street}, ${branch.zipCode} ${branch.city}` : undefined,
-      active: branch.isActive !== false, // Default to active if not specified
-      isWebshop: branch.isWebshop || false,
-      phone: branch.telephoneNumber || undefined,
-      email: branch.email || undefined
+    // Transform to match the Warehouse interface
+    return data.map(warehouse => ({
+      id: warehouse.id.toString(),
+      name: warehouse.name,
+      description: warehouse.description || '',
+      address: warehouse.address || '',
+      active: warehouse.active === true || warehouse.active === 'true',
+      isWebshop: warehouse.isWebshop === true || warehouse.isWebshop === 'true'
     }));
-    
-    // Log success and return only active warehouses by default
-    console.log(`Found ${warehouses.length} warehouses, ${warehouses.filter(w => w.active).length} active`);
-    return warehouses.filter(w => w.active);
   } catch (error: any) {
     console.error('Error fetching warehouses:', error);
-    // Fallback to default warehouse if the API call fails
-    return [
-      { 
-        id: 'default', 
-        name: 'Default Warehouse',
-        description: 'Default warehouse when API endpoint fails',
-        active: true
-      }
-    ];
+    return [];
   }
 };
 
@@ -319,43 +311,41 @@ export const getWarehouses = async () => {
  * Get stockout risks, optionally filtered by warehouse
  * 
  * @param warehouseId Optional warehouse ID to filter by
+ * @param useRealData Whether to use real API data or mock data
  * @returns List of stockout risks
  */
-export const getStockoutRisks = async (warehouseId?: string) => {
+export const getStockoutRisks = async (warehouseId?: string, useRealData: boolean = true) => {
   try {
-    // Try different endpoint variants for stockout risks
-    const endpoints = [
-      warehouseId ? `/inventory/stockout-risks?location_id=${warehouseId}` : '/inventory/stockout-risks',
-      warehouseId ? `/stock/risks?branch_id=${warehouseId}` : '/stock/risks',
-      // The Python implementation suggests '/stock' might be an alternative endpoint for inventory data
-      warehouseId ? `/stock?branch_id=${warehouseId}` : '/stock'
-    ];
+    if (!useRealData) {
+      console.log('Using mock stockout risk data');
+      return mockData.stockoutRisks;
+    }
+
+    // Base endpoint for stockout risks
+    let endpoint = '/stockout-risk';
     
-    let stockoutData = null;
-    let error = null;
-    
-    // Try each endpoint until we find one that works
-    for (const endpoint of endpoints) {
-      try {
-        console.log(`Trying stockout endpoint: ${endpoint}`);
-        const data = await apiClient<any[]>(endpoint);
-        if (data && Array.isArray(data)) {
-          stockoutData = data;
-          console.log(`Found working stockout endpoint: ${endpoint}`);
-          break;
-        }
-      } catch (err: any) {
-        error = err;
-        console.log(`Endpoint ${endpoint} failed: ${err.message || 'Unknown error'}`);
-      }
+    // Add warehouse filter if provided
+    if (warehouseId) {
+      endpoint += `?location_id=${warehouseId}`;
     }
     
-    if (stockoutData) {
-      return stockoutData;
-    }
+    const data = await apiClient<any[]>(endpoint);
     
-    // If we've tried all endpoints and none worked, throw the last error
-    throw error || new Error('All stockout endpoints failed');
+    // Transform to match the required format
+    return data.map(risk => ({
+      id: risk.id.toString(),
+      productId: risk.productId.toString(),
+      name: risk.productName,
+      sku: risk.sku,
+      categoryId: risk.categoryId?.toString() || '',
+      categoryName: risk.categoryName || 'Uncategorized',
+      stockLevel: risk.stockLevel || 0,
+      reorderPoint: risk.reorderPoint || 0,
+      riskLevel: risk.riskLevel || 'medium',
+      lastRestockDate: risk.lastRestockDate,
+      averageDailySales: risk.averageDailySales || 0,
+      daysUntilStockout: risk.daysUntilStockout
+    }));
   } catch (error: any) {
     console.error('Error fetching stockout risks:', error);
     return [];
@@ -474,14 +464,21 @@ export const getSalesData = async (params: {
  * @param fromDate Start date (default: 30 days ago)
  * @param toDate End date (default: today)
  * @param warehouseId Optional warehouse ID to filter by
+ * @param useRealData Whether to use real API data or mock data
  * @returns Sales data
  */
 export const getSales = async (
   fromDate?: string,
   toDate?: string,
-  warehouseId?: string
+  warehouseId?: string,
+  useRealData: boolean = true
 ) => {
   try {
+    if (!useRealData) {
+      console.log('Using mock sales data');
+      return mockData.sales;
+    }
+
     // Set default date range if not provided
     const now = new Date();
     const thirtyDaysAgo = new Date();

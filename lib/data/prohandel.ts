@@ -155,12 +155,12 @@ function setCachedData<T>(key: string, data: T): void {
 /**
  * Get list of all warehouses/locations
  */
-export const getWarehouses = async (): Promise<Warehouse[]> => {
+export const getWarehouses = async (useRealData: boolean = true): Promise<Warehouse[]> => {
   const cacheKey = 'warehouses';
   const cached = getCachedData<Warehouse[]>(cacheKey);
   if (cached) return cached;
 
-  const warehouses = await prohandelClient.getWarehouses();
+  const warehouses = await prohandelClient.getWarehouses(useRealData);
   setCachedData(cacheKey, warehouses);
   return warehouses;
 };
@@ -170,10 +170,12 @@ export const getWarehouses = async (): Promise<Warehouse[]> => {
  * 
  * @param warehouseId Warehouse ID to filter by, undefined for all warehouses
  * @param period Time period to retrieve data for
+ * @param useRealData Whether to use real or mock data
  */
 export const getSalesDataByWarehouse = async (
   warehouseId?: string,
-  period: '7d' | '30d' | '90d' = '30d'
+  period: '7d' | '30d' | '90d' = '30d',
+  useRealData: boolean = true
 ): Promise<SalesSummary> => {
   const now = DateTime.now();
   let startDate: DateTime;
@@ -202,7 +204,7 @@ export const getSalesDataByWarehouse = async (
   
   try {
     // Fetch raw sales data
-    const salesData = await prohandelClient.getSales(fromDate, toDate, warehouseId);
+    const salesData = await prohandelClient.getSales(fromDate, toDate, warehouseId, useRealData);
     
     if (!salesData || !Array.isArray(salesData) || salesData.length === 0) {
       return createEmptySalesSummary(period, fromDate, toDate);
@@ -224,10 +226,12 @@ export const getSalesDataByWarehouse = async (
  * 
  * @param warehouseId Optional warehouse ID to filter by
  * @param limit Number of top products to return
+ * @param useRealData Whether to use real or mock data
  */
 export const getTopProductsByRevenue = async (
   warehouseId?: string,
-  limit: number = 10
+  limit: number = 10,
+  useRealData: boolean = true
 ): Promise<ProductSales[]> => {
   // Try to get from cache first
   const cacheKey = `top_products_${warehouseId || 'all'}_${limit}`;
@@ -236,7 +240,7 @@ export const getTopProductsByRevenue = async (
   
   try {
     // Get the last 30 days of sales data
-    const salesSummary = await getSalesDataByWarehouse(warehouseId, '30d');
+    const salesSummary = await getSalesDataByWarehouse(warehouseId, '30d', useRealData);
     
     if (!salesSummary.byProduct || salesSummary.byProduct.length === 0) {
       return [];
@@ -259,9 +263,11 @@ export const getTopProductsByRevenue = async (
  * Get inventory data by category with optional warehouse filter
  * 
  * @param warehouseId Optional warehouse ID to filter by
+ * @param useRealData Whether to use real or mock data
  */
 export const getInventoryByCategory = async (
-  warehouseId?: string
+  warehouseId?: string,
+  useRealData: boolean = true
 ): Promise<InventorySummary> => {
   const cacheKey = `inventory_${warehouseId || 'all'}`;
   const cached = getCachedData<InventorySummary>(cacheKey);
@@ -269,7 +275,7 @@ export const getInventoryByCategory = async (
   
   try {
     // Get inventory data
-    const inventoryData = await fetchInventoryData(warehouseId);
+    const inventoryData = await fetchInventoryData(warehouseId, useRealData);
     
     // Process raw inventory data
     const summary = processInventoryData(inventoryData, warehouseId);
@@ -286,9 +292,11 @@ export const getInventoryByCategory = async (
  * Get stockout risks with enhanced risk assessment
  * 
  * @param warehouseId Optional warehouse ID to filter by
+ * @param useRealData Whether to use real or mock data
  */
 export const getStockoutRiskAssessment = async (
-  warehouseId?: string
+  warehouseId?: string,
+  useRealData: boolean = true
 ): Promise<InventoryRisk[]> => {
   const cacheKey = `stockout_risks_${warehouseId || 'all'}`;
   const cached = getCachedData<InventoryRisk[]>(cacheKey);
@@ -296,10 +304,10 @@ export const getStockoutRiskAssessment = async (
   
   try {
     // Get basic stockout risks from client
-    const stockoutRisks = await prohandelClient.getStockoutRisks(warehouseId);
+    const stockoutRisks = await prohandelClient.getStockoutRisks(warehouseId, useRealData);
     
     // Fetch sales data to calculate average daily sales for better risk assessment
-    const last30DaysSales = await getSalesDataByWarehouse(warehouseId, '30d');
+    const last30DaysSales = await getSalesDataByWarehouse(warehouseId, '30d', useRealData);
     
     // Enrich stockout risks with sales data for better risk assessment
     const enrichedRisks = enrichStockoutRisks(stockoutRisks, last30DaysSales);
@@ -316,18 +324,20 @@ export const getStockoutRiskAssessment = async (
  * Get data prepared for AI Assistant context
  * 
  * @param warehouseId Optional warehouse ID to filter by
+ * @param useRealData Whether to use real or mock data
  */
 export const getAIAssistantContext = async (
-  warehouseId?: string
+  warehouseId?: string,
+  useRealData: boolean = true
 ): Promise<AIDataContext> => {
   try {
     // Fetch all the relevant data needed for the AI context
     const [sales7d, sales30d, sales90d, inventory, topProducts] = await Promise.all([
-      getSalesDataByWarehouse(warehouseId, '7d'),
-      getSalesDataByWarehouse(warehouseId, '30d'),
-      getSalesDataByWarehouse(warehouseId, '90d'),
-      getInventoryByCategory(warehouseId),
-      getTopProductsByRevenue(warehouseId, 5)
+      getSalesDataByWarehouse(warehouseId, '7d', useRealData),
+      getSalesDataByWarehouse(warehouseId, '30d', useRealData),
+      getSalesDataByWarehouse(warehouseId, '90d', useRealData),
+      getInventoryByCategory(warehouseId, useRealData),
+      getTopProductsByRevenue(warehouseId, 5, useRealData)
     ]);
     
     // Calculate growth rate (comparing 30d to previous 30d)
@@ -392,11 +402,13 @@ export const getAIAssistantContext = async (
  * @param warehouseId1 First warehouse ID
  * @param warehouseId2 Second warehouse ID
  * @param period Time period for comparison
+ * @param useRealData Whether to use real or mock data
  */
 export const compareSalesBetweenWarehouses = async (
   warehouseId1: string,
   warehouseId2: string,
-  period: '7d' | '30d' | '90d' = '30d'
+  period: '7d' | '30d' | '90d' = '30d',
+  useRealData: boolean = true
 ): Promise<{
   warehouse1: SalesSummary;
   warehouse2: SalesSummary;
@@ -415,8 +427,8 @@ export const compareSalesBetweenWarehouses = async (
   try {
     // Get sales data for both warehouses
     const [warehouse1Sales, warehouse2Sales] = await Promise.all([
-      getSalesDataByWarehouse(warehouseId1, period),
-      getSalesDataByWarehouse(warehouseId2, period)
+      getSalesDataByWarehouse(warehouseId1, period, useRealData),
+      getSalesDataByWarehouse(warehouseId2, period, useRealData)
     ]);
     
     // Calculate differences
@@ -451,14 +463,16 @@ export const compareSalesBetweenWarehouses = async (
  * 
  * @param warehouseId Warehouse ID to forecast for
  * @param days Number of days to forecast
+ * @param useRealData Whether to use real or mock data
  */
 export const getSalesForecast = async (
   warehouseId?: string, 
-  days: number = 14
+  days: number = 14,
+  useRealData: boolean = true
 ): Promise<TrendPoint[]> => {
   try {
     // Get historical sales data for forecasting
-    const historicalSales = await getSalesDataByWarehouse(warehouseId, '90d');
+    const historicalSales = await getSalesDataByWarehouse(warehouseId, '90d', useRealData);
     
     if (!historicalSales.trend || historicalSales.trend.length === 0) {
       return createEmptyForecast(days);
@@ -500,7 +514,7 @@ function createEmptySalesSummary(period: string, fromDate: string, toDate: strin
   };
 }
 
-async function fetchInventoryData(warehouseId?: string): Promise<any[]> {
+async function fetchInventoryData(warehouseId?: string, useRealData: boolean = true): Promise<any[]> {
   // In a real implementation, this would fetch inventory data from the ProHandel API
   // For now, we'll return mock data
   return [];
