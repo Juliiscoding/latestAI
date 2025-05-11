@@ -1,9 +1,15 @@
+"use client"
 import React from 'react'
+import { useLanguage } from '@/components/footer'
 
 export default function WiderrufsrechtPage() {
+  const { language } = useLanguage();
+  
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-3xl font-bold mb-8 text-white">Widerrufsrecht</h1>
+    <div className="container mx-auto px-4 py-12 max-w-4xl relative z-10">
+      <h1 className="text-3xl font-bold mb-8 text-white">
+        {language === 'de' ? 'Widerrufsrecht' : 'Right of Withdrawal'}
+      </h1>
       
       <div className="bg-black/30 backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">Widerrufsbelehrung</h2>

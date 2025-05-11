@@ -1,8 +1,58 @@
 "use client"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, createContext, useContext } from "react"
+import { useRouter, usePathname } from "next/navigation"
+
+// Create a language context for the entire app
+export const LanguageContext = createContext({
+  language: 'de',
+  setLanguage: (lang: string) => {}
+});
+
+// Custom hook to use the language context
+export const useLanguage = () => useContext(LanguageContext);
 
 export default function Footer() {
+  const router = useRouter();
+  const pathname = usePathname();
+  // Get the language from localStorage on client side
+  const [language, setLanguage] = useState('de');
+  
+  useEffect(() => {
+    // Get stored language preference or default to German
+    const storedLanguage = localStorage.getItem('language') || 'de';
+    setLanguage(storedLanguage);
+  }, []);
+  
+  // Update localStorage when language changes
+  useEffect(() => {
+    localStorage.setItem('language', language);
+  }, [language]);
+  
+  // Handle language change
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newLanguage = e.target.value;
+    setLanguage(newLanguage);
+    
+    // Redirect to the equivalent page in the new language
+    // This is a simple implementation - for a real site you'd need proper i18n routing
+    if (newLanguage === 'en') {
+      // Map German paths to English paths
+      const pathMap: {[key: string]: string} = {
+        '/legal/impressum': '/legal/imprint',
+        '/legal/datenschutz': '/legal/privacy-policy',
+        '/legal/agb': '/legal/terms',
+        '/legal/cookie-policy': '/legal/cookie-policy',
+        '/legal/widerrufsrecht': '/legal/right-of-withdrawal'
+      };
+      
+      // Check if current path has an English equivalent
+      if (pathname) {
+        const newPath = pathMap[pathname] || pathname;
+        router.push(newPath);
+      }
+    }
+  };
   const [screenSize, setScreenSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 1200,
     height: typeof window !== 'undefined' ? window.innerHeight : 800
@@ -40,8 +90,11 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="w-full border-t border-white/10 bg-black/80 backdrop-blur-md mt-auto">
-      <div className="container mx-auto px-4 py-8">
+    <footer className="w-full border-t border-white/10 bg-transparent mt-auto relative overflow-hidden">
+      {/* Gradient overlay for seamless transition */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black/90 backdrop-blur-md z-0"></div>
+      
+      <div className="container relative mx-auto px-4 py-8 z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
@@ -116,7 +169,8 @@ export default function Footer() {
             <div className="mt-4 md:mt-0">
               <select 
                 className="bg-black/50 text-white/70 text-xs border border-white/20 rounded-md px-2 py-1"
-                defaultValue="de"
+                value={language}
+                onChange={handleLanguageChange}
               >
                 <option value="de">Deutsch</option>
                 <option value="en">English</option>
