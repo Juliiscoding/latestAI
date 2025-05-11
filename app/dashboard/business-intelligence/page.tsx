@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Tabs,
   TabsContent,
@@ -54,6 +54,7 @@ function BusinessIntelligenceDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
   const { currentTenant } = useTenant();
   const [animationClass, setAnimationClass] = useState("opacity-0 translate-y-4");
+  const [error, setError] = useState<Error | null>(null);
 
   // Sample data for overview charts
   const revenueData = [
@@ -94,6 +95,19 @@ function BusinessIntelligenceDashboard() {
     }, 300);
     return () => clearTimeout(timer);
   }, []);
+
+  // Error boundary
+  if (error) {
+    return (
+      <div className="p-8 text-center">
+        <h2 className="text-2xl font-bold text-red-500 mb-4">Something went wrong</h2>
+        <p className="mb-4">{error.message}</p>
+        <Button onClick={() => window.location.reload()}>
+          Reload Page
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 transition-all duration-300 ease-in-out p-6">
@@ -324,29 +338,39 @@ function BusinessIntelligenceDashboard() {
             </div>
             
             <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
-              <SalesTrendSummary 
-                useRealData={useRealData} 
-                warehouseId={selectedWarehouseId}
-              />
-              <TopProductsChart 
-                useRealData={useRealData} 
-                warehouseId={selectedWarehouseId} 
-              />
+              <ErrorBoundary fallback={<Card className="p-4">Sales trend data unavailable</Card>}>
+                <SalesTrendSummary 
+                  useRealData={useRealData} 
+                  warehouseId={selectedWarehouseId}
+                />
+              </ErrorBoundary>
+              <ErrorBoundary fallback={<Card className="p-4">Top products data unavailable</Card>}>
+                <TopProductsChart 
+                  useRealData={useRealData} 
+                  warehouseId={selectedWarehouseId} 
+                />
+              </ErrorBoundary>
             </div>
             
             <div className="grid gap-4 grid-cols-1">
-              <SalesTrendChart />
+              <ErrorBoundary fallback={<Card className="p-4">Sales trend chart unavailable</Card>}>
+                <SalesTrendChart />
+              </ErrorBoundary>
             </div>
           </TabsContent>
           
           <TabsContent value="stockout" className="space-y-4">
-            <StockoutRiskWidget 
-              warehouseId={selectedWarehouseId}
-            />
-            <AIInsightsWidget 
-              useRealData={useRealData}
-              warehouseId={selectedWarehouseId}
-            />
+            <ErrorBoundary fallback={<Card className="p-4">Stockout risk data unavailable</Card>}>
+              <StockoutRiskWidget 
+                warehouseId={selectedWarehouseId}
+              />
+            </ErrorBoundary>
+            <ErrorBoundary fallback={<Card className="p-4">AI insights unavailable</Card>}>
+              <AIInsightsWidget 
+                useRealData={useRealData}
+                warehouseId={selectedWarehouseId}
+              />
+            </ErrorBoundary>
           </TabsContent>
           
           <TabsContent value="categories" className="space-y-4">
@@ -375,10 +399,32 @@ function BusinessIntelligenceDashboard() {
   );
 }
 
+// Simple ErrorBoundary component
+class ErrorBoundary extends React.Component<{
+  children: React.ReactNode;
+  fallback: React.ReactNode;
+}> {
+  state = { hasError: false };
+  
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    
+    return this.props.children;
+  }
+}
+
 export default function BusinessIntelligencePage() {
   return (
     <WarehouseProvider>
-      <BusinessIntelligenceDashboard />
+      <ErrorBoundary fallback={<Card className="p-4">Business Intelligence dashboard unavailable</Card>}>
+        <BusinessIntelligenceDashboard />
+      </ErrorBoundary>
     </WarehouseProvider>
   );
 }

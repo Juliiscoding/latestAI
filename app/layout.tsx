@@ -3,6 +3,9 @@ import "./globals.css"
 import { Providers } from "./providers"
 import { TenantProvider } from "@/lib/mercurios/tenant-context"
 import type React from "react"
+import dynamic from "next/dynamic"
+
+const Footer = dynamic(() => import("@/components/footer"), { ssr: true })
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,9 +23,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head />
-      <body className={`${inter.className} antialiased min-h-screen transition-colors duration-300`}>
+      <body className={`${inter.className} antialiased min-h-screen transition-colors duration-300 flex flex-col`}>
         <TenantProvider>
-          <Providers>{children}</Providers>
+          <Providers>
+            <div className="flex flex-col min-h-screen">
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+          </Providers>
         </TenantProvider>
       </body>
     </html>

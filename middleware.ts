@@ -16,7 +16,7 @@ export function middleware(request: NextRequest) {
     hostname.includes('55698')
 
   // Paths that don't require authentication
-  const publicPaths = ["/", "/login", "/signup", "/api/login", "/api/logout", "/favicon.ico", "/features", "/how-it-works", "/examples", "/pricing"]
+  const publicPaths = ["/", "/login", "/signup", "/api/login", "/api/logout", "/favicon.ico", "/features", "/how-it-works", "/examples", "/pricing", "/legal/impressum", "/legal/datenschutz", "/legal/agb", "/legal/cookie-policy", "/legal/widerrufsrecht", "/about", "/contact"]
   const isPublicPath = publicPaths.some(path => request.nextUrl.pathname === path) ||
     request.nextUrl.pathname.startsWith('/_next/') ||
     request.nextUrl.pathname.startsWith('/public/')
