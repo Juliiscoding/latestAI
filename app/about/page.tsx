@@ -1,12 +1,20 @@
+"use client"
 import React from 'react'
+import { useLanguage } from '@/components/footer'
 
 export default function AboutPage() {
+  const { language } = useLanguage();
+  
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-3xl font-bold mb-8 text-white">Über uns</h1>
+    <div className="container mx-auto px-4 py-12 max-w-4xl relative z-10">
+      <h1 className="text-3xl font-bold mb-8 text-white">
+        {language === 'de' ? 'Über uns' : 'About Us'}
+      </h1>
       
-      <div className="bg-black/30 backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">Unsere Mission</h2>
+      <div className="bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
+        <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">
+          {language === 'de' ? 'Unsere Mission' : 'Our Mission'}
+        </h2>
         <p className="mb-4 text-white/90">
           Bei Mercurios.ai haben wir es uns zur Aufgabe gemacht, Einzelhändlern durch KI-gestützte Analysen und Erkenntnisse 
           einen Wettbewerbsvorteil zu verschaffen. Unsere Plattform transformiert komplexe Daten aus verschiedenen Quellen 
@@ -20,8 +28,10 @@ export default function AboutPage() {
         </p>
       </div>
       
-      <div className="bg-black/30 backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">Unser Team</h2>
+      <div className="bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
+        <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">
+          {language === 'de' ? 'Unser Team' : 'Our Team'}
+        </h2>
         <p className="mb-4 text-white/90">
           Unser Team besteht aus erfahrenen Experten in den Bereichen Data Engineering, Machine Learning, Retail Analytics 
           und Softwareentwicklung. Wir vereinen tiefgreifendes technisches Know-how mit umfassender Branchenkenntnis, 
@@ -31,20 +41,22 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
           <div className="flex flex-col items-center">
             <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#6ACBDF] to-[#6ACBDF]/30 mb-4"></div>
-            <h3 className="text-lg font-medium text-white">Max Mustermann</h3>
-            <p className="text-[#6ACBDF]">CEO & Gründer</p>
+            <h3 className="text-lg font-medium text-white">Max Pohl</h3>
+            <p className="text-[#6ACBDF]">{language === 'de' ? 'CEO & Gründer' : 'CEO & Founder'}</p>
           </div>
           
           <div className="flex flex-col items-center">
             <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#6ACBDF] to-[#6ACBDF]/30 mb-4"></div>
-            <h3 className="text-lg font-medium text-white">Anna Schmidt</h3>
+            <h3 className="text-lg font-medium text-white">Julius Rechenbach</h3>
             <p className="text-[#6ACBDF]">CTO</p>
           </div>
         </div>
       </div>
       
-      <div className="bg-black/30 backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">Unsere Technologie</h2>
+      <div className="bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
+        <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">
+          {language === 'de' ? 'Unsere Technologie' : 'Our Technology'}
+        </h2>
         <p className="mb-4 text-white/90">
           Unsere Plattform basiert auf einer modernen, skalierbaren Architektur, die es uns ermöglicht, große Datenmengen 
           effizient zu verarbeiten und wertvolle Erkenntnisse zu gewinnen. Wir setzen auf bewährte Technologien und 
@@ -64,8 +76,10 @@ export default function AboutPage() {
         </ul>
       </div>
       
-      <div className="bg-black/30 backdrop-blur-md border border-white/10 rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">Unsere Werte</h2>
+      <div className="bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-6">
+        <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">
+          {language === 'de' ? 'Unsere Werte' : 'Our Values'}
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <h3 className="text-lg font-semibold mb-2 text-white">Innovation</h3>
