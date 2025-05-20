@@ -54,7 +54,7 @@
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.454.0",
     "luxon": "^3.6.1",
-    "next": "14.2.16",
+    "next": "14.2.26",
     "next-themes": "latest",
     "openai": "^4.92.1",
     "react": "^18",
