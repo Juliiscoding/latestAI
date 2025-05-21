@@ -1,33 +1,13 @@
 "use client"
 import Link from "next/link"
-import { useState, useEffect, createContext, useContext } from "react"
+import { useState, useEffect } from "react"
 import { useRouter, usePathname } from "next/navigation"
-
-// Create a language context for the entire app
-export const LanguageContext = createContext({
-  language: 'de',
-  setLanguage: (lang: string) => {}
-});
-
-// Custom hook to use the language context
-export const useLanguage = () => useContext(LanguageContext);
+import { useLanguage } from "./language-provider"
 
 export default function Footer() {
   const router = useRouter();
   const pathname = usePathname();
-  // Get the language from localStorage on client side
-  const [language, setLanguage] = useState('de');
-  
-  useEffect(() => {
-    // Get stored language preference or default to German
-    const storedLanguage = localStorage.getItem('language') || 'de';
-    setLanguage(storedLanguage);
-  }, []);
-  
-  // Update localStorage when language changes
-  useEffect(() => {
-    localStorage.setItem('language', language);
-  }, [language]);
+  const { language, setLanguage } = useLanguage();
   
   // Handle language change
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

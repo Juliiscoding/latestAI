@@ -91,7 +91,7 @@ export default function SignupPage() {
                         <CardDescription className="text-white/70">For small businesses</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <div className="text-2xl font-bold text-white mb-4">$9.99<span className="text-sm font-normal text-white/70">/month</span></div>
+                        <div className="text-2xl font-bold text-white mb-4">€199<span className="text-sm font-normal text-white/70">/month</span></div>
                         <ul className="space-y-2">
                           <li className="flex items-start gap-2 text-sm text-white/70">
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
@@ -115,7 +115,7 @@ export default function SignupPage() {
                         <CardDescription className="text-white/70">For growing businesses</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <div className="text-2xl font-bold text-white mb-4">$19.99<span className="text-sm font-normal text-white/70">/month</span></div>
+                        <div className="text-2xl font-bold text-white mb-4">€399<span className="text-sm font-normal text-white/70">/month</span></div>
                         <ul className="space-y-2">
                           <li className="flex items-start gap-2 text-sm text-white/70">
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
@@ -143,7 +143,7 @@ export default function SignupPage() {
                         <CardDescription className="text-white/70">For large businesses</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <div className="text-2xl font-bold text-white mb-4">$49.99<span className="text-sm font-normal text-white/70">/month</span></div>
+                        <div className="text-2xl font-bold text-white mb-4"><span className="text-white">Enterprise</span></div>
                         <ul className="space-y-2">
                           <li className="flex items-start gap-2 text-sm text-white/70">
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
@@ -168,10 +168,10 @@ export default function SignupPage() {
 
                   <div className="flex justify-end">
                     <Button 
-                      onClick={handleNextStep}
-                      className="bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90"
+                      onClick={selectedPlan === "enterprise" ? () => window.location.href = "/demo" : handleNextStep} 
+                      className="w-full bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90"
                     >
-                      Continue <ArrowRight className="ml-2 h-4 w-4" />
+                      {selectedPlan === "enterprise" ? "Talk to Sales" : "Continue"} {selectedPlan !== "enterprise" && <ArrowRight className="ml-2 h-4 w-4" />}
                     </Button>
                   </div>
                 </div>

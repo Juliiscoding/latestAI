@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { useLanguage } from '@/components/footer'
+import { useLanguage } from '@/components/language-provider'
 
 export default function CookiePolicyPage() {
   const { language } = useLanguage();

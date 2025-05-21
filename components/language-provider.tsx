@@ -1,6 +1,15 @@
 "use client"
-import { ReactNode, useState, useEffect } from "react"
-import { LanguageContext } from "./footer"
+import { ReactNode, useState, useEffect, useContext, createContext } from "react"
+
+interface LanguageContextType {
+  language: string;
+  setLanguage: (lang: string) => void;
+}
+
+export const LanguageContext = createContext<LanguageContextType>({
+  language: 'de',
+  setLanguage: () => {}
+});
 
 interface LanguageProviderProps {
   children: ReactNode
@@ -21,3 +30,5 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     </LanguageContext.Provider>
   )
 }
+
+export const useLanguage = () => useContext(LanguageContext);

@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from 'react'
-import { useLanguage } from '@/components/footer'
+import { useLanguage } from '@/components/language-provider'
 
 export default function ImpressumPage() {
   const { language } = useLanguage();
