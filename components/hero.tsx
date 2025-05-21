@@ -21,7 +21,11 @@ export default function Hero() {
           </span>
         </h1>
         
-        <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-sm sm:text-base md:text-lg text-white/70">
+        <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base md:text-xl font-medium text-white/90">
+          Interact with all your business data in natural language — and reveal the patterns that matter most.
+        </p>
+        
+        <p className="mx-auto mt-3 sm:mt-4 max-w-2xl text-sm sm:text-base md:text-lg text-white/70">
           Mercurios.ai transforms your retail data into actionable intelligence. Whether you use ProHandel or Shopify, 
           our platform delivers powerful analytics and AI-generated content to boost your sales and streamline operations.
         </p>
