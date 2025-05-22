@@ -2,7 +2,8 @@
 import React from 'react'
 import { useLanguage } from '@/components/language-provider'
 import { SplashCursor } from "@/components/ui/splash-cursor"
-import Image from 'next/image'
+import Navbar from '@/components/navbar'
+import Link from 'next/link'
 
 export default function AboutPage() {
   const { language } = useLanguage();
@@ -21,6 +22,9 @@ export default function AboutPage() {
           COLOR_UPDATE_SPEED={12}
         />
       </div>
+      
+      {/* Navigation Bar */}
+      <Navbar />
 
       <div className="container mx-auto px-4 py-12 max-w-4xl relative z-10">
         <h1 className="text-3xl font-bold mb-8 text-white">
@@ -62,13 +66,10 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               <div className="flex flex-col items-center">
                 <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
-                  <img 
-                    src="https://i.ibb.co/7jMkBPC/max-pohl.jpg" 
-                    alt="Max Pohl" 
-                    width={160}
-                    height={160}
-                    className="w-full h-full object-cover grayscale"
-                  />
+                  {/* Verwenden eines Fallback-Avatars anstelle eines externen Bildes */}
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-black">
+                    <div className="text-[#6ACBDF] text-4xl font-bold">MP</div>
+                  </div>
                 </div>
                 <h3 className="text-lg font-medium text-white">Max Pohl</h3>
                 <p className="text-[#6ACBDF]">{language === 'de' ? 'CEO & Gründer' : 'CEO & Founder'}</p>
@@ -76,13 +77,10 @@ export default function AboutPage() {
               
               <div className="flex flex-col items-center">
                 <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
-                  <img 
-                    src="https://i.ibb.co/WfYFfZ3/julius-rechenbach.jpg" 
-                    alt="Julius Rechenbach" 
-                    width={160}
-                    height={160}
-                    className="w-full h-full object-cover grayscale"
-                  />
+                  {/* Verwenden eines Fallback-Avatars anstelle eines externen Bildes */}
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-black">
+                    <div className="text-[#6ACBDF] text-4xl font-bold">JR</div>
+                  </div>
                 </div>
                 <h3 className="text-lg font-medium text-white">Julius Rechenbach</h3>
                 <p className="text-[#6ACBDF]">CTO</p>

@@ -70,9 +70,9 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="w-full border-t border-white/10 bg-transparent mt-auto relative overflow-hidden">
-      {/* Gradient overlay for seamless transition */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/80 to-black backdrop-blur-md z-0"></div>
+    <footer className="w-full border-t border-white/10 bg-black mt-auto relative overflow-hidden">
+      {/* Solid black background for better cursor animation visibility */}
+      <div className="absolute inset-0 bg-black z-0"></div>
       
       <div className="container relative mx-auto px-4 py-8 z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -148,7 +148,7 @@ export default function Footer() {
             </p>
             <div className="mt-4 md:mt-0">
               <select 
-                className="bg-black/80 text-white/90 text-xs border border-white/30 rounded-md px-2 py-1 font-medium"
+                className="bg-black text-white/90 text-xs border border-white/30 rounded-md px-2 py-1 font-medium"
                 value={language}
                 onChange={handleLanguageChange}
               >
