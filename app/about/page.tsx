@@ -11,7 +11,7 @@ export default function AboutPage() {
         {language === 'de' ? 'Über uns' : 'About Us'}
       </h1>
       
-      <div className="bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
+      <div className="bg-black backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">
           {language === 'de' ? 'Unsere Mission' : 'Our Mission'}
         </h2>
@@ -28,7 +28,7 @@ export default function AboutPage() {
         </p>
       </div>
       
-      <div className="bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
+      <div className="bg-black backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">
           {language === 'de' ? 'Unser Team' : 'Our Team'}
         </h2>
@@ -40,20 +40,32 @@ export default function AboutPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
           <div className="flex flex-col items-center">
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#6ACBDF] to-[#6ACBDF]/30 mb-4"></div>
+            <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
+              <img 
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/max_pohl-eYtqbRsQQQQBV91NKpz38ajJiAkHzk.jpg" 
+                alt="Max Pohl" 
+                className="w-full h-full object-cover grayscale"
+              />
+            </div>
             <h3 className="text-lg font-medium text-white">Max Pohl</h3>
             <p className="text-[#6ACBDF]">{language === 'de' ? 'CEO & Gründer' : 'CEO & Founder'}</p>
           </div>
           
           <div className="flex flex-col items-center">
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#6ACBDF] to-[#6ACBDF]/30 mb-4"></div>
+            <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
+              <img 
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/julius_rechenbach-GZcYFLnq0mRn82M05hZMEEv7KLYkxC.jpg" 
+                alt="Julius Rechenbach" 
+                className="w-full h-full object-cover grayscale"
+              />
+            </div>
             <h3 className="text-lg font-medium text-white">Julius Rechenbach</h3>
             <p className="text-[#6ACBDF]">CTO</p>
           </div>
         </div>
       </div>
       
-      <div className="bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
+      <div className="bg-black backdrop-blur-md border border-white/10 rounded-lg p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">
           {language === 'de' ? 'Unsere Technologie' : 'Our Technology'}
         </h2>
@@ -76,7 +88,7 @@ export default function AboutPage() {
         </ul>
       </div>
       
-      <div className="bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-6">
+      <div className="bg-black backdrop-blur-md border border-white/10 rounded-lg p-6">
         <h2 className="text-xl font-semibold mb-4 text-[#6ACBDF]">
           {language === 'de' ? 'Unsere Werte' : 'Our Values'}
         </h2>

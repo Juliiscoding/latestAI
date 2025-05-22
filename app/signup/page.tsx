@@ -68,8 +68,8 @@ export default function SignupPage() {
         
         <div className="container max-w-6xl mx-auto py-12">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-white">Get Started with Mercurios.ai</h1>
-            <p className="text-white/70 mt-2">Create your account and start transforming your retail business</p>
+            <h1 className="text-3xl font-bold text-white">Choose the Right Plan for Your Business</h1>
+            <p className="text-white/70 mt-2">Flexible pricing options to suit businesses of all sizes. Unlock the power of AI-driven analytics today.</p>
           </div>
 
           <div className="flex justify-center">
@@ -85,10 +85,10 @@ export default function SignupPage() {
                   <h2 className="text-xl font-semibold text-white mb-6">Choose Your Plan</h2>
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                    <Card className={`bg-white/5 border ${selectedPlan === "basic" ? "border-[#6ACBDF]" : "border-white/10"} cursor-pointer transition-all hover:border-[#6ACBDF]/70`} onClick={() => handlePlanSelect("basic")}>
+                    <Card className={`bg-black/30 border ${selectedPlan === "basic" ? "border-[#6ACBDF]" : "border-white/10"} cursor-pointer transition-all hover:border-[#6ACBDF]/70`} onClick={() => handlePlanSelect("basic")}>
                       <CardHeader>
-                        <CardTitle className="text-white">Basic</CardTitle>
-                        <CardDescription className="text-white/70">For small businesses</CardDescription>
+                        <CardTitle className="text-white">Mercurios Basic</CardTitle>
+                        <CardDescription className="text-white/70">Essential AI tools for retail</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <div className="text-2xl font-bold text-white mb-4">€199<span className="text-sm font-normal text-white/70">/month</span></div>
@@ -99,20 +99,28 @@ export default function SignupPage() {
                           </li>
                           <li className="flex items-start gap-2 text-sm text-white/70">
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
-                            <span>5 languages</span>
+                            <span>5 languages supported</span>
                           </li>
                           <li className="flex items-start gap-2 text-sm text-white/70">
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
                             <span>100 descriptions/month</span>
                           </li>
+                          <li className="flex items-start gap-2 text-sm text-white/70">
+                            <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
+                            <span>Email support</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-sm text-white/70">
+                            <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
+                            <span>Basic SEO optimization</span>
+                          </li>
                         </ul>
                       </CardContent>
                     </Card>
-
-                    <Card className={`bg-white/5 border ${selectedPlan === "pro" ? "border-[#6ACBDF]" : "border-white/10"} cursor-pointer transition-all hover:border-[#6ACBDF]/70`} onClick={() => handlePlanSelect("pro")}>
+                    
+                    <Card className={`bg-black/30 border ${selectedPlan === "pro" ? "border-[#6ACBDF]" : "border-white/10"} cursor-pointer transition-all hover:border-[#6ACBDF]/70`} onClick={() => handlePlanSelect("pro")}>
                       <CardHeader>
-                        <CardTitle className="text-white">Pro</CardTitle>
-                        <CardDescription className="text-white/70">For growing businesses</CardDescription>
+                        <CardTitle className="text-white">Mercurios Advanced</CardTitle>
+                        <CardDescription className="text-white/70">Advanced analytics for growing retailers</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <div className="text-2xl font-bold text-white mb-4">€399<span className="text-sm font-normal text-white/70">/month</span></div>
@@ -127,31 +135,40 @@ export default function SignupPage() {
                           </li>
                           <li className="flex items-start gap-2 text-sm text-white/70">
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
-                            <span>All languages</span>
+                            <span>All languages supported</span>
                           </li>
                           <li className="flex items-start gap-2 text-sm text-white/70">
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
                             <span>500 generations/month</span>
                           </li>
-                        </ul>
-                      </CardContent>
-                    </Card>
-
-                    <Card className={`bg-white/5 border ${selectedPlan === "enterprise" ? "border-[#6ACBDF]" : "border-white/10"} cursor-pointer transition-all hover:border-[#6ACBDF]/70`} onClick={() => handlePlanSelect("enterprise")}>
-                      <CardHeader>
-                        <CardTitle className="text-white">Enterprise</CardTitle>
-                        <CardDescription className="text-white/70">For large businesses</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="text-2xl font-bold text-white mb-4"><span className="text-white">Enterprise</span></div>
-                        <ul className="space-y-2">
                           <li className="flex items-start gap-2 text-sm text-white/70">
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
-                            <span>All Pro features</span>
+                            <span>Priority email and chat support</span>
                           </li>
                           <li className="flex items-start gap-2 text-sm text-white/70">
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
-                            <span>Bulk generation</span>
+                            <span>Advanced SEO optimization</span>
+                          </li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className={`bg-gradient-to-b from-black/40 to-black/60 border ${selectedPlan === "enterprise" ? "border-[#6ACBDF]" : "border-white/20"} cursor-pointer transition-all hover:border-[#6ACBDF]/70 shadow-lg`} onClick={() => handlePlanSelect("enterprise")}>
+                      <div className="absolute top-0 right-0 bg-[#6ACBDF] text-black text-xs font-bold px-2 py-1 rounded-bl-md">RECOMMENDED</div>
+                      <CardHeader>
+                        <CardTitle className="text-white">Mercurios Enterprise</CardTitle>
+                        <CardDescription className="text-white/70">Custom AI solutions for large retailers</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-xl font-bold text-white mb-4">Contact Sales for Custom Pricing</div>
+                        <ul className="space-y-2">
+                          <li className="flex items-start gap-2 text-sm text-white/70">
+                            <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
+                            <span>All Advanced features</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-sm text-white/70">
+                            <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
+                            <span>Bulk generation capabilities</span>
                           </li>
                           <li className="flex items-start gap-2 text-sm text-white/70">
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
@@ -161,6 +178,18 @@ export default function SignupPage() {
                             <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
                             <span>Unlimited generations</span>
                           </li>
+                          <li className="flex items-start gap-2 text-sm text-white/70">
+                            <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
+                            <span>Dedicated account manager</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-sm text-white/70">
+                            <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
+                            <span>Custom integrations</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-sm text-white/70">
+                            <CheckCircle2 className="h-5 w-5 text-[#6ACBDF] flex-shrink-0" />
+                            <span>Advanced analytics dashboard</span>
+                          </li>
                         </ul>
                       </CardContent>
                     </Card>
@@ -169,9 +198,9 @@ export default function SignupPage() {
                   <div className="flex justify-end">
                     <Button 
                       onClick={selectedPlan === "enterprise" ? () => window.location.href = "/demo" : handleNextStep} 
-                      className="w-full bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90"
+                      className="w-full bg-[#6ACBDF] text-black hover:bg-[#6ACBDF]/90 font-medium"
                     >
-                      {selectedPlan === "enterprise" ? "Talk to Sales" : "Continue"} {selectedPlan !== "enterprise" && <ArrowRight className="ml-2 h-4 w-4" />}
+                      {selectedPlan === "enterprise" ? "Contact Sales Team" : "Continue with Selected Plan"} {selectedPlan !== "enterprise" && <ArrowRight className="ml-2 h-4 w-4" />}
                     </Button>
                   </div>
                 </div>
