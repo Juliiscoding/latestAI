@@ -8,10 +8,10 @@ import Link from "next/link"
 
 const pricingPlans = [
   {
-    name: "Shopify Basic",
-    price: "$9.99",
+    name: "Mercurios Basic",
+    price: "€199",
     period: "per month",
-    description: "Essential AI tools for Shopify store owners",
+    description: "Essential AI tools for retail businesses",
     features: [
       "AI Product Descriptions",
       "5 languages supported",
@@ -24,10 +24,10 @@ const pricingPlans = [
     color: "from-blue-400 to-blue-600",
   },
   {
-    name: "Shopify Pro",
-    price: "$19.99",
+    name: "Mercurios Advanced",
+    price: "€399",
     period: "per month",
-    description: "Advanced AI tools for growing Shopify stores",
+    description: "Advanced analytics for growing retailers",
     features: [
       "AI Product Descriptions",
       "AI Alt Text Generation",
@@ -41,12 +41,12 @@ const pricingPlans = [
     color: "from-[#6ACBDF] to-[#AA0E33]",
   },
   {
-    name: "Shopify Enterprise",
-    price: "$49.99",
-    period: "per month",
-    description: "Complete AI solution for high-volume Shopify stores",
+    name: "Mercurios Enterprise",
+    price: "Contact Sales",
+    period: "",
+    description: "Custom AI solutions for large retailers",
     features: [
-      "All Pro features",
+      "All Advanced features",
       "Bulk generation capabilities",
       "Custom AI training",
       "Unlimited generations",

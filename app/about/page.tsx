@@ -42,7 +42,7 @@ export default function AboutPage() {
           <div className="flex flex-col items-center">
             <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
               <img 
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/max_pohl-eYtqbRsQQQQBV91NKpz38ajJiAkHzk.jpg" 
+                src="https://i.imgur.com/ZM3xJ75.jpg?v=1" 
                 alt="Max Pohl" 
                 className="w-full h-full object-cover grayscale"
               />
@@ -54,7 +54,7 @@ export default function AboutPage() {
           <div className="flex flex-col items-center">
             <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
               <img 
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/julius_rechenbach-GZcYFLnq0mRn82M05hZMEEv7KLYkxC.jpg" 
+                src="https://i.imgur.com/JQSTFCR.jpg?v=1" 
                 alt="Julius Rechenbach" 
                 className="w-full h-full object-cover grayscale"
               />
