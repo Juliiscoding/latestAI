@@ -4,6 +4,7 @@ import { useLanguage } from '@/components/language-provider'
 import { SplashCursor } from "@/components/ui/splash-cursor"
 import Navbar from '@/components/navbar'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function AboutPage() {
   const { language } = useLanguage();
@@ -66,24 +67,30 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               <div className="flex flex-col items-center">
                 <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
-                  {/* Verwenden eines Fallback-Avatars anstelle eines externen Bildes */}
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-black">
-                    <div className="text-[#6ACBDF] text-4xl font-bold">MP</div>
-                  </div>
+                  <img 
+                    src="/images/max_pohl.png" 
+                    alt="Max Pohl" 
+                    width={160}
+                    height={160}
+                    className="w-full h-full object-cover grayscale"
+                  />
                 </div>
                 <h3 className="text-lg font-medium text-white">Max Pohl</h3>
-                <p className="text-[#6ACBDF]">{language === 'de' ? 'CEO & Gründer' : 'CEO & Founder'}</p>
+                <p className="text-[#6ACBDF]">{language === 'de' ? 'Co-Founder' : 'Co-Founder'}</p>
               </div>
               
               <div className="flex flex-col items-center">
                 <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
-                  {/* Verwenden eines Fallback-Avatars anstelle eines externen Bildes */}
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-black">
-                    <div className="text-[#6ACBDF] text-4xl font-bold">JR</div>
-                  </div>
+                  <img 
+                    src="/images/julius_rechenbach.png" 
+                    alt="Julius Rechenbach" 
+                    width={160}
+                    height={160}
+                    className="w-full h-full object-cover grayscale"
+                  />
                 </div>
                 <h3 className="text-lg font-medium text-white">Julius Rechenbach</h3>
-                <p className="text-[#6ACBDF]">CTO</p>
+                <p className="text-[#6ACBDF]">Co-Founder</p>
               </div>
             </div>
           </div>
