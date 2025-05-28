@@ -68,7 +68,7 @@ export default function AboutPage() {
               <div className="flex flex-col items-center">
                 <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
                   <img 
-                    src="https://i.ibb.co/JK8wBV3/max-optimized.jpg" 
+                    src="https://ig1822.s3.eu-central-1.amazonaws.com/max_pohl.png" 
                     alt="Max Pohl" 
                     width={160}
                     height={160}
@@ -83,7 +83,7 @@ export default function AboutPage() {
               <div className="flex flex-col items-center">
                 <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
                   <img 
-                    src="https://i.ibb.co/NpjY0Zn/julius-optimized.jpg" 
+                    src="https://ig1822.s3.eu-central-1.amazonaws.com/julius_rechenbach.png" 
                     alt="Julius Rechenbach" 
                     width={160}
                     height={160}
@@ -110,16 +110,17 @@ export default function AboutPage() {
               innovative Ansätze, um Ihnen die bestmögliche Lösung zu bieten.
             </p>
             
-            <h3 className="text-lg font-semibold mb-2 text-[#6ACBDF]">Unsere technische Infrastruktur umfasst:</h3>
+            <h3 className="text-lg font-semibold mb-2 text-[#6ACBDF]">Unsere technische Infrastruktur:</h3>
+            <p className="mb-4 text-white/90">
+              Wir haben eine modulare, cloud-native Architektur entwickelt, die verschiedene Schichten nahtlos integriert:
+            </p>
             <ul className="list-disc list-inside space-y-2 text-white/90 mb-4">
-              <li>Ingestion-Layer: Airbyte (OSS), TypeScript ProHandel Connector, Kafka/Redpanda</li>
-              <li>Storage: Apache Iceberg oder Delta Lake 3.0 auf S3/GCS/Azure</li>
-              <li>Query/Compute: DuckDB/MotherDuck, Trino/Starburst, DataFusion</li>
-              <li>Semantic Layer: dbt Core, Cube.dev oder Transform</li>
-              <li>Vector Index (RAG): pgvector, Qdrant/Weaviate</li>
-              <li>LLM-Orchestrierung: LangChain v0.2, OpenAI o3, Mixtral 8x22B</li>
-              <li>Serving-API: FastAPI/Next.js API Routes</li>
-              <li>UI/Dashboard: Next.js 14 mit React Server Components, shadcn/ui, recharts, Tailwind</li>
+              <li>Ein leistungsstarkes Datenerfassungssystem mit proprietären Konnektoren für Einzelhandelsquellen</li>
+              <li>Eine fortschrittliche Datenspeicherschicht, die Skalierbarkeit und Performanz vereint</li>
+              <li>Hocheffiziente Abfrage-Engines für komplexe Analysen in Echtzeit</li>
+              <li>Eine semantische Schicht, die Rohdaten in aussagekräftige Geschäftskennzahlen übersetzt</li>
+              <li>Modernste KI-Komponenten mit neuronalen Netzen und Large Language Models</li>
+              <li>Eine reaktionsschnelle und intuitive Benutzeroberfläche mit modernsten Web-Technologien</li>
             </ul>
           </div>
         </div>
