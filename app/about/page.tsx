@@ -68,25 +68,27 @@ export default function AboutPage() {
               <div className="flex flex-col items-center">
                 <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
                   <img 
-                    src="/images/max_pohl.png" 
+                    src="https://i.ibb.co/JK8wBV3/max-optimized.jpg" 
                     alt="Max Pohl" 
                     width={160}
                     height={160}
                     className="w-full h-full object-cover grayscale"
+                    loading="eager"
                   />
                 </div>
                 <h3 className="text-lg font-medium text-white">Max Pohl</h3>
-                <p className="text-[#6ACBDF]">{language === 'de' ? 'Co-Founder' : 'Co-Founder'}</p>
+                <p className="text-[#6ACBDF]">Co-Founder</p>
               </div>
               
               <div className="flex flex-col items-center">
                 <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
                   <img 
-                    src="/images/julius_rechenbach.png" 
+                    src="https://i.ibb.co/NpjY0Zn/julius-optimized.jpg" 
                     alt="Julius Rechenbach" 
                     width={160}
                     height={160}
                     className="w-full h-full object-cover grayscale"
+                    loading="eager"
                   />
                 </div>
                 <h3 className="text-lg font-medium text-white">Julius Rechenbach</h3>
