@@ -68,7 +68,7 @@ export default function AboutPage() {
               <div className="flex flex-col items-center">
                 <div className="w-40 h-40 rounded-full overflow-hidden bg-black border-2 border-[#6ACBDF]/30 mb-4">
                   <img 
-                    src="https://ig1822.s3.eu-central-1.amazonaws.com/max_pohl.png" 
+                    src="https://ig1822.s3.eu-central-1.amazonaws.com/73D08511-E9E5-49EB-BB58-3EB876A7307F-9548-000004AAF0190B43.jpeg" 
                     alt="Max Pohl" 
                     width={160}
                     height={160}
