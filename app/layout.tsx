@@ -4,6 +4,8 @@ import { Providers } from "./providers"
 import { TenantProvider } from "@/lib/mercurios/tenant-context"
 import type React from "react"
 import dynamic from "next/dynamic"
+import Script from "next/script"
+import { contentSquareScript } from "./analytics"
 
 const Footer = dynamic(() => import("@/components/footer"), { ssr: true })
 const SplashCursor = dynamic(() => import("@/components/ui/splash-cursor").then(mod => ({ default: mod.SplashCursor })), { ssr: false })
@@ -24,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <head />
+      <head>
+        <Script id="contentsquare-script" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: contentSquareScript }} />
+      </head>
       <body className={`${inter.className} antialiased min-h-screen transition-colors duration-300 flex flex-col bg-black`}>
         <TenantProvider>
           <Providers>

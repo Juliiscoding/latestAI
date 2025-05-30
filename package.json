@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentsquare/tag-sdk": "^1.1.0",
     "@hookform/resolvers": "^3.9.1",
+    "@prisma/client": "^6.8.2",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.4",
     "@radix-ui/react-aspect-ratio": "^1.1.1",
@@ -43,6 +45,7 @@
     "@tsparticles/slim": "latest",
     "@types/js-cookie": "^3.0.6",
     "autoprefixer": "^10.4.20",
+    "bcryptjs": "^3.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
@@ -52,11 +55,13 @@
     "input-otp": "1.4.1",
     "ioredis": "^5.6.0",
     "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.454.0",
     "luxon": "^3.6.1",
     "next": "14.2.16",
     "next-themes": "latest",
     "openai": "^4.92.1",
+    "prisma": "^6.8.2",
     "react": "^18",
     "react-collapsible": "latest",
     "react-day-picker": "8.10.1",
@@ -73,6 +78,8 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/luxon": "^3.6.2",
     "@types/node": "^22",
     "@types/react": "^18",
