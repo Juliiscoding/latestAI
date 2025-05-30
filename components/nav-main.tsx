@@ -61,6 +61,7 @@ const navSections: NavSection[] = [
     items: [
       { label: "Dashboard", href: "/dashboard" },
       { label: "Business Intelligence", href: "/dashboard/business-intelligence" },
+      { label: "RAG Intelligence", href: "/dashboard/rag-intelligence" },
       { label: "Sales Analytics", href: "/earth/sales" },
       { label: "Product & Inventory Analysis", href: "/earth/inventory" },
       { label: "Customer Analysis & Segmentation", href: "/earth/customers" },
@@ -124,6 +125,7 @@ const navSections: NavSection[] = [
       { label: "User Management", href: "/settings/users" },
       { label: "API Management", href: "/settings/api" },
       { label: "System & Notifications", href: "/settings/system" },
+      { label: "RAG Management", href: "/admin/rag-management" },
     ],
   },
 ]
