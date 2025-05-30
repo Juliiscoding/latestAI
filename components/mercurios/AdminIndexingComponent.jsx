@@ -5,8 +5,10 @@ import axios from 'axios';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Checkbox } from '../ui/checkbox';
-import { Loader2, AlertCircle, CheckCircle } from 'lucide-react';
+import { Loader2, AlertCircle, CheckCircle, RefreshCw } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
+import RAGErrorHandling from './RAGErrorHandling';
+import RAGHelpPopover from './RAGHelpPopover';
 
 /**
  * AdminIndexingComponent
@@ -43,11 +45,16 @@ export default function AdminIndexingComponent() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Daten-Indexierung</CardTitle>
-        <CardDescription>
-          Starten Sie hier die Indexierung von Tenant-Daten für das RAG-System. 
-          Die Indexierung kann einige Zeit in Anspruch nehmen, abhängig von der Datenmenge.
-        </CardDescription>
+        <div className="flex justify-between items-start">
+          <div>
+            <CardTitle>Daten-Indexierung</CardTitle>
+            <CardDescription>
+              Starten Sie hier die Indexierung von Tenant-Daten für das RAG-System. 
+              Die Indexierung kann einige Zeit in Anspruch nehmen, abhängig von der Datenmenge.
+            </CardDescription>
+          </div>
+          <RAGHelpPopover type="admin" placement="bottom-end" />
+        </div>
       </CardHeader>
       
       <CardContent className="space-y-4">
@@ -82,11 +89,11 @@ export default function AdminIndexingComponent() {
         </Button>
         
         {error && (
-          <Alert variant="destructive">
-            <AlertCircle className="h-4 w-4" />
-            <AlertTitle>Fehler</AlertTitle>
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
+          <RAGErrorHandling 
+            error={error} 
+            variant="inline" 
+            onRetry={handleIndexing} 
+          />
         )}
         
         {result && (

@@ -47,17 +47,5 @@ export function TenantProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Hilfsfunktion, um den Tenant-Slug aus der URL zu extrahieren
-export function extractTenantFromHostname(hostname: string): string | null {
-  // Beispiel: tenant-slug.mercurios.ai -> tenant-slug
-  // Dies ist ein Beispiel und sollte an Ihre tatsächliche Domain-Struktur angepasst werden
-  if (hostname.includes('.mercurios.ai')) {
-    const parts = hostname.split('.');
-    if (parts.length >= 3) {
-      return parts[0];
-    }
-  }
-  
-  // Fallback: kein Tenant-Slug gefunden
-  return null;
-}
+// Hinweis: Die Funktion extractTenantFromHostname wurde in lib/tenant/utils.ts verschoben
+// damit sie sowohl auf dem Server als auch auf dem Client verwendet werden kann

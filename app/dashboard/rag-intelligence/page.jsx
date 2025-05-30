@@ -4,6 +4,9 @@ import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import RAGQueryComponent from '../../../components/mercurios/RAGQueryComponent';
 import InsightsComponent from '../../../components/mercurios/InsightsComponent';
+import RAGStatusComponent from '../../../components/mercurios/RAGStatusComponent';
+import RAGIntroductionComponent from '../../../components/mercurios/RAGIntroductionComponent';
+import RAGOnboarding from '../../../components/mercurios/RAGOnboarding';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../../components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
 
@@ -31,11 +34,19 @@ export default function RAGIntelligencePage() {
 
   return (
     <div className="container mx-auto p-6 space-y-8">
+      <RAGOnboarding />
+      
       <div>
         <h1 className="text-3xl font-bold">Business Intelligence</h1>
         <p className="text-gray-500 mt-2">
           Fragen Sie Ihre Daten und entdecken Sie KI-generierte Erkenntnisse
         </p>
+      </div>
+
+      <RAGIntroductionComponent />
+      
+      <div className="mb-6">
+        <RAGStatusComponent />
       </div>
 
       <Tabs defaultValue="query" className="w-full">

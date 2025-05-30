@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
-import { extractTenantFromHostname } from "./lib/tenant/context"
+import { extractTenantFromHostname } from "./lib/tenant/utils" // Import aus der neuen serverseitigen Datei
 import { verifyToken, JwtPayload } from "./lib/auth/utils"
 
 export function middleware(request: NextRequest) {

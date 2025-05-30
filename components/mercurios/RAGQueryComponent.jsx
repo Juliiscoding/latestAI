@@ -6,6 +6,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Loader2 } from 'lucide-react';
+import RAGErrorHandling from './RAGErrorHandling';
+import RAGHelpPopover from './RAGHelpPopover';
+import RAGQuerySuggestions from './RAGQuerySuggestions';
 
 /**
  * RAGQueryComponent
@@ -17,6 +20,20 @@ export default function RAGQueryComponent() {
   const [answer, setAnswer] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showSuggestions, setShowSuggestions] = useState(true);
+
+  /**
+   * Verarbeitet eine ausgewählte Beispielfrage
+   */
+  const handleSuggestedQuery = (suggestedQuery) => {
+    setQuestion(suggestedQuery);
+    // Nach einer kurzen Verzögerung die Frage absenden
+    setTimeout(() => {
+      handleSubmit(new Event('submit'));
+    }, 100);
+    // Vorschläge ausblenden, wenn eine Frage ausgewählt wurde
+    setShowSuggestions(false);
+  };
 
   /**
    * Sendet eine Frage an die RAG-API
@@ -28,6 +45,7 @@ export default function RAGQueryComponent() {
     
     setLoading(true);
     setError(null);
+    setShowSuggestions(false); // Vorschläge ausblenden, wenn eine Frage gestellt wird
     
     try {
       const response = await axios.post('/api/rag/ask', { question });
@@ -43,10 +61,15 @@ export default function RAGQueryComponent() {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Daten-Analyse</CardTitle>
-        <CardDescription>
-          Stellen Sie eine Frage zu Ihren Daten und erhalten Sie Antworten basierend auf Ihren Unternehmensquellen.
-        </CardDescription>
+        <div className="flex justify-between items-start">
+          <div>
+            <CardTitle>Daten-Analyse</CardTitle>
+            <CardDescription>
+              Stellen Sie eine Frage zu Ihren Daten und erhalten Sie Antworten basierend auf Ihren Unternehmensquellen.
+            </CardDescription>
+          </div>
+          <RAGHelpPopover type="query" placement="bottom-end" />
+        </div>
       </CardHeader>
       
       <CardContent>
@@ -59,6 +82,7 @@ export default function RAGQueryComponent() {
               onChange={(e) => setQuestion(e.target.value)}
               className="flex-1"
               disabled={loading}
+              onFocus={() => !answer && setShowSuggestions(true)}
             />
             <Button type="submit" disabled={loading || !question.trim()}>
               {loading ? (
@@ -71,11 +95,32 @@ export default function RAGQueryComponent() {
               )}
             </Button>
           </div>
+          
+          {showSuggestions && !answer && !loading && (
+            <RAGQuerySuggestions onSelectQuery={handleSuggestedQuery} />
+          )}
+          
+          {!showSuggestions && !answer && !loading && (
+            <div className="text-center mt-4">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => setShowSuggestions(true)}
+                className="text-sm text-gray-500 hover:text-gray-700"
+              >
+                Beispielfragen anzeigen
+              </Button>
+            </div>
+          )}
         </form>
 
         {error && (
-          <div className="mt-4 p-4 bg-red-50 text-red-600 rounded-md">
-            {error}
+          <div className="mt-4">
+            <RAGErrorHandling 
+              error={error} 
+              variant="help" 
+              onRetry={() => handleSubmit(new Event('submit'))} 
+            />
           </div>
         )}
 
