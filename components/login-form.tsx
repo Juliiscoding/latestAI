@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -14,7 +14,23 @@ export function LoginForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
+  const [isPreview, setIsPreview] = useState(false)
   const router = useRouter()
+  
+  // Sicherer Zugriff auf window.location nur im Client
+  useEffect(() => {
+    // Prüfen, ob wir in einer Preview-Umgebung sind
+    const hostname = window.location.hostname
+    const port = window.location.port
+    
+    const isPreviewEnv = 
+      hostname === "localhost" || 
+      hostname === "127.0.0.1" ||
+      port === "55698" ||
+      hostname.includes(".vercel.app")
+      
+    setIsPreview(isPreviewEnv)
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -24,16 +40,10 @@ export function LoginForm() {
     document.cookie = "auth=true; path=/; max-age=86400";
     
     try {
-      // Try the API call, but don't wait for it in preview environments
-      const isPreview = 
-        window.location.hostname === "localhost" || 
-        window.location.hostname === "127.0.0.1" ||
-        window.location.port === "55698" ||
-        window.location.hostname.includes(".vercel.app");
-
+      // Verwende den isPreview-Status, der im useEffect sicher gesetzt wurde
       if (isPreview) {
         // In preview, immediately redirect
-        window.location.href = "/dashboard";
+        router.push("/dashboard");
         return;
       }
       
@@ -46,17 +56,16 @@ export function LoginForm() {
       const data = await response.json()
       
       if (response.ok) {
-        // Force a refresh to ensure cookies are applied
-        window.location.href = "/dashboard";
+        // Force a refresh to ensure cookies are applied - nutze router statt window.location
+        router.push("/dashboard");
       } else {
         setError(data.message || "Login fehlgeschlagen");
       }
     } catch (error) {
       console.error("Login error:", error);
       // Even if there's an error, try to redirect in preview environments
-      if (window.location.hostname.includes(".vercel.app") || 
-          window.location.port === "55698") {
-        window.location.href = "/dashboard";
+      if (isPreview) {
+        router.push("/dashboard");
       } else {
         setError("Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.");
       }
