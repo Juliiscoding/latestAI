@@ -59,7 +59,7 @@
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.454.0",
     "luxon": "^3.6.1",
-    "next": "14.2.16",
+    "next": "15.2.4",
     "next-auth": "^4.24.7",
     "next-themes": "latest",
     "openai": "^4.92.1",
